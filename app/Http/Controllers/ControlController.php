@@ -41,7 +41,8 @@ class ControlController extends Controller
         return redirect()->route('paciente.show', $patient->id)->with('message', 'Control actualizado');
 	}
 
-	public function destroy(Patient $patient, History $history){
-		//
+	public function destroy(Patient $patient, Control $control){
+		$control->delete();
+		return redirect()->route('paciente.index', $patient->id)->with('message', 'Control eliminado');
 	}
 }

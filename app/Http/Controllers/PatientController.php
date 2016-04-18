@@ -39,6 +39,6 @@ class PatientController extends Controller
     public function destroy(Patient $patient){
         // dd($patient);
         $patient->delete();
-        return redirect()->route('paciente.index');
+        return redirect()->route('paciente.index')->with('message', 'Paciente eliminado');
     }
 }

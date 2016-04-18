@@ -43,6 +43,7 @@ class HistoryController extends Controller
 	}
 
 	public function destroy(Patient $patient, History $history){
-		dd($history);
+		$history->delete();
+		return redirect()->route('paciente.show', $patient->id)->with('message', 'Antecedente eliminado');
 	}
 }

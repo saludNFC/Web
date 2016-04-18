@@ -41,7 +41,9 @@ class ConsultationController extends Controller
         return redirect()->route('paciente.show', $patient->id)->with('message', 'Consulta medica actualizada');
 	}
 
-	public function destroy(Patient $patient, History $history){
-		//
+	public function destroy(Patient $patient, Consultation $consultation){
+		$consultation->delete();
+		return redirect()->route('paciente.show', $patient->id)->with('message', 'Consulta medica eliminada');
+
 	}
 }

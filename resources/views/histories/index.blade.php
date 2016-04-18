@@ -21,15 +21,9 @@
                     <td>{{ $history->history_type }}</td>
                     <td>{{ $history->story }}</td>
                     <td>
-                        {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.antecedentes.destroy', $patient->id, $history->id ]]) !!}
-                            <div class="form-group btn-group" role="group">
-                                {!! link_to_route('paciente.antecedentes.show', 'Ver detalles', [$patient->id, $history->id], ['class' => 'btn btn-default']) !!}
-                                {!! link_to_route('paciente.antecedentes.edit', 'Editar', [$patient->id, $history->id], ['class' => 'btn btn-primary']) !!}
-                                {!! Form::button('<i class="fa fa-trash-o fa-fw"></i>&nbsp;Delete', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
-                            </div>
-                        {!! Form::close() !!}
                         <div class="btn-group">
-
+                            {!! link_to_route('paciente.antecedentes.show', 'Ver detalles', [$patient->id, $history->id], ['class' => 'btn btn-default']) !!}
+                            {!! link_to_route('paciente.antecedentes.edit', 'Editar', [$patient->id, $history->id], ['class' => 'btn btn-primary']) !!}    
                         </div>
                     </td>
                 </tr>

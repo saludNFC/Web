@@ -19,7 +19,7 @@
 
         {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.destroy', $patient->id]]) !!}
             <div class="form-group btn-group" role="group">
-                {!! Form::button('<i class="fa fa-trash-o fa-fw"></i>&nbsp;Delete', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
+                {!! Form::button('<i class="fa fa-trash-o fa-fw"></i>&nbsp;Borrar', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
                 {!! link_to_route('paciente.edit', 'Editar', [$patient->id], ['class' => 'btn btn-primary']) !!}
             </div>
         {!! Form::close() !!}
