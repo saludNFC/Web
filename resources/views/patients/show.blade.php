@@ -9,21 +9,7 @@
 
 @section('content')
     <div class="container">
-
-        <p>Nombres: {{ $patient->nombre }}</p>
-        <p>Apellidos: {{ $patient->apellido }}</p>
-        <p>Sexo: {{ $patient->sexo }}</p>
-        <p>Fecha de nacimiento: {{ $patient->fecha_nac }}</p>
-        <p>Lugar de nacimiento: {{ $patient->lugar_nac }}</p>
-        <p>Grupo sanguineo: {{ $patient->grupo_sanguineo }}</p>
-
-        {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.destroy', $patient->id]]) !!}
-            <div class="form-group btn-group" role="group">
-                {!! Form::button('<i class="fa fa-trash-o fa-fw"></i>&nbsp;Borrar', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
-                {!! link_to_route('paciente.edit', 'Editar', [$patient->id], ['class' => 'btn btn-primary']) !!}
-            </div>
-        {!! Form::close() !!}
-
+        @include('patients.partials._patientDetails')
         <hr>
 
         <div>

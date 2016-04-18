@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/paciente';
 
     /**
      * Create a new authentication controller instance.
@@ -63,6 +63,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

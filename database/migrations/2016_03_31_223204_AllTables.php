@@ -13,21 +13,21 @@ class AllTables extends Migration
     public function up()
     {
         // Users table
-        // Schema::create('users', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->string('name');
-        //     $table->string('email')->unique();
-        //     $table->string('password', 60);
-        //     $table->rememberToken();
-        //     $table->timestamps();
-        // });
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password', 60);
+            $table->rememberToken();
+            $table->timestamps();
+        });
 
         // Password resets table
-        // Schema::create('password_resets', function (Blueprint $table) {
-        //     $table->string('email')->index();
-        //     $table->string('token')->index();
-        //     $table->timestamp('created_at');
-        // });
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token')->index();
+            $table->timestamp('created_at');
+        });
 
         // Patients table
         Schema::create('patients', function (Blueprint $table) {
@@ -126,10 +126,9 @@ class AllTables extends Migration
     {
         Schema::drop('consultations');
         Schema::drop('controls');
-        // Schema::drop('control_types');
         Schema::drop('histories');
         Schema::drop('patients');
-        // Schema::drop('password_resets');
-        // Schema::drop('users');
+        Schema::drop('password_resets');
+        Schema::drop('users');
     }
 }

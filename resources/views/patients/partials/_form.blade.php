@@ -46,7 +46,7 @@
                 <div class="form-group">
                     {!! Form::label('Sexo', 'Sexo', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-8">
-                        {!! Form::select('Sexo',
+                        {!! Form::select('sexo',
                             ['Masculino' => 'Masculino',
                             'Femenino' => 'Femenino'], null, ['class' => 'form-control']) !!}
                     </div>

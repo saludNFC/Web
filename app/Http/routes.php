@@ -23,3 +23,8 @@ Route::resource('paciente', 'PatientController');
 Route::resource('paciente.antecedentes', 'HistoryController');
 Route::resource('paciente.controles', 'ControlController');
 Route::resource('paciente.consultas', 'ConsultationController');
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController'
+]);
