@@ -14,6 +14,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- User Account Menu -->
+                @if(Auth::check())
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -26,6 +27,7 @@
                         <li><a href="#"><i class="fa fa-sign-out"></i> Cerrar sesión</a></li>
                     </ul>
                 </li>
+                @endif
             </ul>
         </div>
     </nav>
