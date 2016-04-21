@@ -65,8 +65,21 @@ class AllTables extends Migration
             // Foreign Keys
             $table->integer('patient_id')->unsigned();
 
-            $table->string('history_type');
-            $table->longtext('story');
+            $table->enum('history_type', ['personal', 'familiar', 'medicamentos']);
+
+            // familiar
+            $table->text('grade')->nullable();
+            $table->text('illness')->nullable();
+
+            // personal
+            $table->enum('type_personal', ['alergia', 'enfermedad', 'cirugia'])->nullable();
+            $table->longtext('description')->nullable();
+
+            // medicine
+            $table->text('med')->nullable();
+            $table->date('date_ini')->nullable();
+            $table->date('date_end')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
 

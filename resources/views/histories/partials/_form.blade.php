@@ -1,37 +1,30 @@
-<div class="col-md-10">
-    <!-- Horizontal Form -->
-    <div class="box box-info">
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form class="form-horizontal">
-            <div class="box-body">
-
-                <!-- TIPO DE ANTECEDENTE -->
-                <div class="form-group">
-                    {!! Form::label('history_type', 'Tipo de antecedente', ['class' => 'col-sm-4 control-label']) !!}
-                    <div class="col-sm-8">
-                        {!! Form::select('history_type',
-                            ['Familiar' => 'Familiar',
-                            'Medicamentos' => 'Medicamentos',
-                            'Personal' => 'Personal'], null, ['class' => 'form-control']) !!}
-                    </div>
-                </div>
-                <!-- NOTES -->
-                <div class="form-group">
-                    {!! Form::label('story', 'Detalles', ['class' => 'col-sm-4 control-label']) !!}
-                    <div class="col-sm-8">
-                        {!! Form::textarea('story', 'Describa el antecedente del paciente', ['class'=>'form-control', 'placeholder'=>'1234567']) !!}
-                    </div>
-                </div>
-            </div>
-            <!-- /.box-body -->
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Antecedentes familiares</a></li>
+        <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Antecedentes personales</a></li>
+        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Antecedentes de medicamentos</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_1">
+            @include('histories.partials._familiar')
+        </div>
+        <!-- /.tab-pane -->
+        <div class="tab-pane" id="tab_2">
+            @include('histories.partials._personal')
+        </div>
+        <!-- /.tab-pane -->
+        <div class="tab-pane" id="tab_3">
+            @include('histories.partials._medicine')
+        </div>
+    <!-- /.tab-pane -->
+    </div>
+<!-- /.tab-content -->
+</div>
+        <!-- /.box-body -->
 
             <div class="box-footer">
                 <button class="btn btn-default">Cancelar</button>
                 {!! Form::submit($submit_text, ['class'=>'btn btn-primary']) !!}
             </div>
-        </form>
-    </div>
-</div>
 
 @include('errors.patientform')

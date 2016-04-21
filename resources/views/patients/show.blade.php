@@ -12,7 +12,7 @@
         @include('patients.partials._patientDetails')
         <hr>
 
-        <div>
+        <div class="nav-tabs-custom">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">Antecedentes</a></li>

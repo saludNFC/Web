@@ -24,7 +24,6 @@ Route::resource('paciente.antecedentes', 'HistoryController');
 Route::resource('paciente.controles', 'ControlController');
 Route::resource('paciente.consultas', 'ConsultationController');
 
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController'
-]);
+Route::auth();
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');

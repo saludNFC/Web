@@ -11,11 +11,11 @@ class History extends Model
     use SoftDeletes;
 
     // Carbon instances
-    protected $dates = ['deleted_at'];
+    protected $dates = ['date_ini', 'date_end', 'deleted_at'];
 
     // Mass assignment
     protected $fillable = [
-        'patient_id', 'history_type', 'story'
+        'patient_id', 'history_type', 'grade', 'illness', 'type_personal', 'description', 'med', 'date_ini', 'date_end'
     ];
 
     // Relationships
