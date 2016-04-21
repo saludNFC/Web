@@ -8,10 +8,10 @@
 
     <form role="form">
         <div class="box-body">
-            {!! Form::hidden('history_type', 'familiar') !!}
+            {!! Form::hidden('history_type', 'Familiar') !!}
             <div class="form-group">
                 {!! Form::label('grade', 'Relación de parentesco') !!}
-                {!! Form::text('grade', null, ['class'=>'form-control', 'placeholder'=>'Abuelo, padre, madre, etc']) !!}
+                {!! Form::text('grade', null, ['class'=>'form-control', 'placeholder'=>'Por ejemplo: Abuelo, padre, madre, etc']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('illness', 'Antecedente médico') !!}
