@@ -1,5 +1,6 @@
 <?php
 
+
 // SGGM hace todo en una sola migracion por alguna razon
 // Parece ser mas facil para que cuando se hace migrate:refresh evitar que
 // hayan incongruencias al borrar una tabla que dependa del foreign de otra
