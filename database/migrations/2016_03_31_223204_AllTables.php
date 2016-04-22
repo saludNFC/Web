@@ -79,7 +79,6 @@ class AllTables extends Migration
             $table->text('med')->nullable();
             $table->enum('via', ['Oral', 'Sublingual', 'Parenteral', 'Rectal', 'Topica', 'Percutánea'])->nullable();
             $table->date('date_ini')->nullable();
-            $table->date('date_end')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

@@ -10,16 +10,18 @@
                 <tr>
                     <th>ID</th>
                     <th>Tipo de antecedente</th>
-                    <th>Notas</th>
+                    <th>Grado</th>
+                    <th>Enfermedad</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($patient->history as $history)
+                @foreach($patient->history->where('history_type', 'Familiar') as $history)
                 <tr>
                     <td>{{ $history->id }}</td>
                     <td>{{ $history->history_type }}</td>
-                    <td>{{ $history->story }}</td>
+                    <td>{{ $history->grade }}</td>
+                    <td>{{ $history->illness }}</td>
                     <td>
                         <div class="btn-group">
                             {!! link_to_route('paciente.antecedentes.show', 'Ver detalles', [$patient->id, $history->id], ['class' => 'btn btn-default']) !!}
