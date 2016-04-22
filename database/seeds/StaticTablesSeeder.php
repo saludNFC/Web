@@ -1,5 +1,7 @@
 <?php
 
+// SGGM usa un solo seeder :O
+
 use Illuminate\Database\Seeder;
 
 class StaticTablesSeeder extends Seeder
@@ -32,8 +34,8 @@ class StaticTablesSeeder extends Seeder
         );
 
         $medicine = array(
-            array('patient_id' => 1, 'history_type' => 'medicamentos', 'med' => 'Etaconil', 'date_ini' => '2015-12-18', 'date_end' => '2016-04-19'),
-            array('patient_id' => 1, 'history_type' => 'medicamentos', 'med' => 'Sentis', 'date_ini' => '2015-12-18', 'date_end' => ''),
+            array('patient_id' => 1, 'history_type' => 'medicamentos', 'med' => 'Etaconil', 'date_ini' => '2015-12-18'),
+            array('patient_id' => 1, 'history_type' => 'medicamentos', 'med' => 'Sentis', 'date_ini' => '2015-12-18'),
         );
         DB::table('histories')->insert($personal);
         DB::table('histories')->insert($familiar);

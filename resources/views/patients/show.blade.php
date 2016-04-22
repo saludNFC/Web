@@ -15,16 +15,12 @@
         <div class="nav-tabs-custom">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">Antecedentes</a></li>
                 <li role="presentation"><a href="#control" aria-controls="control" role="tab" data-toggle="tab">Controles y monitoreos</a></li>
                 <li role="presentation"><a href="#consultation" aria-controls="consultation" role="tab" data-toggle="tab">Consultas médicas</a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="history">
-                    @include('histories.index')
-                </div>
                 <div role="tabpanel" class="tab-pane" id="control">
                     @include('controls.index')
                 </div>
@@ -52,31 +48,43 @@
                     <li><a href="#medicine" role="tab" id="medicine-tab" data-toggle="tab" aria-controls="medicine" aria-expanded="false">De Medicamentos</a></li>
                 </ul>
             </li>
-            <li role="presentation" class="">
-                <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Algo</a>
+            <li role="presentation" class="dropdown active">
+                <a href="#" id="controls" class="dropdown-toggle" data-toggle="dropdown" aria-controls="controls-contents" aria-expanded="false">Controles y Monitoreos <span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="controls" id="controls-contents">
+                    <li><a href="#vaccination" role="tab" id="vaccination-tab" data-toggle="tab" aria-controls="vaccination" aria-expanded="true">Vacunacion</a></li>
+                    <li><a href="#growth" role="tab" id="growth-tab" data-toggle="tab" aria-controls="growth" aria-expanded="false">Crecimiento y desarrollo</a></li>
+                    <li><a href="#triage" role="tab" id="triage-tab" data-toggle="tab" aria-controls="triage" aria-expanded="false">Triaje</a></li>
+                    <li><a href="#geriatric" role="tab" id="geriatric-tab" data-toggle="tab" aria-controls="geriatric" aria-expanded="false">Geriatrico</a></li>
+                </ul>
             </li>
             <li role="presentation">
                 <a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Algo mas</a>
             </li>
         </ul>
         <div id="myTabContent" class="tab-content">
-            <div role="tabpanel" class="tab-pane fade" id="home" aria-labelledby="home-tab">
-                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-            </div>
+            <!-- ANTECEDENTES -->
             <div role="tabpanel" class="tab-pane fade active in" id="familiar" aria-labelledby="familiar-tab">
-                <p>Antecedentes Familiares del paciente</p>
                 @include('histories.index_familiar')
             </div>
             <div role="tabpanel" class="tab-pane fade" id="personal" aria-labelledby="personal-tab">
-                <p>Antecedentes personales del paciente</p>
                 @include('histories.index_personal')
             </div>
             <div role="tabpanel" class="tab-pane fade" id="medicine" aria-labelledby="medicine-tab">
-                <p>Antecedentes personales de medicamentos del paciente</p>
                 @include('histories.index_medicine')
+            </div>
+
+            <!-- CONTROLES -->
+            <div role="tabpanel" class="tab-pane fade in" id="vaccination" aria-labelledby="vaccination-tab">
+                @include('controls.index_vaccination')
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="growth" aria-labelledby="growth-tab">
+                @include('controls.index_growth')
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="triage" aria-labelledby="triage-tab">
+                @include('controls.index_triage')
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="geriatric" aria-labelledby="geriatric-tab">
+                @include('controls.index_geriatric')
             </div>
         </div>
     </div>

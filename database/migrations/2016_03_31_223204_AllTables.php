@@ -1,5 +1,9 @@
 <?php
 
+// SGGM hace todo en una sola migracion por alguna razon
+// Parece ser mas facil para que cuando se hace migrate:refresh evitar que
+// hayan incongruencias al borrar una tabla que dependa del foreign de otra
+
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -101,9 +105,27 @@ class AllTables extends Migration
 
             $table->integer('patient_id')->unsigned();
 
-            $table->string('control_type');
-            $table->longtext('note')->nullable();
-            $table->float('value')->nullable();
+            $table->enum('control_type', ['Vacunacion', 'Crecimiento y Desarrollo', 'Triaje', 'Geriatrico']);
+
+            // Vacunacion
+            $table->text('vaccine')->nullable();
+            $table->enum('via', ['Intra-dermica', 'Intra-muscular', 'Oral', 'Subcutanea'])->nullable();
+            $table->integer('dosis')->nullable();
+
+            // Crecimiento y Desarrollo
+            $table->float('weight')->nullable();
+            $table->float('height')->nullable();
+
+            // Triaje
+            $table->float('temperature')->nullable();
+            $table->integer('heart_rate')->nullable();
+            $table->integer('sistole')->nullable();
+            $table->integer('diastole')->nullable();
+
+            // Geriatrico
+            $table->enum('geriatric_type', ['Valoracion Medica', 'Valoracion Funcional', 'Valoracion Cognitiva', 'Valoracion Social'])->nullable();
+            $table->longtext('notes')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
 

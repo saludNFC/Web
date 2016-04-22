@@ -15,7 +15,7 @@ class Control extends Model
 
     // Mass assignment
     protected $fillable = [
-        'patient_id', 'control_type', 'note', 'value'
+        'patient_id', 'control_type', 'vaccine', 'via', 'dosis', 'weight', 'height', 'temperature', 'heart_rate', 'sistole', 'diastole', 'geriatric_type', 'notes'
     ];
 
     // Relationships

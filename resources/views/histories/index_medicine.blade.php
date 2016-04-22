@@ -23,7 +23,7 @@
                     <td>{{ $history->history_type }}</td>
                     <td>{{ $history->med }}</td>
                     <td>{{ $history->via }}</td>
-                    <td>{{ $history->date_ini }}</td>
+                    <td>{{ $history->date_ini->format('d-m-Y') }}</td>
                     <td>
                         <div class="btn-group">
                             {!! link_to_route('paciente.antecedentes.show', 'Ver detalles', [$patient->id, $history->id], ['class' => 'btn btn-default']) !!}
