@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\HistoryRequest;
 use App\Http\Requests;
 use App\Patient;
 use App\History;
@@ -23,11 +24,10 @@ class HistoryController extends Controller
 		return view('histories.create', compact('patient'));
 	}
 
-	public function store(Patient $patient, Request $request){
+	public function store(Patient $patient, HistoryRequest $request){
 		$historia = $request->all();
 		$historia['patient_id'] = $patient->id;
 		History::create($historia);
-		// return $historia['history_type'];
 		return redirect()->route('paciente.show', $patient->id)->with('message', 'Antecedente creado');
 	}
 

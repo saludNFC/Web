@@ -11,7 +11,7 @@
             {!! Form::hidden('control_type', 'Vacunacion') !!}
             <div class="form-group">
                 {!! Form::label('vaccine', 'Vacuna') !!}
-                {!! Form::text('vacuna', null, ['class'=>'form-control', 'placeholder'=>'Por ejemplo: DCG, Pentavalente, DPT, etc']) !!}
+                {!! Form::text('vaccine', null, ['class'=>'form-control', 'placeholder'=>'Por ejemplo: DCG, Pentavalente, DPT, etc']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('via', 'Via de administracion') !!}

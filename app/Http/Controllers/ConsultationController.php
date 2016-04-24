@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ConsultationRequest;
 use App\Http\Requests;
 use App\Patient;
 use App\Consultation;
@@ -22,7 +23,7 @@ class ConsultationController extends Controller
 		return view('consultations.create', compact('patient'));
 	}
 
-	public function store(Patient $patient, Request $request){
+	public function store(Patient $patient, ConsultationRequest $request){
 		$consultation = $request->all();
 		$consultation['patient_id'] = $patient->id;
 		Consultation::create($consultation);
@@ -35,7 +36,7 @@ class ConsultationController extends Controller
 		return view('consultations.edit', compact('patient', 'consultation'));
 	}
 
-	public function update(Patient $patient, Consultation $consultation, Request $request){
+	public function update(Patient $patient, Consultation $consultation, ConsultationRequest $request){
 		$consultation->update($request->all());
 		$consultation['patient_id'] = $patient->id;
         return redirect()->route('paciente.show', $patient->id)->with('message', 'Consulta medica actualizada');

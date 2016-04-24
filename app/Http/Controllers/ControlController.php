@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ControlRequest;
 use App\Http\Requests;
 use App\Patient;
 use App\Control;
@@ -22,11 +23,11 @@ class ControlController extends Controller
 		return view('controls.create', compact('patient'));
 	}
 
-	public function store(Patient $patient, Request $request){
+	public function store(Patient $patient, ControlRequest $request){
 		$control = $request->all();
 		$control['patient_id'] = $patient->id;
 		Control::create($control);
-		// return $historia['history_type'];
+		// return $control;
 		return redirect()->route('paciente.show', $patient->id)->with('message', 'Control creado');
 	}
 
@@ -38,7 +39,8 @@ class ControlController extends Controller
 	public function update(Patient $patient, Control $control, Request $request){
 		$control->update($request->all());
 		$control['patient_id'] = $patient->id;
-        return redirect()->route('paciente.show', $patient->id)->with('message', 'Control actualizado');
+		return $control;
+        // return redirect()->route('paciente.show', $patient->id)->with('message', 'Control actualizado');
 	}
 
 	public function destroy(Patient $patient, Control $control){

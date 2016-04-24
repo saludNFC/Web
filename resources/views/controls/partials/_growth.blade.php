@@ -11,11 +11,11 @@
             {!! Form::hidden('control_type', 'Crecimiento') !!}
             <div class="form-group">
                 {!! Form::label('weight', 'Peso') !!}
-                {!! Form::number('weight', null, ['class'=>'form-control', 'placeholder'=>'Peso del paciente en Kg']) !!}
+                {!! Form::number('weight', null, ['class'=>'form-control', 'placeholder'=>'Peso del paciente en Kg', 'step' => 'any']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('height', 'Altura') !!}
-                {!! Form::number('height', null, ['class'=>'form-control', 'placeholder' => 'Altura del paciente en cm']) !!}
+                {!! Form::number('height', null, ['class'=>'form-control', 'placeholder' => 'Altura del paciente en cm', 'step' => 'any']) !!}
             </div>
         </div>
         <div class="box-footer">

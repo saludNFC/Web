@@ -27,11 +27,11 @@
                         <td>{{ $control->id }}</td>
                         <td>{{ $control->control_type }}</td>
                         <td>{{ $control->geriatric_type }}</td>
-                        <td>{{ $control->note }}</td>
+                        <td>{{ $control->notes }}</td>
                         <td>
                             <div class="btn-group">
-                                {!! link_to_route('paciente.controles.show', 'Ver detalles', [$patient->id, $history->id], ['class' => 'btn btn-default']) !!}
-                                {!! link_to_route('paciente.controles.edit', 'Editar', [$patient->id, $history->id], ['class' => 'btn btn-primary']) !!}
+                                {!! link_to_route('paciente.controles.show', 'Ver detalles', [$patient->id, $control->id], ['class' => 'btn btn-default']) !!}
+                                {!! link_to_route('paciente.controles.edit', 'Editar', [$patient->id, $control->id], ['class' => 'btn btn-primary']) !!}
                             </div>
                         </td>
                     </tr>
