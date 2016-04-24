@@ -15,15 +15,15 @@
                 ['Valoracion Medica' => 'Valoracion Medica',
                 'Valoracion Funcional' => 'Valoracion Funcional',
                 'Valoracion Cognitiva' => 'Valoracion Cognitiva',
-                'Valoracion Social' => 'Valoracion Social'], ['class'=>'form-control']) !!}
+                'Valoracion Social' => 'Valoracion Social'], ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('notes', 'Anotaciones') !!}
-                {!! Form::longtext('notes', null, ['class'=>'form-control', 'placeholder' => 'Detalle las observaciones y resultados de la valoracion geriatrica']) !!}
+                {!! Form::textarea('notes', null, ['class'=>'form-control', 'placeholder' => 'Detalle las observaciones y resultados de la valoracion geriatrica']) !!}
             </div>
         </div>
         <div class="box-footer">
-            <button class="btn btn-default">Cancelar</button>
+            {!! link_to_route('paciente.show', 'Cancelar', [$patient->id], ['class' => 'btn btn-default']) !!}
             {!! Form::submit($submit_text, ['class'=>'btn btn-primary']) !!}
         </div>
     </form>

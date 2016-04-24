@@ -8,10 +8,10 @@
 
     <form role="form">
         <div class="box-body">
-            {!! Form::hidden('control_type', 'Control y Desarrollo') !!}
+            {!! Form::hidden('control_type', 'Crecimiento') !!}
             <div class="form-group">
                 {!! Form::label('weight', 'Peso') !!}
-                {!! Form::number('height', null, ['class'=>'form-control', 'placeholder'=>'Peso del paciente en Kg']) !!}
+                {!! Form::number('weight', null, ['class'=>'form-control', 'placeholder'=>'Peso del paciente en Kg']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('height', 'Altura') !!}

@@ -106,7 +106,7 @@ class AllTables extends Migration
 
             $table->integer('patient_id')->unsigned();
 
-            $table->enum('control_type', ['Vacunacion', 'Crecimiento y Desarrollo', 'Triaje', 'Geriatrico']);
+            $table->enum('control_type', ['Vacunacion', 'Crecimiento', 'Triaje', 'Geriatrico']);
 
             // Vacunacion
             $table->text('vaccine')->nullable();

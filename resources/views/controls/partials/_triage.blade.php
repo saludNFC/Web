@@ -11,7 +11,7 @@
             {!! Form::hidden('control_type', 'Triaje') !!}
             <div class="form-group">
                 {!! Form::label('temperature', 'Temperatura') !!}
-                {!! Form::number('temperature', null, ['class'=>'form-control', 'placeholder'=>'Temperatura del paciente en °C']) !!}
+                {!! Form::number('temperature', null, ['class'=>'form-control', 'placeholder'=>'Temperatura del paciente en °C', 'step' => 'any']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('heart_rate', 'Frecuencia cardiaca') !!}
@@ -19,16 +19,18 @@
             </div>
             <div class="form-group">
                 {!! Form::label('', 'Presión arterial') !!}
-                <div class="col-md-6">
-                    {!! Form::number('sistole', null, ['class'=>'form-control']) !!}
-                </div>
-                <div class="col-md-6">
-                    / {!! Form::number('diastole', null, ['class'=>'form-control']) !!}
+                <div class="row">
+                    <div class="col-md-6">
+                        {!! Form::number('sistole', null, ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="col-md-6">
+                        {!! Form::number('diastole', null, ['class'=>'form-control']) !!}
+                    </div>
                 </div>
             </div>
         </div>
         <div class="box-footer">
-            <button class="btn btn-default">Cancelar</button>
+            {!! link_to_route('paciente.show', 'Cancelar', [$patient->id], ['class' => 'btn btn-default']) !!}
             {!! Form::submit($submit_text, ['class'=>'btn btn-primary']) !!}
         </div>
     </form>

@@ -49,7 +49,7 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-                <button class="btn btn-default">Cancelar</button>
+                {!! link_to_route('paciente.show', 'Cancelar', [$paciente->id], ['class' => 'btn btn-default']) !!}
                 {!! Form::submit($submit_text, ['class'=>'btn btn-primary']) !!}
             </div>
         </form>
