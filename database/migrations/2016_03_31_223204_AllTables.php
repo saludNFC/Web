@@ -25,6 +25,7 @@ class AllTables extends Migration
             $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         // Password resets table
