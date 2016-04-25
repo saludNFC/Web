@@ -16,16 +16,20 @@
         <ul class="sidebar-menu">
             <li class="header">SECCIONES</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="#"><i class="fa fa-hospital-o"></i> <span>Centros médicos</span></a></li>
+            <li><a href="#"><i class="fa fa-hospital-o"></i> <span>ABCD</span></a></li>
             <li class="active"><a href="/paciente"><i class="fa fa-users"></i> <span>Pacientes</span></a></li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-user-md"></i> <span>Personal médico</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-user-md"></i> <span>WXYZ</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="#">Administradores</a></li>
                     <li><a href="#">Doctores</a></li>
                     <li><a href="#">Enfermeras</a></li>
                 </ul>
             </li>
+
+            <li class="header">PROCESOS</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li><a href="/paciente/create"><i class="fa fa-book"></i> <span>Apertura de Historia Clínica</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

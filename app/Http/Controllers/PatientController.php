@@ -33,7 +33,11 @@ class PatientController extends Controller
 
     public function store(PatientRequest $request){
         Patient::create($request->all());
-        return redirect()->route('paciente.index')->with('message', 'Paciente creado');
+        // return $request;
+        $last = Patient::get()->last();
+        // return $last;
+        return redirect()->route('paciente.antecedentes.create', [$last->id])
+            ->with('message', 'Paciente creado');
     }
 
     public function destroy(Patient $patient){

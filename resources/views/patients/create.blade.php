@@ -2,8 +2,7 @@
 
 @section('title')
     <h1>
-        Crear nuevo paciente
-        <small>abcdefghijklmnopqrstuvwxyz</small>
+        Abrir nueva Historia Clínica
     </h1>
 @stop
 
