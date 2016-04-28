@@ -7,6 +7,7 @@ use App\Http\Requests\ControlRequest;
 use App\Http\Requests;
 use App\Patient;
 use App\Control;
+use Auth;
 
 class ControlController extends Controller
 {
@@ -24,10 +25,10 @@ class ControlController extends Controller
 	}
 
 	public function store(Patient $patient, ControlRequest $request){
-		$control = $request->all();
+		$control = new Control($request->all());
 		$control['patient_id'] = $patient->id;
-		Control::create($control);
-		// return $control;
+
+		Auth::user()->controls()->save($control);
 		return redirect()->route('paciente.show', $patient->id)->with('message', 'Control creado');
 	}
 

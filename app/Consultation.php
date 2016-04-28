@@ -22,4 +22,8 @@ class Consultation extends Model
     public function patient(){
         return $this->belongsTo('App\Patient');
     }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

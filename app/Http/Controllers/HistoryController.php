@@ -7,6 +7,7 @@ use App\Http\Requests\HistoryRequest;
 use App\Http\Requests;
 use App\Patient;
 use App\History;
+use Auth;
 
 class HistoryController extends Controller
 {
@@ -25,9 +26,10 @@ class HistoryController extends Controller
 	}
 
 	public function store(Patient $patient, HistoryRequest $request){
-		$historia = $request->all();
+		$historia = new History($request->all());
 		$historia['patient_id'] = $patient->id;
-		History::create($historia);
+
+		Auth::user()->histories()->save($historia);
 		return redirect()->route('paciente.show', $patient->id)->with('message', 'Antecedente creado');
 	}
 

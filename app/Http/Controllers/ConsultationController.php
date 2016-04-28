@@ -7,6 +7,7 @@ use App\Http\Requests\ConsultationRequest;
 use App\Http\Requests;
 use App\Patient;
 use App\Consultation;
+use Auth;
 
 class ConsultationController extends Controller
 {
@@ -24,10 +25,10 @@ class ConsultationController extends Controller
 	}
 
 	public function store(Patient $patient, ConsultationRequest $request){
-		$consultation = $request->all();
+		$consultation = new Consultation($request->all());
 		$consultation['patient_id'] = $patient->id;
-		Consultation::create($consultation);
 
+		Auth::user()->consultations()->save($consultation);
 		return redirect()->route('paciente.show', $patient->id)->with('message', 'Consutla medica creada');
 	}
 
