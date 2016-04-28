@@ -13,7 +13,7 @@ class Patient extends Model
 
     // Columns available to be edited by users
     protected $fillable = [
-        'ci', 'nombre', 'apellido', 'sexo', 'fecha_nac', 'user_id', 'lugar_nac', 'grupo_sanguineo'
+        'ci', 'nombre', 'apellido', 'sexo', 'fecha_nac', 'lugar_nac', 'grupo_sanguineo'
     ];
 
     // Casting dates to Carbon instances
@@ -28,6 +28,10 @@ class Patient extends Model
     }
 
     // RELATIONSHIPS
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
     public function history(){
         return $this->hasMany('App\History');
     }

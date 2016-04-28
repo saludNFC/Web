@@ -25,7 +25,6 @@ class AllTables extends Migration
             $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
 
         // Password resets table
@@ -39,7 +38,8 @@ class AllTables extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->increments('id');
             //Foreign key
-            // $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->string('ci')->unique();
             $table->string('emision');
@@ -51,9 +51,6 @@ class AllTables extends Migration
             $table->string('grupo_sanguineo')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
-            // $table->foreign('user_id')
-                // ->references('id')->on('users');
         });
 
         // Realmente necesito esta tabla!!!??? KEEP IT SIMPLE STUPID!
@@ -70,6 +67,7 @@ class AllTables extends Migration
             $table->increments('id');
             // Foreign Keys
             $table->integer('patient_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->enum('history_type', ['Personal', 'Familiar', 'Medicamentos']);
 
@@ -91,6 +89,8 @@ class AllTables extends Migration
 
             $table->foreign('patient_id')
                 ->references('id')->on('patients');
+            $table->foreign('user_id')
+                ->references('id')->on('users');
         });
 
         // STATIC table
@@ -106,6 +106,7 @@ class AllTables extends Migration
             $table->increments('id');
 
             $table->integer('patient_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->enum('control_type', ['Vacunacion', 'Crecimiento', 'Triaje', 'Geriatrico']);
 
@@ -133,6 +134,8 @@ class AllTables extends Migration
 
             $table->foreign('patient_id')
                 ->references('id')->on('patients');
+            $table->foreign('user_id')
+                ->references('id')->on('users');
         });
 
         // Consultations table
@@ -140,6 +143,7 @@ class AllTables extends Migration
             $table->increments('id');
 
             $table->integer('patient_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->longtext('anamnesis');
             $table->longtext('physical_exam');
@@ -151,6 +155,8 @@ class AllTables extends Migration
 
             $table->foreign('patient_id')
                 ->references('id')->on('patients');
+            $table->foreign('user_id')
+                ->references('id')->on('users');
         });
     }
 

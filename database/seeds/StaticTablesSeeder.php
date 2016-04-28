@@ -20,33 +20,33 @@ class StaticTablesSeeder extends Seeder
         );
         DB::table('users')->insert($user);
 
-        DB::table('patients')->delete();
-        $patients = array(
-            array('ci' => '6869126', 'emision' => 'LP', 'nombre' => 'Veronica', 'apellido' => 'Clavijo', 'sexo' => 'Femenino', 'fecha_nac' => '1992-05-16', 'lugar_nac' => 'La Paz', 'grupo_sanguineo' => 'ARH+'),
-            array('ci' => '1928374', 'emision' => 'SC', 'nombre' => 'Daniela', 'apellido' => 'Viveros', 'sexo' => 'Femenino', 'fecha_nac' => '1991-06-09', 'lugar_nac' => 'Santa Cruz', 'grupo_sanguineo' => 'ORH+')
-        );
-        DB::table('patients')->insert($patients);
-
-        DB::table('histories')->delete();
-        $personal = array(
-            array('patient_id' => 1, 'history_type' => 'personal', 'type_personal' => 'alergia', 'description' => 'Alergia a la penicilina'),
-            array('patient_id' => 1, 'history_type' => 'personal', 'type_personal' => 'enfermedad', 'description' => 'Hepatitis'),
-            array('patient_id' => 1, 'history_type' => 'personal', 'type_personal' => 'cirugia', 'description' => 'Extraccion del apendice'),
-        );
-
-        $familiar = array(
-            array('patient_id' => 1, 'history_type' => 'familiar', 'grade' => 'Abuelo', 'illness' => 'Problemas cardíacos'),
-            array('patient_id' => 1, 'history_type' => 'familiar', 'grade' => 'Padre', 'illness' => 'Presion arterial'),
-            array('patient_id' => 1, 'history_type' => 'familiar', 'grade' => 'Madre', 'illness' => 'Diabetes'),
-        );
-
-        $medicine = array(
-            array('patient_id' => 1, 'history_type' => 'medicamentos', 'med' => 'Etaconil', 'date_ini' => '2015-12-18'),
-            array('patient_id' => 1, 'history_type' => 'medicamentos', 'med' => 'Sentis', 'date_ini' => '2015-12-18'),
-        );
-        DB::table('histories')->insert($personal);
-        DB::table('histories')->insert($familiar);
-        DB::table('histories')->insert($medicine);
+        // DB::table('patients')->delete();
+        // $patients = array(
+        //     array('ci' => '6869126', 'emision' => 'LP', 'nombre' => 'Veronica', 'apellido' => 'Clavijo', 'sexo' => 'Femenino', 'fecha_nac' => '1992-05-16', 'lugar_nac' => 'La Paz', 'grupo_sanguineo' => 'ARH+'),
+        //     array('ci' => '1928374', 'emision' => 'SC', 'nombre' => 'Daniela', 'apellido' => 'Viveros', 'sexo' => 'Femenino', 'fecha_nac' => '1991-06-09', 'lugar_nac' => 'Santa Cruz', 'grupo_sanguineo' => 'ORH+')
+        // );
+        // DB::table('patients')->insert($patients);
+        //
+        // DB::table('histories')->delete();
+        // $personal = array(
+        //     array('patient_id' => 1, 'history_type' => 'personal', 'type_personal' => 'alergia', 'description' => 'Alergia a la penicilina'),
+        //     array('patient_id' => 1, 'history_type' => 'personal', 'type_personal' => 'enfermedad', 'description' => 'Hepatitis'),
+        //     array('patient_id' => 1, 'history_type' => 'personal', 'type_personal' => 'cirugia', 'description' => 'Extraccion del apendice'),
+        // );
+        //
+        // $familiar = array(
+        //     array('patient_id' => 1, 'history_type' => 'familiar', 'grade' => 'Abuelo', 'illness' => 'Problemas cardíacos'),
+        //     array('patient_id' => 1, 'history_type' => 'familiar', 'grade' => 'Padre', 'illness' => 'Presion arterial'),
+        //     array('patient_id' => 1, 'history_type' => 'familiar', 'grade' => 'Madre', 'illness' => 'Diabetes'),
+        // );
+        //
+        // $medicine = array(
+        //     array('patient_id' => 1, 'history_type' => 'medicamentos', 'med' => 'Etaconil', 'date_ini' => '2015-12-18'),
+        //     array('patient_id' => 1, 'history_type' => 'medicamentos', 'med' => 'Sentis', 'date_ini' => '2015-12-18'),
+        // );
+        // DB::table('histories')->insert($personal);
+        // DB::table('histories')->insert($familiar);
+        // DB::table('histories')->insert($medicine);
         //
         // DB::table('controls')->delete();
         // $controls = array(

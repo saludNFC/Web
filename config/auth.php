@@ -70,10 +70,13 @@ return [
             'model' => App\User::class,
         ],
 
-        'users' => [
-            'driver' => 'database',
-            'table' => 'users',
-        ],
+        // ERROR -> Call to undefined method Illuminate\Auth\GenericUser::patients()
+        // Era ocasionado porque el siguiente array estaba uncommented... duh!
+
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*

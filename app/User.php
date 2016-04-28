@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-
-    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -18,8 +16,6 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
-    protected $dates = ['deleted_at'];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -28,4 +24,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function patients(){
+        return $this->hasMany('App\Patient');
+    }
+
+    public function 
 }

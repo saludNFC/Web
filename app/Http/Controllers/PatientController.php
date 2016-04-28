@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PatientRequest;
 use App\Http\Requests;
 use App\Patient;
+use Auth;
+use App\User;
 
 class PatientController extends Controller
 {
@@ -32,10 +34,12 @@ class PatientController extends Controller
     }
 
     public function store(PatientRequest $request){
-        Patient::create($request->all());
-        // return $request;
+        $patient = new Patient($request->all());
+        Auth::user()->patients()->save($patient);
+
+        // $user = User::where('id', 1)->get();
+        // $user->patients()->save($patient);
         $last = Patient::get()->last();
-        // return $last;
         return redirect()->route('paciente.antecedentes.create', [$last->id])
             ->with('message', 'Paciente creado');
     }
