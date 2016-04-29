@@ -11,12 +11,17 @@
             <div class="box-body">
 
                 <!-- CEDULA DE IDENTIDAD -->
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('ci') ? ' has-error' : ' has_success' }}">
                     {!! Form::label('ci', 'Cedula de identidad', ['class' => 'col-sm-2 control-label']) !!}
 
                     <div class="col-sm-10">
                         <div class="col-sm-9">
                             {!! Form::text('ci', null, ['class'=>'form-control', 'placeholder'=>'1234567']) !!}
+                            @if ($errors->has('ci'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('ci') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class="col-sm-3">
                             {!! Form::select('emision',
@@ -34,21 +39,31 @@
                 </div>
 
                 <!-- NOMBRES -->
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('nombre') ? ' has-error' : ' has_success' }}">
                     {!! Form::label('nombre', 'Nombres', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         <div class="col-sm-12">
                             {!! Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Juan']) !!}
+                            @if ($errors->has('nombre'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('nombre') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                 </div>
 
                 <!-- APELLIDOS -->
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('apellido') ? ' has-error' : ' has_success' }}">
                     {!! Form::label('apellido', 'Apellidos', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         <div class="col-sm-12">
                             {!! Form::text('apellido', null, ['class'=>'form-control', 'placeholder'=>'Perez Gomez']) !!}
+                            @if ($errors->has('apellido'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('apellido') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -124,4 +139,4 @@
     </div>
 </div>
 
-@include('errors.patientform')
+@include('errors.form_errors')

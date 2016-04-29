@@ -15,7 +15,7 @@
 // Route::model('route wildcard', 'Model')
 
 // TEMPORARY DISABLED :3
-// Route::model('usuario', 'App\User');
+Route::model('usuario', 'App\User');
 Route::model('paciente', 'App\Patient');
 Route::model('antecedentes', 'App\History');
 Route::model('controles', 'App\Control');

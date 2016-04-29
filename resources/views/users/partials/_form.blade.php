@@ -39,3 +39,5 @@
         </form>
     </div>
 </div>
+
+@include('errors.form_errors')

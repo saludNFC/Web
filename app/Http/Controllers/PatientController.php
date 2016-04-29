@@ -26,7 +26,7 @@ class PatientController extends Controller
 
     public function update(Patient $patient, PatientRequest $request){
         $patient->update($request->all());
-        return redirect()->route('paciente.index')->with('message', 'Paciente actualizado');
+        return redirect()->route('paciente.index')->with('message', 'Los datos del paciente fueron actualizados correctamente');
     }
 
     public function create(){
@@ -34,14 +34,12 @@ class PatientController extends Controller
     }
 
     public function store(PatientRequest $request){
-        $patient = new Patient($request->all());
-        Auth::user()->patients()->save($patient);
+        Auth::user()->patients()->create($request->all());
 
-        // $user = User::where('id', 1)->get();
-        // $user->patients()->save($patient);
+        // Get the last patient saved and pass his id to be able to create his histories
         $last = Patient::get()->last();
-        return redirect()->route('paciente.antecedentes.create', [$last->id])
-            ->with('message', 'Paciente creado');
+        session()->flash('message', 'Los datos generales del paciente fueron guardados correctamente.');
+        return redirect()->route('paciente.antecedentes.create', [$last->id]);
     }
 
     public function destroy(Patient $patient){

@@ -20,19 +20,27 @@
 </head>
 <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
+
 		@include('layouts.navbar')
 		@include('layouts.sidebar')
 
         <div class="content-wrapper">
-            <section class="content-header">
-                @yield('title')
-            </section>
 
-            <section class="content">
-                <div class="row">
-                    @yield('content')
-                </div>
-            </section>
+            @if(Session::has('message'))
+                @include('layouts.flash')
+            @endif
+
+            <div class="container-fluid">
+                <section class="row container content-header">
+                    @yield('title')
+                </section>
+
+                <section class="content">
+                    <div class="row">
+                        @yield('content')
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 
@@ -41,6 +49,7 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/app.min.js"></script>
     <script src="/js/bootstrap-datepicker.js"></script>
+
     <script type="text/javascript">
         $(function () {
             //Date picker
@@ -51,6 +60,12 @@
                 endDate: '+0d'
             });
         });
+        $('#flash').modal();
+
+        setTimeout(function(){
+            $('#flash').modal('hide');
+        }, 2000);
+
     </script>
 </body>
 </html>

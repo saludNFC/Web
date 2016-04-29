@@ -1,4 +1,5 @@
-<div class="col-md-10">
+<div class="col-md-10 col-md-offset-1">
+    <div class="form-horizontal"></div>
     <!-- Horizontal Form -->
     <div class="box box-info">
         <!-- /.box-header -->
@@ -10,7 +11,7 @@
                 <div class="form-group">
                     {!! Form::label('anamnesis', 'Anamnesis', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-8">
-                        {!! Form::textarea('anamnesis', null, ['class'=>'form-control', 'placeholder'=>'Anamnesis']) !!}
+                        {!! Form::textarea('anamnesis', null, ['class'=>'form-control', 'placeholder'=>'Anamnesis', 'rows' => '3']) !!}
                     </div>
                 </div>
 
@@ -18,7 +19,7 @@
                 <div class="form-group">
                     {!! Form::label('physical_exam', 'Examen físico', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-8">
-                        {!! Form::textarea('physical_exam', null, ['class'=>'form-control', 'placeholder'=>'Detalle las observaciones despues del examen fisico']) !!}
+                        {!! Form::textarea('physical_exam', null, ['class'=>'form-control', 'placeholder'=>'Detalle las observaciones despues del examen fisico', 'rows' => '3']) !!}
                     </div>
                 </div>
 
@@ -26,7 +27,7 @@
                 <div class="form-group">
                     {!! Form::label('diagnosis', 'Diagnostico', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-8">
-                        {!! Form::textarea('diagnosis', null, ['class'=>'form-control', 'placeholder'=>'Diagnostico']) !!}
+                        {!! Form::textarea('diagnosis', null, ['class'=>'form-control', 'placeholder'=>'Diagnostico', 'rows' => '3']) !!}
                     </div>
                 </div>
 
@@ -34,7 +35,7 @@
                 <div class="form-group">
                     {!! Form::label('treatment', 'Tratamiento', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-8">
-                        {!! Form::textarea('treatment', null, ['class'=>'form-control', 'placeholder'=>'Tratamiento, receta, indicaciones para el paciente']) !!}
+                        {!! Form::textarea('treatment', null, ['class'=>'form-control', 'placeholder'=>'Tratamiento, receta, indicaciones para el paciente', 'rows' => '3']) !!}
                     </div>
                 </div>
 
@@ -42,7 +43,7 @@
                 <div class="form-group">
                     {!! Form::label('justification', 'Justificación', ['class' => 'col-sm-4 control-label']) !!}
                     <div class="col-sm-8">
-                        {!! Form::textarea('justification', null, ['class'=>'form-control', 'placeholder'=>'Justificacion del diagnostico y del tratamiento']) !!}
+                        {!! Form::textarea('justification', null, ['class'=>'form-control', 'placeholder'=>'Justificacion del diagnostico y del tratamiento', 'rows' => '3']) !!}
                     </div>
                 </div>
             </div>
@@ -56,4 +57,4 @@
     </div>
 </div>
 
-@include('errors.patientform')
+@include('errors.form_errors')

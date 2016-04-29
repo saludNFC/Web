@@ -17,7 +17,7 @@
             <li class="header">SECCIONES</li>
             <!-- Optionally, you can add icons to the links -->
             <li><a href="#"><i class="fa fa-hospital-o"></i> <span>ABCD</span></a></li>
-            <li class="active"><a href="/paciente"><i class="fa fa-users"></i> <span>Pacientes</span></a></li>
+            <li><a href="/paciente"><i class="fa fa-users"></i> <span>Pacientes</span></a></li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-user-md"></i> <span>WXYZ</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
