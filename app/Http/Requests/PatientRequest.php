@@ -25,7 +25,7 @@ class PatientRequest extends Request
     public function rules()
     {
         return [
-            'ci' => 'required|min:7',
+            'ci' => 'required|min:7|unique:patients,ci',
             'emision' => 'required',
             'nombre' => 'required|min:2',
             'apellido' => 'required|min:2',

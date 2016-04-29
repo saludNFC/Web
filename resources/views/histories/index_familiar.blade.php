@@ -17,7 +17,7 @@
                         <th>ID</th>
                         <th>Tipo de antecedente</th>
                         <th>Grado</th>
-                        <th>Enfermedad</th>
+                        <th class="overflow">Enfermedad</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -27,7 +27,7 @@
                         <td>{{ $history->id }}</td>
                         <td>{{ $history->history_type }}</td>
                         <td>{{ $history->grade }}</td>
-                        <td>{{ $history->illness }}</td>
+                        <td class="overflow">{{ $history->illness }}</td>
                         <td>
                             <div class="btn-group">
                                 {!! link_to_route('paciente.antecedentes.show', 'Ver detalles', [$patient->id, $history->id], ['class' => 'btn btn-default']) !!}

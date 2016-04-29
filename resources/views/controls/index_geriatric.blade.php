@@ -17,7 +17,7 @@
                         <th>ID</th>
                         <th>Tipo de control</th>
                         <th></th>
-                        <th>Anotaciones</th>
+                        <th class="overflow">Anotaciones</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -27,7 +27,7 @@
                         <td>{{ $control->id }}</td>
                         <td>{{ $control->control_type }}</td>
                         <td>{{ $control->geriatric_type }}</td>
-                        <td>{{ $control->notes }}</td>
+                        <td class="overflow">{{ $control->notes }}</td>
                         <td>
                             <div class="btn-group">
                                 {!! link_to_route('paciente.controles.show', 'Ver detalles', [$patient->id, $control->id], ['class' => 'btn btn-default']) !!}

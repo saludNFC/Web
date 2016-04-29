@@ -1,3 +1,7 @@
+<!-- DEBE HABER UNA MEJOR MANERA DE MOSTRAR LOS ERRORES EN EL FORMULARIO -->
+<!-- UNA MEJOR MANERA APARTE DE REPETIR LAS MISMAS LINEAS DE CODIGO EN CADA form-group -->
+<!-- ¬¬ -->
+
 <div class="col-md-10 col-md-offset-1">
     <form class="form-horizontal"></form>
 
@@ -11,7 +15,7 @@
             <div class="box-body">
 
                 <!-- CEDULA DE IDENTIDAD -->
-                <div class="form-group{{ $errors->has('ci') ? ' has-error' : ' has_success' }}">
+                <div class="form-group{{ $errors->any() ? ($errors->has('ci') ? ' has-error' : ' has-success') : '' }}">
                     {!! Form::label('ci', 'Cedula de identidad', ['class' => 'col-sm-2 control-label']) !!}
 
                     <div class="col-sm-10">
@@ -39,7 +43,7 @@
                 </div>
 
                 <!-- NOMBRES -->
-                <div class="form-group{{ $errors->has('nombre') ? ' has-error' : ' has_success' }}">
+                <div class="form-group{{ $errors->any() ? ($errors->has('nombre') ? ' has-error' : ' has-success') : '' }}">
                     {!! Form::label('nombre', 'Nombres', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         <div class="col-sm-12">
@@ -54,7 +58,7 @@
                 </div>
 
                 <!-- APELLIDOS -->
-                <div class="form-group{{ $errors->has('apellido') ? ' has-error' : ' has_success' }}">
+                <div class="form-group{{ $errors->any() ? ($errors->has('apellido') ? ' has-error' : ' has-success') : '' }}">
                     {!! Form::label('apellido', 'Apellidos', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         <div class="col-sm-12">
@@ -71,19 +75,25 @@
                 <!-- <div class="row"> -->
 
                     <!-- SEXO -->
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-6{{ $errors->any() ? ($errors->has('sexo') ? ' has-error' : ' has-success') : ''}}">
                         {!! Form::label('sexo', 'Sexo', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
                             <div class="col-sm-11" style="padding-left:9px;">
                                 {!! Form::select('sexo',
                                     ['Masculino' => 'Masculino',
                                     'Femenino' => 'Femenino'], null, ['class' => 'form-control']) !!}
+
+                                @if($errors->has('sexo'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('sexo') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
 
                     <!-- GRUPO SANGUINEO -->
-                    <div class="form-group col-sm-6 pull-right">
+                    <div class="form-group col-sm-6 pull-right{{ $errors->any() ? ($errors->has('grupo_sanguineo') ? ' has-error' : ' has-success') : ''}}">
                         {!! Form::label('grupo_sanguineo', 'Grupo Sanguíneo', ['class' => 'col-sm-5 control-label']) !!}
                         <div class="col-sm-7">
                             {!! Form::select('grupo_sanguineo',
@@ -95,22 +105,32 @@
                                 'O RH -' => 'O RH -',
                                 'AB RH +' => 'AB RH +',
                                 'AB RH -' => 'AB RH -'], null, ['class' => 'form-control']) !!}
+                            @if($errors->has('grupo_sanguineo'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('grupo_sanguineo') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                 <!-- </div> -->
 
                 <!-- FECHA DE NACIMIENTO -->
-                <div class="form-group">
+                <div class="form-group{{ $errors->any() ? ($errors->has('fecha_nac') ? ' has-error' : ' has-success') : '' }}">
                     {!! Form::label('fecha_nac', 'Fecha de nacimiento', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         <div class="col-sm-12">
                             {!! Form::text('fecha_nac', '31-01-1950', ['class'=>'form-control', 'placeholder' => 'Fecha de nacimiento', 'id'=>'datepicker']) !!}
+                            @if($errors->has('fecha_nac'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('fecha_nac') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                 </div>
 
                 <!-- LUGAR DE NACIMIENTO -->
-                <div class="form-group">
+                <div class="form-group{{ $errors->any() ? ($errors->has('lugar_nac') ? ' has-error' : ' has-success') : ''}}">
                     {!! Form::label('lugar_nac', 'Lugar de nacimiento', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         <div class="col-sm-12">
@@ -124,6 +144,12 @@
                                 'Potosi' => 'Potosi',
                                 'Santa Cruz' => 'Santa Cruz',
                                 'Tarija' => 'Tarija'], 'La Paz', ['class' => 'form-control']) !!}
+
+                            @if($errors->has('lugar_nac'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('lugar_nac') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                 </div>

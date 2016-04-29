@@ -15,23 +15,23 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Anamnesis</th>
-                        <th>Examen físico</th>
-                        <th>Diagnostico</th>
-                        <th>Tratamiento</th>
-                        <th>Justificacion</th>
+                        <th class="overflow">Anamnesis</th>
+                        <th class="overflow">Examen físico</th>
+                        <th class="overflow">Diagnostico</th>
+                        <th class="overflow">Tratamiento</th>
+                        <th class="overflow">Justificacion</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($patient->consultation as $consult)
                     <tr>
-                        <td>{{ $consult->id }}</td>
-                        <td>{{ $consult->anamnesis }}</td>
-                        <td>{{ $consult->physical_exam }}</td>
-                        <td>{{ $consult->diagnosis }}</td>
-                        <td>{{ $consult->treatment }}</td>
-                        <td>{{ $consult->justification }}</td>
+                        <td class="overflow">{{ $consult->id }}</td>
+                        <td class="overflow">{{ $consult->anamnesis }}</td>
+                        <td class="overflow">{{ $consult->physical_exam }}</td>
+                        <td class="overflow">{{ $consult->diagnosis }}</td>
+                        <td class="overflow">{{ $consult->treatment }}</td>
+                        <td class="overflow">{{ $consult->justification }}</td>
                         <td>
                             <div class="btn-group">
                                 {!! link_to_route('paciente.consultas.show', 'Ver detalles', [$patient->id, $consult->id], ['class' => 'btn btn-default']) !!}

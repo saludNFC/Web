@@ -27,9 +27,9 @@ class ConsultationController extends Controller
 	public function store(Patient $patient, ConsultationRequest $request){
 		$consultation = new Consultation($request->all());
 		$consultation['patient_id'] = $patient->id;
-		return $consultation;
-		// Auth::user()->consultations()->save($consultation);
-		// return redirect()->route('paciente.show', [$patient->id])->with('message', 'Consulta medica creada');
+		// return $consultation;
+		Auth::user()->consultations()->save($consultation);
+		return redirect()->route('paciente.show', [$patient->id])->with('message', 'Consulta medica creada');
 	}
 
 
