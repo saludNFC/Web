@@ -25,15 +25,15 @@
 		@include('layouts.sidebar')
 
         <div class="content-wrapper">
-
             @if(Session::has('message'))
                 @include('layouts.flash')
             @endif
+            <section class="content-header">
+                @yield('title')
+            </section>
+
 
             <div class="container-fluid">
-                <section class="row container content-header">
-                    @yield('title')
-                </section>
 
                 <section class="content">
                     <div class="row">

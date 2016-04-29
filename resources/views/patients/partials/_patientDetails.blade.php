@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container box box-solid">
     <form class="form-horizontal">
         <div class="form-group">
             <label class="col-sm-2 control-label">NOMBRES:</label>
