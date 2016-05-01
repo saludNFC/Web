@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    {!! Form::open(['route' => ['paciente.consultas.store', $patient->id]]) !!}
+    {!! Form::model($consultation = new App\Consultation, ['route' => ['paciente.consultas.store', $patient->id]]) !!}
         @include('consultations.partials._form', ['submit_text' => 'Crear consulta medica'])
     {!! Form::close() !!}
 @stop

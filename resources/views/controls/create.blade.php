@@ -17,25 +17,25 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab_1">
-                {!! Form::open(['route' => ['paciente.controles.store', $patient->id]]) !!}
+                {!! Form::model($control = new App\Control, ['route' => ['paciente.controles.store', $patient->id]]) !!}
                     @include('controls.partials._vaccination', ['submit_text' => 'Crear control de vacunacion'])
                 {!! Form::close() !!}
             </div>
             <!-- /.tab-pane -->
             <div class="tab-pane" id="tab_2">
-                {!! Form::open(['route' => ['paciente.controles.store', $patient->id]]) !!}
+                {!! Form::model($control = new App\Control, ['route' => ['paciente.controles.store', $patient->id]]) !!}
                     @include('controls.partials._growth', ['submit_text' => 'Crear control de crecimiento y desarrollo'])
                 {!! Form::close() !!}
             </div>
             <!-- /.tab-pane -->
             <div class="tab-pane" id="tab_3">
-                {!! Form::open(['route' => ['paciente.controles.store', $patient->id]]) !!}
+                {!! Form::model($control = new App\Control, ['route' => ['paciente.controles.store', $patient->id]]) !!}
                     @include('controls.partials._triage', ['submit_text' => 'Crear control de Triaje'])
                 {!! Form::close() !!}
             </div>
             <!-- /.tab-pane -->
             <div class="tab-pane" id="tab_4">
-                {!! Form::open(['route' => ['paciente.controles.store', $patient->id]]) !!}
+                {!! Form::model($control = new App\Control, ['route' => ['paciente.controles.store', $patient->id]]) !!}
                     @include('controls.partials._geriatric', ['submit_text' => 'Crear control Geriatrico'])
                 {!! Form::close() !!}
             </div>

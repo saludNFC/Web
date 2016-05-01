@@ -34,7 +34,7 @@ class HistoryController extends Controller
 		$historia['patient_id'] = $patient->id;
 
 		Auth::user()->histories()->save($historia);
-		return redirect()->route('paciente.show', $patient->id)->with('message', 'Antecedente creado');
+		return redirect()->route('paciente.show', $patient->id)->with('message', 'Antecedente creado correctamente');
 	}
 
 
@@ -42,7 +42,7 @@ class HistoryController extends Controller
 		return view('histories.edit', compact('patient', 'history'));
 	}
 
-	public function update(Patient $patient, History $history, Request $request){
+	public function update(Patient $patient, History $history, HistoryRequest $request){
 		$history->update($request->all());
 		$history['patient_id'] = $patient->id;
         return redirect()->route('paciente.show', $patient->id)->with('message', 'Antecedente actualizado');

@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 use Carbon\Carbon;
+use App\History;
+use Auth;
 
 class HistoryRequest extends Request
 {
@@ -14,6 +16,28 @@ class HistoryRequest extends Request
      */
     public function authorize()
     {
+        // switch($this->method()){
+        //     case 'POST':{
+        //         // Modify when you have user roles and permissions implemented
+        //         return true;
+        //         break;
+        //     }
+        //     case 'PATCH':{
+        //         // Authorize the owner user to edit a record
+        //         $historyId = $this->route('id');
+        //         $history = History::where('id', $historyId);
+        //         if($history->user_id == Auth::user()->id){
+        //             return true;
+        //         }
+        //         else{
+        //             return false;
+        //         }
+        //         // return History::where('id', $historyId)
+        //         //     ->where('user_id', Auth::user()->id)->exists();
+        //         break;
+        //     }
+        //     default:break;
+        // }
         return true;
     }
 

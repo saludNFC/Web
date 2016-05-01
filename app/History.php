@@ -12,11 +12,15 @@ class History extends Model
     use SoftDeletes;
 
     // Carbon instances
-    protected $dates = ['date_ini', 'date_end', 'deleted_at'];
+    protected $dates = ['date_ini', 'deleted_at'];
 
     public function setDateIniAttribute($date){
         Carbon::setLocale('es');
         $this->attributes['date_ini'] = Carbon::createFromFormat('d-m-Y', $date);
+    }
+
+    public function getDateIniAttribute($date){
+        return new Carbon($date);
     }
 
     // Mass assignment

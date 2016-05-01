@@ -14,9 +14,9 @@
                 <div class="col-sm-9">
                     {!! Form::text('grade', null, ['class'=>'form-control', 'placeholder'=>'Por ejemplo: Abuelo, padre, madre, etc']) !!}
                     @if($errors->has('grade'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('grade') }}</strong>
-                    </span>
+                        <span class="help-block">
+                            <strong>{{ $errors->first('grade') }}</strong>
+                        </span>
                     @endif
                 </div>
             </div>
@@ -26,9 +26,9 @@
                 <div class="col-sm-9">
                     {!! Form::text('illness', null, ['class'=>'form-control', 'placeholder'=>'Antecedente medico del familiar']) !!}
                     @if($errors->has('illness'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('illness') }}</strong>
-                    </span>
+                        <span class="help-block">
+                            <strong>{{ $errors->first('illness') }}</strong>
+                        </span>
                     @endif
                 </div>
 

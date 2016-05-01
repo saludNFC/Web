@@ -15,23 +15,23 @@
         <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Antecedentes de medicamentos</a></li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane active" id="tab_1">
-            {!! Form::open(['route' => ['paciente.antecedentes.store', $patient->id]]) !!}
-                @include('histories.partials._familiar', ['submit_text' => 'Crear antecedente familiar'])
-            {!! Form::close() !!}
-        </div>
-        <!-- /.tab-pane -->
-        <div class="tab-pane" id="tab_2">
-            {!! Form::open(['route' => ['paciente.antecedentes.store', $patient->id]]) !!}
-                @include('histories.partials._personal', ['submit_text' => 'Crear antecedente personal'])
-            {!! Form::close() !!}
-        </div>
-        <!-- /.tab-pane -->
-        <div class="tab-pane" id="tab_3">
-            {!! Form::open(['route' => ['paciente.antecedentes.store', $patient->id]]) !!}
-                @include('histories.partials._medicines', ['submit_text' => 'Crear antecedente de medicamentos'])
-            {!! Form::close() !!}
-        </div>
+            <div class="tab-pane active" id="tab_1">
+                {!! Form::model($history = new App\History, ['route' => ['paciente.antecedentes.store', $patient->id]]) !!}
+                    @include('histories.partials._familiar', ['submit_text' => 'Crear antecedente familiar'])
+                {!! Form::close() !!}
+            </div>
+            <!-- /.tab-pane -->
+            <div class="tab-pane" id="tab_2">
+                {!! Form::model($history = new App\History, ['route' => ['paciente.antecedentes.store', $patient->id]]) !!}
+                    @include('histories.partials._personal', ['submit_text' => 'Crear antecedente personal'])
+                {!! Form::close() !!}
+            </div>
+            <!-- /.tab-pane -->
+            <div class="tab-pane" id="tab_3">
+                {!! Form::model($history = new App\History, ['route' => ['paciente.antecedentes.store', $patient->id]]) !!}
+                    @include('histories.partials._medicines', ['submit_text' => 'Crear antecedente de medicamentos'])
+                {!! Form::close() !!}
+            </div>
         <!-- /.tab-pane -->
     </div>
     <!-- /.tab-content -->

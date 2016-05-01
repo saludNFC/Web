@@ -12,7 +12,7 @@
                     {!! Form::select('type_personal',
                         ['Alergia' => 'Alergia',
                         'Enfermedad' => 'Enfermedad',
-                        'Cirugia' => 'Cirugia'], 'Alergia', ['class' => 'form-control']) !!}
+                        'Cirugia' => 'Cirugia'], null, ['class' => 'form-control']) !!}
                     @if ($errors->has('type_personal'))
                         <span class="help-block">
                             <strong>{{ $errors->first('type_personal') }}</strong>

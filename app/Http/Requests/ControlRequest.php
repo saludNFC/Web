@@ -15,19 +15,20 @@ class ControlRequest extends Request
      */
     public function authorize()
     {
-        switch($this->method()){
-            case 'POST':{
-                return true;
-                break;
-            }
-            case 'PATCH':{
-                $controlId = $this->route('id');
-                return Control::where('id', $controlId)
-                    ->where('user_id', Auth::user()->id)->exists();
-                break;
-            }
-            default:break;
-        }
+        return true;
+        // switch($this->method()){
+        //     case 'POST':{
+        //         return true;
+        //         break;
+        //     }
+        //     case 'PATCH':{
+        //         $controlId = $this->route('id');
+        //         return Control::where('id', $controlId)
+        //             ->where('user_id', Auth::user()->id)->exists();
+        //         break;
+        //     }
+        //     default:break;
+        // }
         // if($this->method() === 'PATCH'){
         // }
     }

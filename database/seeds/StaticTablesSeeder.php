@@ -23,7 +23,6 @@ class StaticTablesSeeder extends Seeder
         // DB::table('patients')->delete();
         // $patients = array(
         //     array('ci' => '6869126', 'emision' => 'LP', 'nombre' => 'Veronica', 'apellido' => 'Clavijo', 'sexo' => 'Femenino', 'fecha_nac' => '1992-05-16', 'lugar_nac' => 'La Paz', 'grupo_sanguineo' => 'ARH+'),
-        //     array('ci' => '1928374', 'emision' => 'SC', 'nombre' => 'Daniela', 'apellido' => 'Viveros', 'sexo' => 'Femenino', 'fecha_nac' => '1991-06-09', 'lugar_nac' => 'Santa Cruz', 'grupo_sanguineo' => 'ORH+')
         // );
         // DB::table('patients')->insert($patients);
         //

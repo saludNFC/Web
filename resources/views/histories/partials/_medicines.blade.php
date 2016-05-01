@@ -29,7 +29,7 @@
                         'Parenteral' => 'Parenteral',
                         'Rectal' => 'Rectal',
                         'Topica' => 'Topica',
-                        'Percutanea' => 'Percutanea'], 'Oral', ['class' => 'form-control']) !!}
+                        'Percutanea' => 'Percutanea'], null, ['class' => 'form-control']) !!}
                     @if($errors->has('via'))
                         <span class="help-block">
                             <strong>{{ $errors->first('via') }}</strong>
@@ -40,7 +40,7 @@
             <div class="form-group{{ $errors->any() ? ($errors->has('date_ini')? ' has-error' : ' has-success') : '' }}">
                 {!! Form::label('date_ini', 'Fecha de inicio de administración', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-9">
-                    {!! Form::text('date_ini', '31-01-1950', ['class'=>'form-control', 'id'=>'datepicker']) !!}
+                    {!! Form::text('date_ini', $history->date_ini->format('d-m-Y'), ['class'=>'form-control', 'id'=>'datepicker']) !!}
                     @if($errors->has('date_ini'))
                         <span class="help-block">
                             <strong>{{ $errors->first('date_ini') }}</strong>
