@@ -11,6 +11,10 @@ use Auth;
 
 class ControlController extends Controller
 {
+	public function __construct(){
+		$this->middleware('auth');
+	}
+
 	public function index(Patient $patient)	{
 		$controls = $patient->control()->get();
 		return $controls;
@@ -37,11 +41,11 @@ class ControlController extends Controller
 		return view('controls.edit', compact('patient', 'control'));
 	}
 
-	public function update(Patient $patient, Control $control, Request $request){
+	public function update(Patient $patient, Control $control, ControlRequest $request){
 		$control->update($request->all());
 		$control['patient_id'] = $patient->id;
-		return $control;
-        // return redirect()->route('paciente.show', $patient->id)->with('message', 'Control actualizado');
+		// return $control;
+        return redirect()->route('paciente.show', $patient->id)->with('message', 'Control actualizado');
 	}
 
 	public function destroy(Patient $patient, Control $control){

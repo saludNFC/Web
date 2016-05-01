@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use App\Control;
+use Auth;
 
 class ControlRequest extends Request
 {
@@ -13,7 +15,21 @@ class ControlRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        switch($this->method()){
+            case 'POST':{
+                return true;
+                break;
+            }
+            case 'PATCH':{
+                $controlId = $this->route('id');
+                return Control::where('id', $controlId)
+                    ->where('user_id', Auth::user()->id)->exists();
+                break;
+            }
+            default:break;
+        }
+        // if($this->method() === 'PATCH'){
+        // }
     }
 
     /**

@@ -44,4 +44,8 @@ class User extends Authenticatable{
     public function consultations(){
         return $this->hasMany('App\Consultations');
     }
+
+    public function isATeamManager(){
+        return true;
+    }
 }

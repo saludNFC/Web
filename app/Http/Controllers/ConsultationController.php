@@ -11,6 +11,10 @@ use Auth;
 
 class ConsultationController extends Controller
 {
+	public function __construct(){
+		$this->middleware('auth');
+	}
+
 	public function index(Patient $patient)	{
 		$consultations = $patient->consultation()->get();
 		return $consultations;
