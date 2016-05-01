@@ -11,6 +11,11 @@ use App\User;
 
 class PatientController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['except' => 'show']);
+        $this->middleware('manager');
+    }
+
     public function index(){
         $patients = Patient::all();
         return view('patients.index', compact('patients'));
