@@ -5,7 +5,7 @@
 <div class="col-md-10 col-md-offset-1">
     <form class="form-horizontal"></form>
 
-    <div class="box box-info">
+    <div class="box box-default">
         <div class="box-header with-border">
             <h3 class="box-title">Datos Generales del paciente</h3>
         </div>
@@ -29,15 +29,15 @@
                         </div>
                         <div class="col-sm-3">
                             {!! Form::select('emision',
-                                ['Beni' => 'BN',
-                                'Chuquisaca' => 'CH',
-                                'Cochabamba' => 'CB',
-                                'La Paz' => 'LP',
-                                'Oruro' => 'OR',
-                                'Pando' => 'PA',
-                                'Potosi' => 'PT',
-                                'Santa Cruz' => 'SC',
-                                'Tarija' => 'TJ'], 'La Paz', ['class' => 'form-control']) !!}
+                                ['BN' => 'Beni',
+                                'CH' => 'Chuquisaca',
+                                'CB' => 'Cochabamba',
+                                'LP' => 'La Paz',
+                                'OR' => 'Oruro',
+                                'PA' => 'Pando',
+                                'PT' => 'Potosi',
+                                'SC' => 'Santa Cruz',
+                                'TJ' => 'Tarija'], null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>

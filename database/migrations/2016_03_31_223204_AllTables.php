@@ -43,8 +43,9 @@ class AllTables extends Migration
                 ->references('id')
                 ->on('users');
 
+            $table->string('historia')->unique();
             $table->string('ci')->unique();
-            $table->string('emision');
+            $table->enum('emision', ['BN', 'CH', 'CB', 'LP', 'OR', 'PA', 'PT', 'SC', 'TJ']);
             $table->string('nombre');
             $table->string('apellido');
             $table->string('sexo');
@@ -164,7 +165,7 @@ class AllTables extends Migration
             $table->longtext('treatment');
             $table->longtext('justification');
             $table->timestamps();
-            $table->softDeletes();            
+            $table->softDeletes();
         });
     }
 

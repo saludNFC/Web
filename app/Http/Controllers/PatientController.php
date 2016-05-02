@@ -39,7 +39,29 @@ class PatientController extends Controller
     }
 
     public function store(PatientRequest $request){
-        Auth::user()->patients()->create($request->all());
+        $patient = new Patient($request->all());
+        if(str_contains($patient->apellido, ' ')){
+            $words = explode(" ", $patient->apellido);
+            $output = substr($words[0], 0, 1) . substr($words[1], 0, 1);
+            $hc_cod = strtoupper($output);
+        }
+        else{
+            $hc_cod = strtoupper(substr($patient->apellido, 0, 1));
+        }
+
+        $hc_cod .=  strtoupper(substr($patient->nombre, 0, 1)) . '-';
+        if($patient->fecha_nac->day < 10){
+            $hc_cod .= '0';
+        }
+
+        $hc_cod .= $patient->fecha_nac->day;
+        if($patient->fecha_nac->month < 10){
+            $hc_cod .= '0';
+        }
+        $hc_cod .= $patient->fecha_nac->month . $patient->fecha_nac->year;
+
+        $patient->historia = $hc_cod;
+        Auth::user()->patients()->save($patient);
 
         // Get the last patient saved and pass his id to be able to create his histories
         $last = Patient::get()->last();
