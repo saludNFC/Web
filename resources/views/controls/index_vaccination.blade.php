@@ -31,10 +31,7 @@
                         <td>{{ $control->via }}</td>
                         <td>{{ $control->dosis }}</td>
                         <td>
-                            <div class="btn-group">
-                                {!! link_to_route('paciente.controles.show', 'Ver detalles', [$patient->id, $control->id], ['class' => 'btn btn-default']) !!}
-                                {!! link_to_route('paciente.controles.edit', 'Editar', [$patient->id, $control->id], ['class' => 'btn btn-primary']) !!}
-                            </div>
+                            @include('controls.partials._actions', $control)
                         </td>
                     </tr>
                     @endforeach

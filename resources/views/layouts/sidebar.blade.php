@@ -27,8 +27,8 @@
                 </ul>
             </li>
 
+            <!-- Only the authorized users will see this! -->
             <li class="header">PROCESOS</li>
-            <!-- Optionally, you can add icons to the links -->
             <li><a href="/paciente/create"><i class="fa fa-book"></i> <span>Apertura de Historia Clínica</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->

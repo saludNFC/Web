@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Patient;
 use App\Consultation;
 use Auth;
+use Gate;
 
 class ConsultationController extends Controller
 {
@@ -38,6 +39,10 @@ class ConsultationController extends Controller
 
 
 	public function edit(Patient $patient, Consultation $consultation){
+		if(Gate::denies('update_consultation', $consultation)){
+			abort(403, 'No puedes estar aqui!!!');
+		}
+
 		return view('consultations.edit', compact('patient', 'consultation'));
 	}
 
@@ -48,6 +53,10 @@ class ConsultationController extends Controller
 	}
 
 	public function destroy(Patient $patient, Consultation $consultation){
+		if(Gate::denies('delete_consultation', $consultation)){
+			abort(403, 'No puedes estar aqui!!!');
+		}
+
 		$consultation->delete();
 		return redirect()->route('paciente.show', $patient->id)->with('message', 'Consulta medica eliminada');
 

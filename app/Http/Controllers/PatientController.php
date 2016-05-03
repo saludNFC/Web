@@ -7,13 +7,14 @@ use App\Http\Requests\PatientRequest;
 use App\Http\Requests;
 use App\Patient;
 use Auth;
+use Gate;
 use App\User;
 
 class PatientController extends Controller
 {
     public function __construct(){
+        // Uses the middleware with alias auth to redirect to the login page for every request, except the show
         $this->middleware('auth', ['except' => 'show']);
-        $this->middleware('manager');
     }
 
     public function index(){
@@ -26,6 +27,9 @@ class PatientController extends Controller
     }
 
     public function edit(Patient $patient){
+        if(Gate::denies('update_patient', $patient)){
+            abort(403, 'Usted no esta autorizado para editar los datos de pacientes');
+        }
         return view('patients.edit', compact('patient'));
     }
 
@@ -35,6 +39,9 @@ class PatientController extends Controller
     }
 
     public function create(){
+        // if(Gate::denies('create', Patient::class)){
+        //     abort(403, 'Usted no esta autorizado para crear pacientes');
+        // }
         return view('patients.create');
     }
 
@@ -70,7 +77,10 @@ class PatientController extends Controller
     }
 
     public function destroy(Patient $patient){
-        // dd($patient);
+        if(Gate::denies('delete', $patient)){
+            abort(403, 'Usted no esta autorizado para borrar pacientes');
+        }
+
         $patient->delete();
         return redirect()->route('paciente.index')->with('message', 'Paciente eliminado');
     }

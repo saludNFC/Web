@@ -8,17 +8,12 @@
 
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="col-md-offset-10">
-                {!! link_to_route('paciente.create', 'Crear paciente', [], ['class' => 'btn btn-primary']) !!}
+            <div class="panel-body">
+        @if( !$patients->count() )
+                <p class="alert alert-danger">No hay pacientes registrados</p>
             </div>
-        </div>
-        <div class="panel-body">
-    @if( !$patients->count() )
-            <p class="alert alert-danger">No hay pacientes registrados</p>
-        </div>
     </div>
-    @else
+        @else
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
@@ -45,7 +40,9 @@
                         <td>
                             <div class="btn-group">
                                 {!! link_to_route('paciente.show', 'Ver detalles', [$patient->id], ['class' => 'btn btn-default'] ) !!}
-                                {!! link_to_route('paciente.edit', 'Editar', [$patient->id], ['class' => 'btn btn-primary']) !!}
+                                @can('update_patient', $patient)
+                                    {!! link_to_route('paciente.edit', 'Editar', [$patient->id], ['class' => 'btn btn-primary']) !!}
+                                @endcan
                             </div>
                         </td>
                     </tr>

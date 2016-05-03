@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Patient;
 use App\Control;
 use Auth;
+use Gate;
 
 class ControlController extends Controller
 {
@@ -38,6 +39,10 @@ class ControlController extends Controller
 
 
 	public function edit(Patient $patient, Control $control){
+		if(Gate::denies('update_control', $control)){
+			abort(403, 'NO ESTA AUTORIZADO DE ESTAR AQUI!, JERK');
+		}
+
 		return view('controls.edit', compact('patient', 'control'));
 	}
 
@@ -49,6 +54,10 @@ class ControlController extends Controller
 	}
 
 	public function destroy(Patient $patient, Control $control){
+		if(Gate::denies('delete_control', $control)){
+			abort(403, 'NO ESTA AUTORIZADO DE ESTAR AQUI!, JERK');
+		}
+
 		$control->delete();
 		return redirect()->route('paciente.index', $patient->id)->with('message', 'Control eliminado');
 	}

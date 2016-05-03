@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Patient;
 use App\History;
 use Auth;
+use Gate;
 
 class HistoryController extends Controller
 {
@@ -39,6 +40,10 @@ class HistoryController extends Controller
 
 
 	public function edit(Patient $patient, History $history){
+		if(Gate::denies('update_history', $history)){
+			abort(403, 'No esta autorizado para editar este antecedente del paciente');
+		}
+
 		return view('histories.edit', compact('patient', 'history'));
 	}
 
@@ -49,6 +54,10 @@ class HistoryController extends Controller
 	}
 
 	public function destroy(Patient $patient, History $history){
+		if(Gate::denies('delete_history', $history)){
+			abort(403, 'No esta autorizado para borrar este antecedente del paciente');
+		}
+
 		$history->delete();
 		return redirect()->route('paciente.show', $patient->id)->with('message', 'Antecedente eliminado');
 	}

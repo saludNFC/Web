@@ -35,7 +35,10 @@
                         <td>
                             <div class="btn-group">
                                 {!! link_to_route('paciente.consultas.show', 'Ver detalles', [$patient->id, $consult->id], ['class' => 'btn btn-default']) !!}
-                                {!! link_to_route('paciente.consultas.edit', 'Editar', [$patient->id, $consult->id], ['class' => 'btn btn-primary']) !!}
+
+                                @can('update_consultation', $consultation)
+                                    {!! link_to_route('paciente.consultas.edit', 'Editar', [$patient->id, $consult->id], ['class' => 'btn btn-primary']) !!}
+                                @endcan
                             </div>
                         </td>
                     </tr>

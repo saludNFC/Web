@@ -29,6 +29,10 @@ class User extends Authenticatable{
      */
 
     // RELATIONSHIPS
+    public function roles(){
+        return $this->belongsToMany('App\Role');
+    }
+
     public function patients(){
         return $this->hasMany('App\Patient');
     }
@@ -47,5 +51,19 @@ class User extends Authenticatable{
 
     public function isATeamManager(){
         return true;
+    }
+
+    // HELPERS
+    public function hasRole($role){
+        if(is_string($role)){
+            return $this->roles->contains('name', $role);
+        }
+        return $role->intersect($this->roles)->count();
+    }
+
+    public function assignRole($role){
+        return $this->roles()->sync(
+            Role::where('name', $role)->firstOrFail()
+        );
     }
 }

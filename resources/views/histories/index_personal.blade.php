@@ -29,10 +29,7 @@
                         <td>{{ $history->type_personal }}</td>
                         <td class="overflow">{{ $history->description }}</td>
                         <td>
-                            <div class="btn-group">
-                                {!! link_to_route('paciente.antecedentes.show', 'Ver detalles', [$patient->id, $history->id], ['class' => 'btn btn-default']) !!}
-                                {!! link_to_route('paciente.antecedentes.edit', 'Editar', [$patient->id, $history->id], ['class' => 'btn btn-primary']) !!}
-                            </div>
+                            @include('histories.partials._actions')
                         </td>
                     </tr>
                     @endforeach

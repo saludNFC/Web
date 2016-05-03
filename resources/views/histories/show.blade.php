@@ -17,10 +17,12 @@
         <p>Profesional responsable: {{ $history->user->name }}</p>
     </div>
 
-    {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.antecedentes.destroy', $patient->id, $history->id ]]) !!}
-        <div class="form-group btn-group" role="group">
-            {!! link_to_route('paciente.antecedentes.edit', 'Editar', [$patient->id, $history->id], ['class' => 'btn btn-primary']) !!}
-            {!! Form::button('<i class="fa fa-trash-o fa-fw"></i>&nbsp;Borrar antecedente', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
-        </div>
-    {!! Form::close() !!}
+    @can('update_history', $history)
+        {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.antecedentes.destroy', $patient->id, $history->id ]]) !!}
+            <div class="form-group btn-group" role="group">
+                {!! link_to_route('paciente.antecedentes.edit', 'Editar', [$patient->id, $history->id], ['class' => 'btn btn-primary']) !!}
+                {!! Form::button('<i class="fa fa-trash-o fa-fw"></i>&nbsp;Borrar antecedente', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
+            </div>
+        {!! Form::close() !!}
+    @endcan
 @stop
