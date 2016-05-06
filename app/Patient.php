@@ -26,29 +26,6 @@ class Patient extends Model
         $this->attributes['fecha_nac'] = Carbon::createFromFormat('d-m-Y', $date);
     }
 
-    public function setHistoriaAttribute($patient){
-        // if(str_contains($patient->apellido, ' ')){
-        //     $words = explode(" ", $patient->apellido);
-        //     $output = substr($words[0], 0, 1) . substr($words[1], 0, 1);
-        //     $hc_cod = strtoupper($output);
-        // }
-        // else{
-        //     $hc_cod = strtoupper(substr($patient->apellido, 0, 1));
-        // }
-        //
-        // $hc_cod .=  strtoupper(substr($patient->nombre, 0, 1));
-        // if($patient->fecha_nac->day < 10){
-        //     $hc_cod .= '0';
-        // }
-        //
-        // $hc_cod .= $patient->fecha_nac->day;
-        // if($patient->fecha_nac->month < 10){
-        //     $hc_cod .= '0';
-        // }
-        // $hc_cod .= $patient->fecha_nac->month . $patient->fecha_nac->year;
-        $this->attributes['historia'] = strtoupper($patient);
-    }
-
     // RELATIONSHIPS
     public function user(){
         return $this->belongsTo('App\User');
@@ -64,5 +41,14 @@ class Patient extends Model
 
     public function consultation(){
         return $this->hasMany('App\Consultation');
+    }
+
+    // HELPERS
+    public function isWomanOldEnough(){
+        return $this->sexo == 'Femenino' && $this->fecha_nac->age >= 15;
+    }
+
+    public function isElder(){
+        return $this->fecha_nac->age >= 55;
     }
 }

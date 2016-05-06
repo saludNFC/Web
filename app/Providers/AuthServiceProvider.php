@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Permission;
 use App\Patient;
 use App\History;
+use App\Control;
+use App\Consultation;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -19,6 +21,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
         'App\Patient' => 'App\Policies\PatientPolicy',
         'App\History' => 'App\Policies\HistoryPolicy',
+        'App\Control' => 'App\Policies\ControlPolicy',
+        'App\Consultation' => 'App\Policies\ConsultationPolicy',
     ];
 
     /**

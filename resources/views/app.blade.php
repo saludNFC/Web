@@ -60,11 +60,24 @@
                 endDate: '+0d'
             });
         });
+
+        $(function () {
+            //Date picker
+            $('.datepicker').datepicker({
+                autoclose: true,
+                formatSubmit: 'dd-mm-yyyy',
+                format: 'dd-mm-yyyy',
+                endDate: '+0d'
+            });
+        });
+
         $('#flash').modal();
 
         setTimeout(function(){
             $('#flash').modal('hide');
         }, 2000);
+
+        $('.popoverData').popover();
 
     </script>
 </body>

@@ -19,6 +19,7 @@
                         <th>Vacuna</th>
                         <th>Via</th>
                         <th>Dosis</th>
+                        <th>Encargado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -30,6 +31,7 @@
                         <td>{{ $control->vaccine }}</td>
                         <td>{{ $control->via }}</td>
                         <td>{{ $control->dosis }}</td>
+                        <td>{{ $control->user->name }}</td>
                         <td>
                             @include('controls.partials._actions', $control)
                         </td>

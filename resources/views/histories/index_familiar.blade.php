@@ -18,6 +18,7 @@
                         <th>Tipo de antecedente</th>
                         <th>Grado</th>
                         <th class="overflow">Enfermedad</th>
+                        <th>Encargado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                         <td>{{ $history->history_type }}</td>
                         <td>{{ $history->grade }}</td>
                         <td class="overflow">{{ $history->illness }}</td>
+                        <td>{{ $history->user->name }}</td>
                         <td>
                             <div class="btn-group">
                                 @include('histories.partials._actions')

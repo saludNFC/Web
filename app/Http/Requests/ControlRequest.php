@@ -58,6 +58,11 @@ class ControlRequest extends Request
             'sistole' => 'required_if:control_type,Triaje',
             'diastole' => 'required_if:control_type,Triaje',
 
+            // Ginecologico
+            'last_menst' => 'required_if:control_type,Ginecologico,date',
+            'last_mamo' => 'date',
+            'last_papa' => 'date',
+
             // Geriatrico
             'geriatric_type' => 'required_if:control_type,Geriatrico',
             'notes' => 'required_if:control_type,Geriatrico|min:10'

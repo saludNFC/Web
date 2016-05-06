@@ -18,6 +18,7 @@
                         <th>Tipo de control</th>
                         <th>Peso (Kg)</th>
                         <th>Altura (cm)</th>
+                        <th>Encargado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                         <td>{{ $control->control_type }}</td>
                         <td>{{ $control->weight }}</td>
                         <td>{{ $control->height }}</td>
+                        <td>{{ $control->user->name }}</td>
                         <td>
                             @include('controls.partials._actions', $control)
                         </td>

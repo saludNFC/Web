@@ -19,6 +19,7 @@
                         <th>Medicamento</th>
                         <th>Vía de administración</th>
                         <th>Fecha de primera administración</th>
+                        <th>Encargado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -30,6 +31,7 @@
                         <td>{{ $history->med }}</td>
                         <td>{{ $history->via }}</td>
                         <td>{{ $history->date_ini->format('d-m-Y') }}</td>
+                        <td>{{ $history->user->name }}</td>
                         <td>
                             @include('histories.partials._actions')
                         </td>

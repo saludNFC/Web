@@ -36,7 +36,12 @@
                         <li><a href="#vaccination" role="tab" id="vaccination-tab" data-toggle="tab" aria-controls="vaccination" aria-expanded="true">Vacunacion</a></li>
                         <li><a href="#growth" role="tab" id="growth-tab" data-toggle="tab" aria-controls="growth" aria-expanded="false">Crecimiento y desarrollo</a></li>
                         <li><a href="#triage" role="tab" id="triage-tab" data-toggle="tab" aria-controls="triage" aria-expanded="false">Triaje</a></li>
-                        <li><a href="#geriatric" role="tab" id="geriatric-tab" data-toggle="tab" aria-controls="geriatric" aria-expanded="false">Geriatrico</a></li>
+                        @if($patient->isWomanOldEnough())
+                            <li><a href="#gine" role="tab" id="gine-tab" data-toggle="tab" aria-controls="gine" aria-expanded="false">Ginecologico</a></li>
+                        @endif
+                        @if($patient->isElder())
+                            <li><a href="#geriatric" role="tab" id="geriatric-tab" data-toggle="tab" aria-controls="geriatric" aria-expanded="false">Geriatrico</a></li>
+                        @endif
                     </ul>
                 </li>
                 <li role="presentation"><a href="#consultation" aria-controls="consultation" role="tab" data-toggle="tab">Consultas médicas</a></li>
@@ -65,9 +70,19 @@
                 <div role="tabpanel" class="tab-pane fade" id="triage" aria-labelledby="triage-tab">
                     @include('controls.index_triage')
                 </div>
-                <div role="tabpanel" class="tab-pane fade" id="geriatric" aria-labelledby="geriatric-tab">
-                    @include('controls.index_geriatric')
-                </div>
+                @if($patient->isWomanOldEnough())
+                    <div role="tabpanel" class="tab-pane fade" id="gine" aria-labelledby="gine-tab">
+                        @include('controls.index_ginecologic')
+                    </div>
+                @endif
+
+                @if($patient->isWomanOldEnough())
+                    <div role="tabpanel" class="tab-pane fade" id="geriatric" aria-labelledby="geriatric-tab">
+                        @include('controls.index_geriatric')
+                    </div>
+                @endif
+
+                <!-- CONSULTA MEDICA -->
                 <div role="tabpanel" class="tab-pane" id="consultation">
                     @include('consultations.index')
                 </div>

@@ -18,6 +18,7 @@
                         <th>Tipo de antecedente</th>
                         <th></th>
                         <th class="overflow">Descripcion</th>
+                        <th class="overflow">Encargado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                         <td>{{ $history->history_type }}</td>
                         <td>{{ $history->type_personal }}</td>
                         <td class="overflow">{{ $history->description }}</td>
+                        <td>{{ $history->user->name }}</td>
                         <td>
                             @include('histories.partials._actions')
                         </td>

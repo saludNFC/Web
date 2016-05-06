@@ -49,10 +49,6 @@ class User extends Authenticatable{
         return $this->hasMany('App\Consultation');
     }
 
-    public function isATeamManager(){
-        return true;
-    }
-
     // HELPERS
     public function hasRole($role){
         if(is_string($role)){

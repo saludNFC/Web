@@ -157,8 +157,8 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-                {!! link_to_route('paciente.index', 'Cancelar', [], ['class' => 'btn btn-default']) !!}
-                {!! Form::submit($submit_text, ['class'=>'btn btn-primary']) !!}
+                {!! Html::decode( link_to_route('paciente.index', '<i class="fa fa-close"></i>&nbsp;Cancelar', [], ['class' => 'btn btn-default'])) !!}
+                {!! Form::button('<i class="fa fa-save"></i>&nbsp;' . $submit_text, ['class'=>'btn btn-primary', 'role' => 'button', 'type' => 'submit']) !!}
             </div>
             <!-- /.box-footer -->
         </div>

@@ -13,6 +13,9 @@
         <p>Temperatura: {{ $control->temperature }}</p>
         <p>Frecuencia Cardiaca: {{ $control->heart_rate }} latidos por minuto</p>
         <p>Presion arterial: {{ $control->sistole }} / {{ $control->diastole }}</p>
+        <p>Fecha ultima menstruacion: {{ $control->last_menst }}</p>
+        <p>Fecha ultima mamografia: {{ $control->last_mamo }}</p>
+        <p>Fecha ultimo papanicolau: {{ $control->last_papa }}</p>
         <p>Tipo de valoracion geriatrica: {{ $control->geriatric_type }}</p>
         <p>Anotaciones: {{ $control->notes }}</p>
         <p>Fecha de creacion del control: {{ $control->created_at }}</p>

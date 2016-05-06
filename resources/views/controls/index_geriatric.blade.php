@@ -18,6 +18,7 @@
                         <th>Tipo de control</th>
                         <th></th>
                         <th class="overflow">Anotaciones</th>
+                        <th>Encargado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                         <td>{{ $control->control_type }}</td>
                         <td>{{ $control->geriatric_type }}</td>
                         <td class="overflow">{{ $control->notes }}</td>
+                        <td>{{ $control->user->name }}</td>
                         <td>
                             @include('controls.partials._actions', $control)
                         </td>

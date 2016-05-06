@@ -19,6 +19,7 @@
                         <th>Temperatura</th>
                         <th>Frecuencia cardíaca</th>
                         <th>Presion arterial</th>
+                        <th>Encargado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -30,6 +31,7 @@
                         <td>{{ $control->temperature }}</td>
                         <td>{{ $control->heart_rate }}</td>
                         <td>{{ $control->sistole }} / {{ $control->diastole }}</td>
+                        <td>{{ $control->user->name }}</td>
                         <td>
                             @include('controls.partials._actions', $control)
                         </td>

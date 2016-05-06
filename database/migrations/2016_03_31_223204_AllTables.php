@@ -93,6 +93,9 @@ class AllTables extends Migration
             $table->string('sexo');
             $table->date('fecha_nac')->nullable();
             $table->string('lugar_nac')->nullable();
+            $table->string('grado_instruccion')->nullable();
+            $table->string('estado_civil')->nullable();
+            $table->string('ocupacion')->nullable();
             $table->string('grupo_sanguineo')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -162,7 +165,7 @@ class AllTables extends Migration
                 ->on('users');
 
 
-            $table->enum('control_type', ['Vacunacion', 'Crecimiento', 'Triaje', 'Geriatrico']);
+            $table->enum('control_type', ['Vacunacion', 'Crecimiento', 'Triaje', 'Ginecologico', 'Geriatrico']);
 
             // Vacunacion
             $table->text('vaccine')->nullable();
@@ -178,6 +181,12 @@ class AllTables extends Migration
             $table->integer('heart_rate')->nullable();
             $table->integer('sistole')->nullable();
             $table->integer('diastole')->nullable();
+
+            // Ginecologico
+            $table->date('last_menst')->nullable();
+            $table->date('last_mamo')->nullable();
+            $table->boolean('sex_act')->nullable();
+            $table->date('last_papa')->nullable();
 
             // Geriatrico
             $table->enum('geriatric_type', ['Valoracion Medica', 'Valoracion Funcional', 'Valoracion Cognitiva', 'Valoracion Social'])->nullable();
@@ -222,6 +231,10 @@ class AllTables extends Migration
         Schema::drop('controls');
         Schema::drop('histories');
         Schema::drop('patients');
+        Schema::drop('role_user');
+        Schema::drop('permission_role');
+        Schema::drop('permissions');
+        Schema::drop('roles');
         Schema::drop('password_resets');
         Schema::drop('users');
     }

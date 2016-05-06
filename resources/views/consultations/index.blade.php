@@ -20,6 +20,7 @@
                         <th class="overflow">Diagnostico</th>
                         <th class="overflow">Tratamiento</th>
                         <th class="overflow">Justificacion</th>
+                        <th>Encargado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -32,12 +33,13 @@
                         <td class="overflow">{{ $consult->diagnosis }}</td>
                         <td class="overflow">{{ $consult->treatment }}</td>
                         <td class="overflow">{{ $consult->justification }}</td>
+                        <td>{{ $consult->user->name }}</td>
                         <td>
                             <div class="btn-group">
-                                {!! link_to_route('paciente.consultas.show', 'Ver detalles', [$patient->id, $consult->id], ['class' => 'btn btn-default']) !!}
+                                {!! Html::decode(link_to_route('paciente.consultas.show', '<i class="fa fa-eye"></i>', [$patient->id, $consult->id], ['class' => 'btn btn-default', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Ver Detalles'])) !!}
 
-                                @can('update_consultation', $consultation)
-                                    {!! link_to_route('paciente.consultas.edit', 'Editar', [$patient->id, $consult->id], ['class' => 'btn btn-primary']) !!}
+                                @can('update_consultation', $consult)
+                                    {!! Html::decode(link_to_route('paciente.consultas.edit', '<i class="fa fa-pencil"></i>', [$patient->id, $consult->id], ['class' => 'btn btn-primary', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Editar'])) !!}
                                 @endcan
                             </div>
                         </td>
