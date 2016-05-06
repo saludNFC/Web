@@ -1,8 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div class="col-md-offset-10">
-            {!! link_to_route('paciente.antecedentes.create', 'Crear antecedente', [$patient->id], ['class' => 'btn btn-primary']) !!}
-        </div>
+        @can('create_history')
+            @include('histories.partials._createbtn')
+        @endcan
     </div>
     <div class="panel-body">
         @if( !$patient->history->where('history_type', 'Medicamentos')->count() )

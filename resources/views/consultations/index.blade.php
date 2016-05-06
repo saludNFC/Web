@@ -1,8 +1,10 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div class="col-md-offset-10">
-            {!! link_to_route('paciente.consultas.create', 'Crear consulta médica', [$patient->id], ['class' => 'btn btn-primary']) !!}
-        </div>
+        @can('create_consultation')
+            <div class="col-md-offset-9">
+                {!! Html::decode(link_to_route('paciente.consultas.create', '<i class="fa fa-plus"></i> Crear consulta médica', [$patient->id], ['class' => 'btn btn-primary'])) !!}
+            </div>
+        @endcan
     </div>
     <div class="panel-body">
         @if( !$patient->consultation()->count())

@@ -29,7 +29,9 @@
 
             <!-- Only the authorized users will see this! -->
             <li class="header">PROCESOS</li>
-            <li><a href="/paciente/create"><i class="fa fa-book"></i> <span>Apertura de Historia Clínica</span></a></li>
+            @can('create_patient')
+                <li><a href="/paciente/create"><i class="fa fa-book"></i> <span>Apertura de Historia Clínica</span></a></li>
+            @endcan
         </ul>
         <!-- /.sidebar-menu -->
     </section>

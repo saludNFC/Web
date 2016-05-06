@@ -26,6 +26,10 @@ class ConsultationController extends Controller
 	}
 
 	public function create(Patient $patient){
+		if(Gate::denies('create_consultation')){
+			abort(403, 'Usted no está autorizado para crear consultas médicas del paciente');
+		}
+
 		return view('consultations.create', compact('patient'));
 	}
 

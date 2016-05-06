@@ -27,6 +27,10 @@ class HistoryController extends Controller
 	}
 
 	public function create(Patient $patient){
+		if(Gate::denies('create_history')){
+			abort(403, 'Usted no esta autorizado para crear antecedentes del paciente');
+		}
+		
 		return view('histories.create', compact('patient'));
 	}
 

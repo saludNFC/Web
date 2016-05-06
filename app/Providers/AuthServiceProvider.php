@@ -35,11 +35,18 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        // foreach($this->getPermissions() as $permission){
-        //     $gate->define($permission->name, function($user) use ($permission){
-        //         return $user->hasRole($permission->roles);
-        //     });
-        // }
+        $gate->define('create_patient', function($user){
+            return $user->hasRole('root') || $user->hasRole('admin');
+        });
+        $gate->define('create_history', function($user){
+            return $user->hasRole('root') || $user->hasRole('doctor') || $user->hasRole('nurse');
+        });
+        $gate->define('create_control', function($user){
+            return $user->hasRole('root') || $user->hasRole('doctor') || $user->hasRole('nurse');
+        });
+        $gate->define('create_consultation', function($user){
+            return $user->hasRole('root') || $user->hasRole('doctor');
+        });
     }
 
     protected function getPermissions(){

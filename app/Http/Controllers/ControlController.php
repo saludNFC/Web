@@ -26,6 +26,10 @@ class ControlController extends Controller
 	}
 
 	public function create(Patient $patient){
+		if(Gate::denies('create_control')){
+			abort(403, 'Usted no está autorizado para crear controles del paciente');
+		}
+
 		return view('controls.create', compact('patient'));
 	}
 

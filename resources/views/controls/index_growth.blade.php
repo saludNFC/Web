@@ -1,8 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <div class="col-md-offset-10">
-            {!! link_to_route('paciente.controles.create', 'Crear control', [$patient->id], ['class' => 'btn btn-primary']) !!}
-        </div>
+        @can('create_control')
+            @include('controls.partials._createbtn')
+        @endcan
     </div>
     <div class="panel-body">
         @if( !$patient->control->where('control_type', 'Crecimiento')->count() )

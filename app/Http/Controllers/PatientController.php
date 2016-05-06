@@ -39,9 +39,9 @@ class PatientController extends Controller
     }
 
     public function create(){
-        // if(Gate::denies('create', Patient::class)){
-        //     abort(403, 'Usted no esta autorizado para crear pacientes');
-        // }
+        if(Gate::denies('create_patient')){
+            abort(403, 'Usted no esta autorizado para crear pacientes');
+        }
         return view('patients.create');
     }
 
