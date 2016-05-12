@@ -31,7 +31,7 @@
                         <td>{{ $history->med }}</td>
                         <td>{{ $history->via }}</td>
                         <td>{{ $history->date_ini->format('d-m-Y') }}</td>
-                        <td>{{ $history->user->name }}</td>
+                        <td>{!! link_to_route('usuario.show', $history->user->name, [$history->user->id], []) !!}</td>
                         <td>
                             @include('histories.partials._actions')
                         </td>

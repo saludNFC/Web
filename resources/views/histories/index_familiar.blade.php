@@ -29,7 +29,7 @@
                         <td>{{ $history->history_type }}</td>
                         <td>{{ $history->grade }}</td>
                         <td class="overflow">{{ $history->illness }}</td>
-                        <td>{{ $history->user->name }}</td>
+                        <td>{!! link_to_route('usuario.show', $history->user->name, [$history->user->id], []) !!}</td>
                         <td>
                             <div class="btn-group">
                                 @include('histories.partials._actions')

@@ -119,7 +119,7 @@
                     {!! Form::label('fecha_nac', 'Fecha de nacimiento', ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-10">
                         <div class="col-sm-12">
-                            {!! Form::text('fecha_nac', '31-01-1950', ['class'=>'form-control', 'placeholder' => 'Fecha de nacimiento', 'id'=>'datepicker']) !!}
+                            {!! Form::text('fecha_nac', null, ['class'=>'form-control', 'placeholder' => 'Fecha de nacimiento', 'id'=>'datepicker']) !!}
                             @if($errors->has('fecha_nac'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('fecha_nac') }}</strong>

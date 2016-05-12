@@ -35,7 +35,7 @@
                         <td class="overflow">{{ $consult->diagnosis }}</td>
                         <td class="overflow">{{ $consult->treatment }}</td>
                         <td class="overflow">{{ $consult->justification }}</td>
-                        <td>{{ $consult->user->name }}</td>
+                        <td>{!! link_to_route('usuario.show', $consult->user->name, [$consult->user->id], []) !!}</td>
                         <td>
                             <div class="btn-group">
                                 {!! Html::decode(link_to_route('paciente.consultas.show', '<i class="fa fa-eye"></i>', [$patient->id, $consult->id], ['class' => 'btn btn-default', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Ver Detalles'])) !!}

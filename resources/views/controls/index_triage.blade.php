@@ -31,7 +31,7 @@
                         <td>{{ $control->temperature }}</td>
                         <td>{{ $control->heart_rate }}</td>
                         <td>{{ $control->sistole }} / {{ $control->diastole }}</td>
-                        <td>{{ $control->user->name }}</td>
+                        <td>{!! link_to_route('usuario.show', $control->user->name, [$control->user->id], []) !!}</td>
                         <td>
                             @include('controls.partials._actions', $control)
                         </td>

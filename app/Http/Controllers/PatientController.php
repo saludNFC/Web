@@ -24,7 +24,8 @@ class PatientController extends Controller
     }
 
     public function show(Patient $patient){
-        return view('patients.show', compact('patient'));
+        dd($patient);
+        // return view('patients.show', compact('patient'));
     }
 
     public function edit(Patient $patient){
@@ -43,32 +44,13 @@ class PatientController extends Controller
         if(Gate::denies('create_patient')){
             abort(403, 'Usted no esta autorizado para crear pacientes');
         }
+        // $patient = new Patient();
         return view('patients.create');
     }
 
     public function store(PatientRequest $request){
         $patient = new Patient($request->all());
-        if(str_contains($patient->apellido, ' ')){
-            $words = explode(" ", $patient->apellido);
-            $output = substr($words[0], 0, 1) . substr($words[1], 0, 1);
-            $hc_cod = strtoupper($output);
-        }
-        else{
-            $hc_cod = strtoupper(substr($patient->apellido, 0, 1));
-        }
-
-        $hc_cod .=  strtoupper(substr($patient->nombre, 0, 1)) . '-';
-        if($patient->fecha_nac->day < 10){
-            $hc_cod .= '0';
-        }
-
-        $hc_cod .= $patient->fecha_nac->day;
-        if($patient->fecha_nac->month < 10){
-            $hc_cod .= '0';
-        }
-        $hc_cod .= $patient->fecha_nac->month . $patient->fecha_nac->year;
-
-        $patient->historia = $hc_cod;
+        $patient->historia = $patient->codHistoria($patient);
         Auth::user()->patients()->save($patient);
 
         // Get the last patient saved and pass his id to be able to create his histories

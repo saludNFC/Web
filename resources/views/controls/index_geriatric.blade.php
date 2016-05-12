@@ -29,7 +29,7 @@
                         <td>{{ $control->control_type }}</td>
                         <td>{{ $control->geriatric_type }}</td>
                         <td class="overflow">{{ $control->notes }}</td>
-                        <td>{{ $control->user->name }}</td>
+                        <td>{!! link_to_route('usuario.show', $control->user->name, [$control->user->id], []) !!}</td>
                         <td>
                             @include('controls.partials._actions', $control)
                         </td>

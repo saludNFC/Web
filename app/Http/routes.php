@@ -43,3 +43,7 @@ Route::post('password/reset', 'Auth\PasswordController@reset');
 //
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
+
+Route::group(['prefix' => 'api'], function(){
+    Route::resource('paciente', 'api\ApiPatientController');
+});

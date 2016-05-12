@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call('ACLSeeder');
         $this->call('StaticTablesSeeder');
+        $this->call('PeopleSeeder');
     }
 }

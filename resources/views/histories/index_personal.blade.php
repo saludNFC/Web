@@ -29,7 +29,7 @@
                         <td>{{ $history->history_type }}</td>
                         <td>{{ $history->type_personal }}</td>
                         <td class="overflow">{{ $history->description }}</td>
-                        <td>{{ $history->user->name }}</td>
+                        <td>{!! link_to_route('usuario.show', $history->user->name, [$history->user->id], []) !!}</td>
                         <td>
                             @include('histories.partials._actions')
                         </td>

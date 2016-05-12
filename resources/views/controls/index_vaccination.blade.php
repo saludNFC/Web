@@ -31,7 +31,7 @@
                         <td>{{ $control->vaccine }}</td>
                         <td>{{ $control->via }}</td>
                         <td>{{ $control->dosis }}</td>
-                        <td>{{ $control->user->name }}</td>
+                        <td>{!! link_to_route('usuario.show', $history->user->name, [$history->user->id], []) !!}</td>
                         <td>
                             @include('controls.partials._actions', $control)
                         </td>
