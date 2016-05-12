@@ -14,24 +14,18 @@
         <!-- /.search form -->
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">SECCIONES</li>
+            <li class="header">ADMINISTRACIÓN</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="#"><i class="fa fa-hospital-o"></i> <span>ABCD</span></a></li>
+            <!-- <li><a href="#"><i class="fa fa-hospital-o"></i> <span>ABCD</span></a></li> -->
+            <li><a href="/usuario"><i class="fa fa-user-md"></i> <span>Usuarios</span></a></li>
             <li><a href="/paciente"><i class="fa fa-users"></i> <span>Pacientes</span></a></li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-user-md"></i> <span>WXYZ</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Administradores</a></li>
-                    <li><a href="#">Doctores</a></li>
-                    <li><a href="#">Enfermeras</a></li>
-                </ul>
-            </li>
 
             <!-- Only the authorized users will see this! -->
             <li class="header">PROCESOS</li>
             @can('create_patient')
                 <li><a href="/paciente/create"><i class="fa fa-book"></i> <span>Apertura de Historia Clínica</span></a></li>
             @endcan
+            <li><a href="#"><i class="fa fa-medkit"></i> <span>Consulta Médica</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

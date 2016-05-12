@@ -23,6 +23,8 @@ class AllTables extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 60);
+            $table->string('pro_registration');
+            $table->string('specialty');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -42,10 +44,10 @@ class AllTables extends Migration
         });
 
         // User permissions
-        Schema::create('permissions', function (Blueprint $table){
-            $table->increments('id');
-            $table->string('name');
-        });
+        // Schema::create('permissions', function (Blueprint $table){
+        //     $table->increments('id');
+        //     $table->string('name');
+        // });
 
         // PIVOT TABLES
         Schema::create('role_user', function(Blueprint $table){
@@ -62,19 +64,19 @@ class AllTables extends Migration
             $table->primary(['role_id', 'user_id']);
         });
 
-        Schema::create('permission_role', function(Blueprint $table){
-            $table->integer('permission_id')->unsigned();
-            $table->foreign('permission_id')
-                ->references('id')
-                ->on('permissions')->onDelete('cascade');
-
-            $table->integer('role_id')->unsigned();
-            $table->foreign('role_id')
-                ->references('id')
-                ->on('roles')->onDelete('cascade');
-
-            $table->primary(['permission_id', 'role_id']);
-        });
+        // Schema::create('permission_role', function(Blueprint $table){
+        //     $table->integer('permission_id')->unsigned();
+        //     $table->foreign('permission_id')
+        //         ->references('id')
+        //         ->on('permissions')->onDelete('cascade');
+        //
+        //     $table->integer('role_id')->unsigned();
+        //     $table->foreign('role_id')
+        //         ->references('id')
+        //         ->on('roles')->onDelete('cascade');
+        //
+        //     $table->primary(['permission_id', 'role_id']);
+        // });
 
         // Patients table
         Schema::create('patients', function (Blueprint $table) {
@@ -232,8 +234,8 @@ class AllTables extends Migration
         Schema::drop('histories');
         Schema::drop('patients');
         Schema::drop('role_user');
-        Schema::drop('permission_role');
-        Schema::drop('permissions');
+        // Schema::drop('permission_role');
+        // Schema::drop('permissions');
         Schema::drop('roles');
         Schema::drop('password_resets');
         Schema::drop('users');

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Rol;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -58,8 +59,8 @@ class User extends Authenticatable{
     }
 
     public function assignRole($role){
-        return $this->roles()->sync(
-            Role::where('name', $role)->firstOrFail()
+        return $this->roles()->save(
+            Role::whereName($role)->firstOrFail()
         );
     }
 }
