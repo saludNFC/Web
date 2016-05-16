@@ -26,12 +26,12 @@ class PatientRequest extends Request
     {
         return [
             'ci' => ['required', 'size:7', 'unique:patients,ci', 'regex:/^[0-9]*$/'],
-            'emision' => 'required',
+            // 'emision' => 'required',
             'nombre' => 'required|min:2',
             'apellido' => 'required|min:2',
-            'fecha_nac' => 'required|date',
-            'lugar_nac' => 'required',
-            'grupo_sanguineo' => 'required'
+            // 'fecha_nac' => 'required|date',
+            // 'lugar_nac' => 'required',
+            // 'grupo_sanguineo' => 'required'
         ];
     }
 }

@@ -24,8 +24,8 @@ class PatientController extends Controller
     }
 
     public function show(Patient $patient){
-        dd($patient);
-        // return view('patients.show', compact('patient'));
+        // dd($patient);
+        return view('patients.show', compact('patient'));
     }
 
     public function edit(Patient $patient){

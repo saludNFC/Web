@@ -64,18 +64,18 @@ class Patient extends Model
         }
 
         $hc_cod .=  strtoupper(substr($patient->nombre, 0, 1)) . '-';
-        if($patient->fecha_nac->day < 10){
-            $hc_cod .= '0';
-        }
-
-        $hc_cod .= $patient->fecha_nac->day;
-        if($patient->fecha_nac->month < 10){
-            $hc_cod .= '0';
-        }
-        $hc_cod .= $patient->fecha_nac->month . $patient->fecha_nac->year;
+        // if($patient->fecha_nac->day < 10){
+        //     $hc_cod .= '0';
+        // }
+        //
+        // $hc_cod .= $patient->fecha_nac->day;
+        // if($patient->fecha_nac->month < 10){
+        //     $hc_cod .= '0';
+        // }
+        // $hc_cod .= $patient->fecha_nac->month . $patient->fecha_nac->year;
         return $hc_cod;
     }
-    
+
     public function isWomanOldEnough(){
         return $this->sexo == 'Femenino' && $this->fecha_nac->age >= 15;
     }

@@ -5,10 +5,23 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Patient;
 use App\Http\Requests;
+// use App\Http\Requests\PatientRequest;
 use App\Http\Controllers\Controller;
+use Api\Transformers\PatientTransformer;
+use Illuminate\Support\Facades\Request as RequestFacade;
+use Auth;
 
-class ApiPatientController extends Controller
+class ApiPatientController extends ApiController
 {
+    protected $patientTransformer;
+    protected $validator;
+
+    function __construct(PatientTransformer $patientTransformer){
+        $this->patientTransformer = $patientTransformer;
+        $this->middleware('auth.basic', ['on' => 'post']);
+        // $this->validator = $patientRequest;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +31,9 @@ class ApiPatientController extends Controller
     {
         // return Patient::all(); BAD PRACTICE
         $patients = Patient::all();
-        return response()->json([
-            'data' => $this->transformCollection($patients)
-        ], 200);
+        return $this->respond([
+            'data' => $this->patientTransformer->transformCollection($patients->all())
+        ]);
     }
 
     /**
@@ -41,7 +54,16 @@ class ApiPatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(! $request->nombre or ! $request->apellido or ! $request->ci){
+            return $this->respondFormError('Los datos proporcionados no son suficientes para crear un paciente');
+        }
+
+        $newPatient = new Patient($request->all());
+        $newPatient->emision = 'BN';
+        $newPatient->historia = $newPatient->codHistoria($newPatient);
+
+        Auth::user()->patients()->save($newPatient);
+        return $this->respondCreated('Paciente creado exitosamente.');
     }
 
     /**
@@ -50,18 +72,15 @@ class ApiPatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show($id)
     {
-        if(! $patient){
-            return response()->json([
-                'error' => [
-                    'mensaje' => 'No existe el paciente solicitado'
-                ]
-            ], 404);
+        $patient = Patient::find($id);
+        if(! $patient ){
+            return $this->respondNotFound('Paciente no encontrado');
         }
-        return response()->json([
-            'data' => $this->transform($patient)
-        ], 200);
+        return $this->respond([
+            'data' => $this->patientTransformer->transform($patient)
+        ]);
     }
 
     /**
@@ -96,26 +115,5 @@ class ApiPatientController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    private function transformCollection($patients){
-        return array_map([$this, 'transform'], $patients->toArray());
-    }
-
-    private function transform($patient){
-        return [
-            'historia_clinica' => $patient['historia'],
-            'nombre' => $patient['nombre'],
-            'apellido' => $patient['apellido'],
-            'ci' => $patient['ci'],
-            'emision' => $patient['emision'],
-            'sexo' => $patient['sexo'],
-            'fecha_nacimiento' => $patient['fecha_nac'],
-            'lugar_nacimiento' => $patient['lugar_nac'],
-            'grado_instruccion' => $patient['grado_instruccion'],
-            'estado_civil' => $patient['estado_civil'],
-            'ocupacion' => $patient['ocupacion'],
-            'grupo_sanguineo' => $patient['grupo_sanguineo']
-        ];
     }
 }
