@@ -46,4 +46,5 @@
 
 Route::group(['prefix' => 'api'], function(){
     Route::resource('paciente', 'api\ApiPatientController');
+    Route::resource('paciente.antecedentes', 'api\ApiHistoryController');
 });

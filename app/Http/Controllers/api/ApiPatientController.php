@@ -5,21 +5,17 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Patient;
 use App\Http\Requests;
-// use App\Http\Requests\PatientRequest;
 use App\Http\Controllers\Controller;
 use Api\Transformers\PatientTransformer;
-use Illuminate\Support\Facades\Request as RequestFacade;
 use Auth;
 
 class ApiPatientController extends ApiController
 {
     protected $patientTransformer;
-    protected $validator;
 
     function __construct(PatientTransformer $patientTransformer){
         $this->patientTransformer = $patientTransformer;
         $this->middleware('auth.basic', ['on' => 'post']);
-        // $this->validator = $patientRequest;
     }
 
     /**
