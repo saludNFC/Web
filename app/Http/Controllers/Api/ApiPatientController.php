@@ -20,7 +20,7 @@ class ApiPatientController extends ApiController{
 
     public function __construct(PatientTransformer $transformer){
         $this->patientTransformer = $transformer;
-        $this->middleware('auth.basic', ['on' => 'index']);
+        $this->middleware('auth.basic');
     }
 
     /**
