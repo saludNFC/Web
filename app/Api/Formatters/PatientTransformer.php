@@ -1,17 +1,17 @@
 <?php
 
-namespace Api\Transformers;
-// use Api\Transformers\Transformer;
+namespace Api\Formatters;
 
 class PatientTransformer extends Transformer{
 
     public function transform($patient){
         return [
+            'identificador' => $patient['id'],
             'historia_clinica' => $patient['historia'],
-            'nombre' => $patient['nombre'],
-            'apellido' => $patient['apellido'],
             'ci' => $patient['ci'],
             'emision' => $patient['emision'],
+            'nombre' => $patient['nombre'],
+            'apellido' => $patient['apellido'],
             'sexo' => $patient['sexo'],
             'fecha_nacimiento' => $patient['fecha_nac'],
             'lugar_nacimiento' => $patient['lugar_nac'],

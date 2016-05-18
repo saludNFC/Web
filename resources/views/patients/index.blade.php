@@ -34,7 +34,12 @@
                         <td>{{ $patient->apellido }}</td>
                         <td>{{ $patient->nombre }}</td>
                         <td>{{ $patient->sexo }}</td>
-                        <td>{{ $patient->fecha_nac->format('d-m-Y') }}</td>
+                        @if($patient->fecha_nac)
+                            <td>{{$patient->fecha_nac->format('d-m-Y')}}</td>
+                        @else
+                            <td>-</td>
+                        @endif
+
                         <td>{{ $patient->lugar_nac }}</td>
                         <td>{{ $patient->grupo_sanguineo }}</td>
                         <td>

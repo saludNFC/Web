@@ -15,36 +15,37 @@
 // Route::model('route wildcard', 'Model')
 
 // TEMPORARY DISABLED :3
-// Route::model('usuario', 'App\User');
-// Route::model('paciente', 'App\Patient');
-// Route::model('antecedentes', 'App\History');
-// Route::model('controles', 'App\Control');
-// Route::model('consultas', 'App\Consultation');
-//
-// Route::resource('paciente', 'PatientController');
-//
-// Route::resource('paciente.antecedentes', 'HistoryController');
-// Route::resource('paciente.controles', 'ControlController');
-// Route::resource('paciente.consultas', 'ConsultationController');
+Route::model('usuario', 'App\User');
+Route::model('paciente', 'App\Patient');
+Route::model('antecedentes', 'App\History');
+Route::model('controles', 'App\Control');
+Route::model('consultas', 'App\Consultation');
 
-// Route::auth();
+Route::resource('paciente', 'PatientController');
 
-// Route::resource('usuario', 'UserController');
+Route::resource('paciente.antecedentes', 'HistoryController');
+Route::resource('paciente.controles', 'ControlController');
+Route::resource('paciente.consultas', 'ConsultationController');
+
+Route::auth();
+
+Route::resource('usuario', 'UserController');
 
 // Authentication Routes...
-// Route::get('login', 'Auth\AuthController@showLoginForm');
-// Route::post('login', 'Auth\AuthController@login');
-// Route::get('logout', 'Auth\AuthController@logout');
-//
-// // Password Reset Routes...
-// Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
-// Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
-// Route::post('password/reset', 'Auth\PasswordController@reset');
-// //
-// Route::get('/home', 'HomeController@index');
-// Route::get('/', 'HomeController@index');
+Route::get('login', 'Auth\AuthController@showLoginForm');
+Route::post('login', 'Auth\AuthController@login');
+Route::get('logout', 'Auth\AuthController@logout');
 
+// Password Reset Routes...
+Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+Route::post('password/reset', 'Auth\PasswordController@reset');
+//
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
+
+// API Routes
 Route::group(['prefix' => 'api'], function(){
-    Route::resource('paciente', 'api\ApiPatientController');
-    Route::resource('paciente.antecedentes', 'api\ApiHistoryController');
+    Route::resource('patient', 'ApiPatientController');
+    // Route::resource('paciente.antecedentes', 'api\ApiHistoryController');
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Transformers;
+namespace Api\Formatters;
 
 abstract class Transformer{
 
@@ -9,4 +9,5 @@ abstract class Transformer{
     }
 
     public abstract function transform($item);
+
 }
