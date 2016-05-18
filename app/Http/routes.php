@@ -46,6 +46,6 @@ Route::get('/', 'HomeController@index');
 
 // API Routes
 Route::group(['prefix' => 'api'], function(){
-    Route::resource('patient', 'ApiPatientController');
+    Route::resource('patient', 'Api\ApiPatientController');
     // Route::resource('paciente.antecedentes', 'api\ApiHistoryController');
 });
