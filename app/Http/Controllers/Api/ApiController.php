@@ -97,4 +97,13 @@ class ApiController extends Controller
     public function respondEdited($message = 'Recurso editado'){
         return $this->setStatusCode(201)->respondWithSuccess($message);
     }
+
+    /**
+     * Resource deleted properly
+     * @param  string $message success message
+     * @return mixed
+     */
+    public function respondDeleted($message = 'Recurso editado'){
+        return $this->setStatusCode(200)->respondWithSuccess($message);
+    }
 }

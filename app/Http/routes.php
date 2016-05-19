@@ -46,6 +46,6 @@ Route::get('/', 'HomeController@index');
 
 // API Routes
 Route::group(['prefix' => 'api'], function(){
-    Route::resource('patient', 'Api\ApiPatientController', ['except' => ['create', 'edit']]);
-    Route::resource('patient.history', 'Api\ApiHistoryController', ['except' => ['create', 'edit']]);
+    Route::resource('paciente', 'Api\ApiPatientController', ['except' => ['create', 'edit']]);
+    Route::resource('paciente.antecedentes', 'Api\ApiHistoryController', ['except' => ['create', 'edit']]);
 });

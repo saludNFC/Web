@@ -32,8 +32,8 @@ class ApiHistoryController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($patientID){
-        $histories = History::where('patient_id', '=', $patientID)->get();
+    public function index(Patient $patient){
+        $histories = $patient->history()->get();
         return $this->respond([
             'data' => $this->historyTransformer->transformCollection($histories->all())
         ]);
@@ -45,9 +45,12 @@ class ApiHistoryController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Patient $patient, HistoryRequest $request){
+        $history = new History($request->all());
+        $history->user_id = 1; // HARDCODED
+        $patient->history()->save($history);
+
+        return $this->respondCreated('Antecedente creado correctamente!');
     }
 
     /**
@@ -56,9 +59,13 @@ class ApiHistoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show(Patient $patient, History $history){
+        if($patient->id == $history->patient_id){
+            return $this->historyTransformer->transform($history);
+        }
+        else{
+            return respondNotFound('El paciente que busca no tiene el antecedente solicitado');
+        }
     }
 
     /**
@@ -68,9 +75,11 @@ class ApiHistoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Patient $patient, History $history, HistoryRequest $request){
+        if($patient->id == $history->patient_id){
+            $history->update($request->all());
+            return $this->respondEdited('Antecedente actualizado correctamente');
+        }
     }
 
     /**
@@ -79,8 +88,10 @@ class ApiHistoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Patient $patient, History $history){
+        if($patient->id == $history->patient_id){
+            $history->delete();
+            return $this->respondDeleted('Antecedente borrado correctamente');
+        }
     }
 }

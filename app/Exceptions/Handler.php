@@ -54,6 +54,20 @@ class Handler extends ExceptionHandler
             ], 404);
         }
 
+        if($e instanceof NotFoundHttpException){
+            if(str_contains($request->url(), '/api')){
+                return response()->json([
+                    'error' => [
+                        'message' => 'Recurso no encontrado.'
+                    ]
+                ], 404);
+            }
+            else{
+                response(view('errors/404'), 404);
+            }
+
+        }
+
         return parent::render($request, $e);
     }
 }

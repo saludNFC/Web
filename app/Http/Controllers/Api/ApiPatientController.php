@@ -39,12 +39,7 @@ class ApiPatientController extends ApiController{
      * @param  [type] $id [description]
      * @return Json      response
      */
-    public function show($id){
-        $patient = Patient::find($id);
-        if( ! $patient){
-            return $this->respondNotFound('Paciente no encontrado');
-        }
-
+    public function show(Patient $patient){
         return $this->respond([
             'data' => $this->patientTransformer->transform($patient)
         ]);
@@ -56,10 +51,8 @@ class ApiPatientController extends ApiController{
      * @param  PatientRequest $request Form request to validate input
      * @return json                  json object with status code
      */
-    public function update($id, PatientRequest $request){
+    public function update(Patient $patient, PatientRequest $request){
         // to test this in POSTMAN the body should be x-www-form-urlencoded ;)
-
-        $patient = Patient::find($id);
         $patient->update($request->all());
 
         return $this->respondEdited('Datos del paciente actualizados correctamente');
@@ -85,17 +78,8 @@ class ApiPatientController extends ApiController{
      * @param  integer $id Patient identifier
      * @return json     Json object with status code
      */
-    public function destroy($id){
-        $patient = Patient::find($id);
-        if( ! $patient){
-            return $this->respondNotFound('Paciente no encontrado');
-        }
-
+    public function destroy(Patient $patient){
         $patient->delete();
-        return $this->respond([
-            'success' => [
-                'mensaje' => 'Paciente borrado correctamente.'
-            ]
-        ]);
+        return $this->respondDeleted('Paciente borrado correctamente.');
     }
 }
