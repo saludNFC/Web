@@ -7,8 +7,8 @@ class HistoryTransformer extends Transformer{
     public function transform($history){
         $array_a = [
             'identificador_usuario' => (int) $history['user_id'],
-            'identificador_antecedente' => (int) $history['id'],
             'identificador_paciente' => (int) $history['patient_id'],
+            'identificador_antecedente' => (int) $history['id'],
             'tipo_antecedente' => $history['history_type']
         ];
         if($history->history_type == 'Personal'){

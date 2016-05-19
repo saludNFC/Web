@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\HistoryRequest;
+use App\Http\Requests\ControlRequest;
 use App\Http\Requests;
 use App\Patient;
-use App\History;
+use App\Control;
 use App\User;
-use Api\Formatters\HistoryTransformer;
+use Api\Formatters\ControlTransformer;
 
-class ApiHistoryController extends ApiController
+class ApiControlController extends ApiController
 {
     /**
-     * @var Api\Formatters\HistoryTransformer
+     * @var Api\Formatters\ControlTransformer
      */
-    protected $historyTransformer;
+    protected $controlTransformer;
 
     /**
-     * @param PatientTransformer $transformer
+     * @param ControlTransformer $transformer
      */
-    public function __construct(HistoryTransformer $transformer){
-        $this->historyTransformer = $transformer;
+    public function __construct(ControlTransformer $transformer){
+        $this->controlTransformer = $transformer;
         $this->middleware('auth.basic');
     }
 
@@ -31,9 +31,9 @@ class ApiHistoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function index(Patient $patient){
-        $histories = $patient->history()->get();
+        $controls = $patient->control()->get();
         return $this->respond([
-            'data' => $this->historyTransformer->transformCollection($histories->all())
+            'data' => $this->controlTransformer->transformCollection($controls->all())
         ]);
     }
 
@@ -43,10 +43,10 @@ class ApiHistoryController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Patient $patient, HistoryRequest $request){
-        $history = new History($request->all());
-        $history->user_id = 1; // HARDCODED
-        $patient->history()->save($history);
+    public function store(Patient $patient, ControlRequest $request){
+        $control = new Control($request->all());
+        $control->user_id = 1; // HARDCODED
+        $patient->control()->save($control);
 
         return $this->respondCreated('Antecedente creado correctamente!');
     }
@@ -57,9 +57,9 @@ class ApiHistoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient, History $history){
-        if($patient->id == $history->patient_id){
-            return $this->historyTransformer->transform($history);
+    public function show(Patient $patient, Control $control){
+        if($patient->id == $control->patient_id){
+            return $this->controlTransformer->transform($control);
         }
         else{
             return respondNotFound('El paciente que busca no tiene el antecedente solicitado');
@@ -73,9 +73,9 @@ class ApiHistoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Patient $patient, History $history, HistoryRequest $request){
-        if($patient->id == $history->patient_id){
-            $history->update($request->all());
+    public function update(Patient $patient, Control $control, ControlRequest $request){
+        if($patient->id == $control->patient_id){
+            $control->update($request->all());
             return $this->respondEdited('Antecedente actualizado correctamente');
         }
     }
@@ -86,9 +86,9 @@ class ApiHistoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient, History $history){
-        if($patient->id == $history->patient_id){
-            $history->delete();
+    public function destroy(Patient $patient, Control $control){
+        if($patient->id == $control->patient_id){
+            $control->delete();
             return $this->respondDeleted('Antecedente borrado correctamente');
         }
     }
