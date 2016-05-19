@@ -28,7 +28,6 @@ Route::resource('paciente.controles', 'ControlController');
 Route::resource('paciente.consultas', 'ConsultationController');
 
 Route::auth();
-
 Route::resource('usuario', 'UserController');
 
 // Authentication Routes...
@@ -46,6 +45,7 @@ Route::get('/', 'HomeController@index');
 
 // API Routes
 Route::group(['prefix' => 'api'], function(){
+    Route::resource('usuario', 'Api\ApiUserController', ['except' => ['create', 'edit']]);
     Route::resource('paciente', 'Api\ApiPatientController', ['except' => ['create', 'edit']]);
     Route::resource('paciente.antecedentes', 'Api\ApiHistoryController', ['except' => ['create', 'edit']]);
     Route::resource('paciente.controles', 'Api\ApiControlController', ['except' => ['create', 'edit']]);

@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PatientRequest;
 use App\Http\Requests;
 use App\Patient;
-use Auth;
-use Gate;
-use App\User;
 use Api\Formatters\PatientTransformer;
 
 class ApiPatientController extends ApiController{
