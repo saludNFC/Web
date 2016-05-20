@@ -6,8 +6,8 @@ class PatientTransformer extends Transformer{
 
     public function transform($patient){
         return [
-            'identificador_usuario' => $patient['user_id'],
-            'identificador_paciente' => $patient['id'],
+            'identificador_usuario' => (int) $patient['user_id'],
+            'identificador_paciente' => (int) $patient['id'],
             'historia_clinica' => $patient['historia'],
             'ci' => $patient['ci'],
             'emision' => $patient['emision'],

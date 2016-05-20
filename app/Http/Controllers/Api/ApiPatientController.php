@@ -7,6 +7,8 @@ use App\Http\Requests\PatientRequest;
 use App\Http\Requests;
 use App\Patient;
 use Api\Formatters\PatientTransformer;
+use JWTAuth;
+use Gate;
 
 class ApiPatientController extends ApiController{
 
@@ -15,9 +17,11 @@ class ApiPatientController extends ApiController{
     */
     protected $patientTransformer;
 
+    protected $apiAuthController;
+
     public function __construct(PatientTransformer $transformer){
         $this->patientTransformer = $transformer;
-        $this->middleware('auth.basic');
+        // $this->middleware('auth.basic');
     }
 
     /**
@@ -50,8 +54,11 @@ class ApiPatientController extends ApiController{
      */
     public function update(Patient $patient, PatientRequest $request){
         // to test this in POSTMAN the body should be x-www-form-urlencoded ;)
+        $user = JWTAuth::parseToken()->authenticate();
+        if(Gate::denies('update_patient', $patient)){
+            return respondForbidden('Usted no tiene permisos para editar datos de pacientes');
+        }
         $patient->update($request->all());
-
         return $this->respondEdited('Datos del paciente actualizados correctamente');
     }
 
@@ -61,12 +68,15 @@ class ApiPatientController extends ApiController{
      * @return json                  json object with status code
      */
     public function store(PatientRequest $request){
+        $user = JWTAuth::parseToken()->authenticate();
+        if(Gate::denies('create_patient')){
+            return respondForbidden('Usted no tiene permisos para registrar pacientes');
+        }
+
         $patient = new Patient($request->all());
         $patient->historia = $patient->codHistoria($patient);
-        $patient->user_id = 1; // HARDCODED! CHANGE THIS!
-        // dd($patient);
+        $user->patients()->save($patient);
 
-        $patient->save();
         return $this->respondCreated('Datos del paciente guardados correctamente');
     }
 
@@ -76,7 +86,12 @@ class ApiPatientController extends ApiController{
      * @return json     Json object with status code
      */
     public function destroy(Patient $patient){
-        $patient->delete();
-        return $this->respondDeleted('Paciente borrado correctamente.');
+        if(Gate::allows('delete_patient', $patient)){
+            $patient->delete();
+            return $this->respondDeleted('Paciente borrado correctamente.');
+        }
+        else{
+            return $this->respondForbidden('Usted no tiene permisos para borrar el paciente');
+        }
     }
 }

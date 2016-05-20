@@ -7,8 +7,9 @@ use App\Http\Requests\ControlRequest;
 use App\Http\Requests;
 use App\Patient;
 use App\Control;
-use App\User;
 use Api\Formatters\ControlTransformer;
+use JWTAuth;
+use Gate;
 
 class ApiControlController extends ApiController
 {
@@ -22,7 +23,7 @@ class ApiControlController extends ApiController
      */
     public function __construct(ControlTransformer $transformer){
         $this->controlTransformer = $transformer;
-        $this->middleware('auth.basic');
+        // $this->middleware('auth.basic');
     }
 
     /**
@@ -44,9 +45,14 @@ class ApiControlController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function store(Patient $patient, ControlRequest $request){
+        $user = JWTAuth::parseToken()->authenticate();
+        if(Gate::denies('create_control')){
+			return $this->respondForbidden('Usted no tiene permisos para editar este antecedente.');
+		}
+
         $control = new Control($request->all());
-        $control->user_id = 1; // HARDCODED
-        $patient->control()->save($control);
+        $control->patient_id = $patient->id;
+        $user->controls()->save($control);
 
         return $this->respondCreated('Antecedente creado correctamente!');
     }
@@ -62,7 +68,7 @@ class ApiControlController extends ApiController
             return $this->controlTransformer->transform($control);
         }
         else{
-            return respondNotFound('El paciente que busca no tiene el antecedente solicitado');
+            return respondNotFound('El paciente que busca no tiene el control solicitado');
         }
     }
 
@@ -75,8 +81,16 @@ class ApiControlController extends ApiController
      */
     public function update(Patient $patient, Control $control, ControlRequest $request){
         if($patient->id == $control->patient_id){
-            $control->update($request->all());
-            return $this->respondEdited('Antecedente actualizado correctamente');
+            if(Gate::allows('update_control', $control)){
+                $control->update($request->all());
+                return $this->respondEdited('Antecedente actualizado correctamente');
+            }
+            else{
+                return $this->respondForbidden('Usted no puede actualizar la informacion de este control.');
+            }
+        }
+        else{
+            return respondNotFound('El paciente que busca no tiene el control solicitado');
         }
     }
 
@@ -88,8 +102,16 @@ class ApiControlController extends ApiController
      */
     public function destroy(Patient $patient, Control $control){
         if($patient->id == $control->patient_id){
-            $control->delete();
-            return $this->respondDeleted('Antecedente borrado correctamente');
+            if(Gate::allows('delete_control', $control)){
+                $control->delete();
+                return $this->respondDeleted('Antecedente borrado correctamente');
+            }
+            else{
+                return $this->respondForbidden('Usted no puede borrar la informacion de este control.');
+            }
+        }
+        else{
+            return respondNotFound('El paciente que busca no tiene el control solicitado');
         }
     }
 }

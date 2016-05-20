@@ -106,4 +106,8 @@ class ApiController extends Controller
     public function respondDeleted($message = 'Recurso editado'){
         return $this->setStatusCode(200)->respondWithSuccess($message);
     }
+
+    public function respondForbidden($message = 'No tiene acceso a este recurso'){
+        return $this->setStatusCode(403)->respondWithError($message);
+    }
 }

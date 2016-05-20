@@ -7,6 +7,8 @@ use App\Http\Requests\UserRequest;
 use App\Http\Requests;
 use App\User;
 use Api\Formatters\UserTransformer;
+use JWTAuth;
+use Gate;
 
 class ApiUserController extends ApiController{
 
@@ -17,7 +19,7 @@ class ApiUserController extends ApiController{
 
     public function __construct(UserTransformer $transformer){
         $this->userTransformer = $transformer;
-        $this->middleware('auth.basic');
+        // $this->middleware('auth.basic');
     }
 
     /**
@@ -50,6 +52,11 @@ class ApiUserController extends ApiController{
      */
     public function update(User $user, UserRequest $request){
         // to test this in POSTMAN the body should be x-www-form-urlencoded ;)
+        $currentUser = JWTAuth::parseToken()->authenticate();
+        if(Gate::denies('update_user', $user)){
+            return $this->respondForbidden('Usted no puede actualizar informacion de usuarios');
+        }
+
         $user->password = bcrypt($request->password);
         $user->update($request->except('password', 'password_confirmation'));
         return $this->respondEdited('Datos del usuario actualizados correctamente');
@@ -61,6 +68,11 @@ class ApiUserController extends ApiController{
      * @return json                  json object with status code
      */
     public function store(UserRequest $request){
+        $currentUser = JWTAuth::parseToken()->authenticate();
+        if(Gate::denies('create_user')){
+            return $this->respondForbidden('Usted no puede registrar usuarios');
+        }
+
         $user = new User($request->except('password', 'password_confirmation'));
         $user->password = bcrypt($request->password);
         $user->save();
@@ -73,7 +85,10 @@ class ApiUserController extends ApiController{
      * @return json     Json object with status code
      */
     public function destroy(User $user){
-        $user->delete();
-        return $this->respondDeleted('Usuario borrado correctamente.');
+        if(Gate::allows('delete_user', $user)){
+            $user->delete();
+            return $this->respondDeleted('Usuario borrado correctamente.');
+        }
+        return $this->respondForbidden('Usted no puede borrar informacion de usuarios');
     }
 }

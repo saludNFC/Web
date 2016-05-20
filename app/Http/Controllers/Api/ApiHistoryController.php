@@ -7,8 +7,9 @@ use App\Http\Requests\HistoryRequest;
 use App\Http\Requests;
 use App\Patient;
 use App\History;
-use App\User;
 use Api\Formatters\HistoryTransformer;
+use JWTAuth;
+use Gate;
 
 class ApiHistoryController extends ApiController
 {
@@ -22,7 +23,7 @@ class ApiHistoryController extends ApiController
      */
     public function __construct(HistoryTransformer $transformer){
         $this->historyTransformer = $transformer;
-        $this->middleware('auth.basic');
+        // $this->middleware('auth.basic');
     }
 
     /**
@@ -44,9 +45,15 @@ class ApiHistoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function store(Patient $patient, HistoryRequest $request){
+        $user = JWTAuth::parseToken()->authenticate();
+        if(Gate::denies('create_history')){
+			return $this->respondForbidden('Usted no tiene permisos para crear antecedentes.');
+		}
+
         $history = new History($request->all());
-        $history->user_id = 1; // HARDCODED
-        $patient->history()->save($history);
+        $history->patient_id = $patient->id;
+        $user->histories()->save($history);
+        // $patient->history()->save($history);
 
         return $this->respondCreated('Antecedente creado correctamente!');
     }
@@ -62,7 +69,7 @@ class ApiHistoryController extends ApiController
             return $this->historyTransformer->transform($history);
         }
         else{
-            return respondNotFound('El paciente que busca no tiene el antecedente solicitado');
+            return $this->respondNotFound('El paciente que busca no tiene el antecedente solicitado');
         }
     }
 
@@ -74,9 +81,18 @@ class ApiHistoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function update(Patient $patient, History $history, HistoryRequest $request){
+        $user = JWTAuth::parseToken()->authenticate();
         if($patient->id == $history->patient_id){
-            $history->update($request->all());
-            return $this->respondEdited('Antecedente actualizado correctamente');
+            if(Gate::allows('update_history', $history)){
+                $history->update($request->all());
+                return $this->respondEdited('Antecedente actualizado correctamente');
+            }
+            else{
+                return respondForbidden('Usted no tiene permisos para actualizar la informacion de este antecedente');
+            }
+        }
+        else{
+            return $this->respondNotFound('El paciente que busca no tiene el antecedente solicitado');
         }
     }
 
@@ -88,8 +104,16 @@ class ApiHistoryController extends ApiController
      */
     public function destroy(Patient $patient, History $history){
         if($patient->id == $history->patient_id){
-            $history->delete();
-            return $this->respondDeleted('Antecedente borrado correctamente');
+            if(Gate::allows('delete_history', $history)){
+                $history->delete();
+                return $this->respondDeleted('Antecedente borrado correctamente');
+            }
+            else{
+                return $this->respondForbidden('Usted no tiene permisos para borrar este antecedente');
+            }
+        }
+        else{
+            return $this->respondNotFound('El paciente que busca no tiene el antecedente solicitado');
         }
     }
 }
