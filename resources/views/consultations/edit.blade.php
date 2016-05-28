@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    {!! Form::model($consultation, ['method' => 'PATCH', 'route' => ['paciente.consultas.update', $patient->id, $consultation->id]]) !!}
+    {!! Form::model($consultation, ['method' => 'PATCH', 'route' => ['paciente.consultas.update', $patient->historia, $consultation->id]]) !!}
         @include('consultations.partials._form', ['submit_text' => 'Editar Consulta Medica'])
     {!! Form::close() !!}
 @stop

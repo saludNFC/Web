@@ -75,7 +75,7 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-                {!! link_to_route('paciente.show', 'Cancelar', [$patient->id], ['class' => 'btn btn-default']) !!}
+                {!! link_to_route('paciente.show', 'Cancelar', [$patient->historia], ['class' => 'btn btn-default']) !!}
                 {!! Form::submit($submit_text, ['class'=>'btn btn-primary']) !!}
             </div>
         </div>

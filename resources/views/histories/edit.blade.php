@@ -9,7 +9,7 @@
 
 @section('content')
 
-    {!! Form::model($history, ['method' => 'PATCH', 'route' => ['paciente.antecedentes.update', $patient->id, $history->id]]) !!}
+    {!! Form::model($history, ['method' => 'PATCH', 'route' => ['paciente.antecedentes.update', $patient->historia, $history->id]]) !!}
         @if($history->history_type === 'Familiar')
                 @include('histories.partials._familiar', ['submit_text' => 'Editar Antecedente Familiar'])
 

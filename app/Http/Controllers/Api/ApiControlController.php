@@ -45,16 +45,19 @@ class ApiControlController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function store(Patient $patient, ControlRequest $request){
-        $user = JWTAuth::parseToken()->authenticate();
-        if(Gate::denies('create_control')){
-			return $this->respondForbidden('Usted no tiene permisos para editar este antecedente.');
-		}
+        //$user = JWTAuth::parseToken()->authenticate();
+        // if(Gate::denies('create_control')){
+		// 	return $this->respondForbidden('Usted no tiene permisos para editar este control.');
+		// }
 
         $control = new Control($request->all());
         $control->patient_id = $patient->id;
-        $user->controls()->save($control);
+        $control->user_id = 1;
 
-        return $this->respondCreated('Antecedente creado correctamente!');
+        $control->save();
+        //$user->controls()->save($control);
+
+        return $this->respondCreated('Control creado correctamente!');
     }
 
     /**
@@ -83,7 +86,7 @@ class ApiControlController extends ApiController
         if($patient->id == $control->patient_id){
             if(Gate::allows('update_control', $control)){
                 $control->update($request->all());
-                return $this->respondEdited('Antecedente actualizado correctamente');
+                return $this->respondEdited('control actualizado correctamente');
             }
             else{
                 return $this->respondForbidden('Usted no puede actualizar la informacion de este control.');
@@ -104,7 +107,7 @@ class ApiControlController extends ApiController
         if($patient->id == $control->patient_id){
             if(Gate::allows('delete_control', $control)){
                 $control->delete();
-                return $this->respondDeleted('Antecedente borrado correctamente');
+                return $this->respondDeleted('Control borrado correctamente');
             }
             else{
                 return $this->respondForbidden('Usted no puede borrar la informacion de este control.');

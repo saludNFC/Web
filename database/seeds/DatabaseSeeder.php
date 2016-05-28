@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call('ACLSeeder');
-        $this->call('StaticTablesSeeder');
         $this->call('PeopleSeeder');
+        $this->call('StaticTablesSeeder');
     }
 }

@@ -18,9 +18,9 @@
     </div>
 
     @can('update_history', $history)
-        {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.antecedentes.destroy', $patient->id, $history->id ]]) !!}
+        {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.antecedentes.destroy', $patient->historia, $history->id ]]) !!}
             <div class="form-group btn-group" role="group">
-                {!! link_to_route('paciente.antecedentes.edit', 'Editar', [$patient->id, $history->id], ['class' => 'btn btn-primary']) !!}
+                {!! link_to_route('paciente.antecedentes.edit', 'Editar', [$patient->historia, $history->id], ['class' => 'btn btn-primary']) !!}
                 {!! Form::button('<i class="fa fa-trash-o fa-fw"></i>&nbsp;Borrar antecedente', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
             </div>
         {!! Form::close() !!}

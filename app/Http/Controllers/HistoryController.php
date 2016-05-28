@@ -30,7 +30,7 @@ class HistoryController extends Controller
 		if(Gate::denies('create_history')){
 			abort(403, 'Usted no esta autorizado para crear antecedentes del paciente');
 		}
-		
+
 		return view('histories.create', compact('patient'));
 	}
 
@@ -39,7 +39,7 @@ class HistoryController extends Controller
 		$historia['patient_id'] = $patient->id;
 
 		Auth::user()->histories()->save($historia);
-		return redirect()->route('paciente.show', $patient->id)->with('message', 'Antecedente creado correctamente');
+		return redirect()->route('paciente.show', $patient->historia)->with('message', 'Antecedente creado correctamente');
 	}
 
 
@@ -54,7 +54,7 @@ class HistoryController extends Controller
 	public function update(Patient $patient, History $history, HistoryRequest $request){
 		$history->update($request->all());
 		$history['patient_id'] = $patient->id;
-        return redirect()->route('paciente.show', $patient->id)->with('message', 'Antecedente actualizado');
+        return redirect()->route('paciente.show', $patient->historia)->with('message', 'Antecedente actualizado');
 	}
 
 	public function destroy(Patient $patient, History $history){

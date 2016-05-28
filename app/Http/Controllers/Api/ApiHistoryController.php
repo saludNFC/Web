@@ -45,14 +45,16 @@ class ApiHistoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function store(Patient $patient, HistoryRequest $request){
-        $user = JWTAuth::parseToken()->authenticate();
-        if(Gate::denies('create_history')){
-			return $this->respondForbidden('Usted no tiene permisos para crear antecedentes.');
-		}
+        // $user = JWTAuth::parseToken()->authenticate();
+        // if(Gate::denies('create_history')){
+		// 	return $this->respondForbidden('Usted no tiene permisos para crear antecedentes.');
+		// }
 
         $history = new History($request->all());
         $history->patient_id = $patient->id;
-        $user->histories()->save($history);
+        $history->user_id = 1;
+        $history->save();
+        // $user->histories()->save($history);
         // $patient->history()->save($history);
 
         return $this->respondCreated('Antecedente creado correctamente!');

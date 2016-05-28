@@ -15,9 +15,9 @@
     </div>
 
     @can('update_consultation', $consultation)
-        {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.consultas.destroy', $patient->id, $consultation->id ]]) !!}
+        {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.consultas.destroy', $patient->historia, $consultation->id ]]) !!}
             <div class="form-group btn-group" role="group">
-                {!! link_to_route('paciente.consultas.edit', 'Editar', [$patient->id, $consultation->id], ['class' => 'btn btn-primary']) !!}
+                {!! link_to_route('paciente.consultas.edit', 'Editar', [$patient->historia, $consultation->id], ['class' => 'btn btn-primary']) !!}
                 {!! Form::button('<i class="fa fa-trash-o fa-fw"></i>&nbsp;Borrar', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
             </div>
         {!! Form::close() !!}

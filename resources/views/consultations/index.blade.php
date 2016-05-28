@@ -2,7 +2,7 @@
     <div class="panel-heading">
         @can('create_consultation')
             <div class="col-md-offset-9">
-                {!! Html::decode(link_to_route('paciente.consultas.create', '<i class="fa fa-plus"></i> Crear consulta médica', [$patient->id], ['class' => 'btn btn-primary'])) !!}
+                {!! Html::decode(link_to_route('paciente.consultas.create', '<i class="fa fa-plus"></i> Crear consulta médica', [$patient->historia], ['class' => 'btn btn-primary'])) !!}
             </div>
         @endcan
     </div>
@@ -38,10 +38,10 @@
                         <td>{!! link_to_route('usuario.show', $consult->user->name, [$consult->user->id], []) !!}</td>
                         <td>
                             <div class="btn-group">
-                                {!! Html::decode(link_to_route('paciente.consultas.show', '<i class="fa fa-eye"></i>', [$patient->id, $consult->id], ['class' => 'btn btn-default', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Ver Detalles'])) !!}
+                                {!! Html::decode(link_to_route('paciente.consultas.show', '<i class="fa fa-eye"></i>', [$patient->historia, $consult->id], ['class' => 'btn btn-default', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Ver Detalles'])) !!}
 
                                 @can('update_consultation', $consult)
-                                    {!! Html::decode(link_to_route('paciente.consultas.edit', '<i class="fa fa-pencil"></i>', [$patient->id, $consult->id], ['class' => 'btn btn-primary', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Editar'])) !!}
+                                    {!! Html::decode(link_to_route('paciente.consultas.edit', '<i class="fa fa-pencil"></i>', [$patient->historia, $consult->id], ['class' => 'btn btn-primary', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Editar'])) !!}
                                 @endcan
                             </div>
                         </td>

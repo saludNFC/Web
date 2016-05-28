@@ -38,7 +38,7 @@ class ControlController extends Controller
 		$control['patient_id'] = $patient->id;
 
 		Auth::user()->controls()->save($control);
-		return redirect()->route('paciente.show', $patient->id)->with('message', 'Control creado');
+		return redirect()->route('paciente.show', $patient->historia)->with('message', 'Control creado');
 	}
 
 
@@ -54,7 +54,7 @@ class ControlController extends Controller
 		$control->update($request->all());
 		$control['patient_id'] = $patient->id;
 		// return $control;
-        return redirect()->route('paciente.show', $patient->id)->with('message', 'Control actualizado');
+        return redirect()->route('paciente.show', $patient->historia)->with('message', 'Control actualizado');
 	}
 
 	public function destroy(Patient $patient, Control $control){
@@ -63,6 +63,6 @@ class ControlController extends Controller
 		}
 
 		$control->delete();
-		return redirect()->route('paciente.index', $patient->id)->with('message', 'Control eliminado');
+		return redirect()->route('paciente.index', $patient->historia)->with('message', 'Control eliminado');
 	}
 }

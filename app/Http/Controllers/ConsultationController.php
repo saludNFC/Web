@@ -38,7 +38,7 @@ class ConsultationController extends Controller
 		$consultation['patient_id'] = $patient->id;
 		// return $consultation;
 		Auth::user()->consultations()->save($consultation);
-		return redirect()->route('paciente.show', [$patient->id])->with('message', 'Consulta medica creada');
+		return redirect()->route('paciente.show', [$patient->historia])->with('message', 'Consulta medica creada');
 	}
 
 
@@ -53,7 +53,7 @@ class ConsultationController extends Controller
 	public function update(Patient $patient, Consultation $consultation, ConsultationRequest $request){
 		$consultation->update($request->all());
 		$consultation['patient_id'] = $patient->id;
-        return redirect()->route('paciente.show', $patient->id)->with('message', 'Consulta medica actualizada');
+        return redirect()->route('paciente.show', $patient->historia)->with('message', 'Consulta medica actualizada');
 	}
 
 	public function destroy(Patient $patient, Consultation $consultation){
@@ -62,7 +62,7 @@ class ConsultationController extends Controller
 		}
 
 		$consultation->delete();
-		return redirect()->route('paciente.show', $patient->id)->with('message', 'Consulta medica eliminada');
+		return redirect()->route('paciente.show', $patient->historia)->with('message', 'Consulta medica eliminada');
 
 	}
 }

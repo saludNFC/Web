@@ -24,9 +24,9 @@
     </div>
 
     @can('update_control', $control)
-        {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.controles.destroy', $patient->id, $control->id ]]) !!}
+        {!! Form::open(['method' => 'DELETE', 'route' => ['paciente.controles.destroy', $patient->historia, $control->id ]]) !!}
             <div class="form-group btn-group" role="group">
-                {!! link_to_route('paciente.controles.edit', 'Editar', [$patient->id, $control->id], ['class' => 'btn btn-primary']) !!}
+                {!! link_to_route('paciente.controles.edit', 'Editar', [$patient->historia, $control->id], ['class' => 'btn btn-primary']) !!}
                 {!! Form::button('<i class="fa fa-trash-o fa-fw"></i>&nbsp;Delete', ['class' => 'btn btn-danger', 'type' => 'submit']) !!}
             </div>
         {!! Form::close() !!}

@@ -68,14 +68,17 @@ class ApiPatientController extends ApiController{
      * @return json                  json object with status code
      */
     public function store(PatientRequest $request){
-        $user = JWTAuth::parseToken()->authenticate();
-        if(Gate::denies('create_patient')){
-            return respondForbidden('Usted no tiene permisos para registrar pacientes');
-        }
+        //$user = JWTAuth::parseToken()->authenticate();
+
+        // if(Gate::denies('create_patient')){
+        //     return $this->respondForbidden('Usted no tiene permisos para registrar pacientes');
+        // }
 
         $patient = new Patient($request->all());
         $patient->historia = $patient->codHistoria($patient);
-        $user->patients()->save($patient);
+        $patient->user_id = 1;
+        $patient->save();
+        //$user->patients()->save($patient);
 
         return $this->respondCreated('Datos del paciente guardados correctamente');
     }

@@ -44,9 +44,9 @@
                         <td>{{ $patient->grupo_sanguineo }}</td>
                         <td>
                             <div class="btn-group">
-                                {!! Html::decode( link_to_route('paciente.show', '<i class="fa fa-eye"></i>', [$patient->id], ['class' => 'btn btn-default', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Ver Detalles'] )) !!}
+                                {!! Html::decode( link_to_route('paciente.show', '<i class="fa fa-eye"></i>', [$patient->historia], ['class' => 'btn btn-default', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Ver Detalles'] )) !!}
                                 @can('update_patient', $patient)
-                                    {!!  Html::decode( link_to_route('paciente.edit', '<i class="fa fa-pencil"></i>', [$patient->id], ['class' => 'btn btn-primary', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Editar'] )) !!}
+                                    {!!  Html::decode( link_to_route('paciente.edit', '<i class="fa fa-pencil"></i>', [$patient->historia], ['class' => 'btn btn-primary', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Editar'] )) !!}
                                 @endcan
                             </div>
                         </td>

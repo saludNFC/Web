@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    {!! Form::model($patient, ['method' => 'PATCH', 'route' => ['paciente.update', $patient->id]]) !!}
+    {!! Form::model($patient, ['method' => 'PATCH', 'route' => ['paciente.update', $patient->historia]]) !!}
         @include('patients.partials._form', ['submit_text' => 'Editar Paciente'])
     {!! Form::close() !!}
 @stop
