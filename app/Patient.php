@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Jenssegers\Date\Date;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -31,7 +32,13 @@ class Patient extends Model
 
     public function setFechaNacAttribute($date){
         Carbon::setLocale('es');
-        $this->attributes['fecha_nac'] = Carbon::createFromFormat('d-m-Y', $date);
+        $this->attributes['fecha_nac'] = Carbon::createFromFormat('d-m-Y' ,$date);
+    }
+
+    public function getFechaNacAttribute($date){
+        setlocale(LC_TIME, 'es_BO.utf8');
+        Carbon::setLocale('es');
+        return Carbon::parse($date)->formatLocalized('%d %B %Y');
     }
 
 
@@ -54,6 +61,7 @@ class Patient extends Model
 
     // HELPERS
     public function codHistoria(Patient $patient){
+        Date::setLocale('es');
         if(str_contains($patient->apellido, ' ')){
             $words = explode(" ", $patient->apellido);
             $output = substr($words[0], 0, 1) . substr($words[1], 0, 1);
@@ -64,23 +72,30 @@ class Patient extends Model
         }
 
         $hc_cod .=  strtoupper(substr($patient->nombre, 0, 1)) . '-';
-        if($patient->fecha_nac->day < 10){
+
+        $date = Date::createFromFormat('d M Y', $patient->fecha_nac);
+
+        if($date->day < 10){
             $hc_cod .= '0';
         }
 
-        $hc_cod .= $patient->fecha_nac->day;
-        if($patient->fecha_nac->month < 10){
+        $hc_cod .= $date->day;
+        if($date->month < 10){
             $hc_cod .= '0';
         }
-        $hc_cod .= $patient->fecha_nac->month . $patient->fecha_nac->year;
+        $hc_cod .= $date->month . $date->year;
         return $hc_cod;
     }
 
     public function isWomanOldEnough(){
-        return $this->sexo == 'Femenino' && $this->fecha_nac->age >= 15;
+        Date::setLocale('es');
+        $date = Date::createFromFormat('d M Y', $this->fecha_nac);
+        return $this->sexo == 'Femenino' && $date->age >= 15;
     }
 
     public function isElder(){
-        return $this->fecha_nac->age >= 55;
+        Date::setLocale('es');
+        $date = Date::createFromFormat('d M Y', $this->fecha_nac);
+        return $date->age >= 55;
     }
 }

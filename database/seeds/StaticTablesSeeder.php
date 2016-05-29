@@ -27,8 +27,8 @@ class StaticTablesSeeder extends Seeder
         );
 
         $medicine = array(
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Medicamentos', 'med' => 'Etaconil', 'date_ini' => '11-11-2015'),
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Medicamentos', 'med' => 'Sentis', 'date_ini' => '10-10-2015'),
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Medicamentos', 'med' => 'Etaconil', 'via' => 'Oral', 'date_ini' => '05-05-2016'),
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Medicamentos', 'med' => 'Sentis', 'via' => 'Sublingual', 'date_ini' => '05-10-2016'),
         );
         DB::table('histories')->insert($personal);
         DB::table('histories')->insert($familiar);
@@ -38,9 +38,9 @@ class StaticTablesSeeder extends Seeder
         $vacunacion = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Vacunacion', 'vaccine' => 'Pentavalente', 'via' => 'Oral', 'dosis' => 2);
         $crecimiento = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Crecimiento', 'weight' => 66, 'height' => 150);
         $triaje = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Triaje', 'temperature' => '36,5', 'heart_rate' => 180, 'sistole' => 111, 'diastole' => 122);
-        $gine1 = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Ginecologico', 'last_menst' => '12-10-1911', 'last_mamo' => '12-12-1912', 'sex_act' => false);
-        $gine2 = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Ginecologico', 'last_menst' => '11-11-1911');
-        $gine3 = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Ginecologico', 'last_menst' => '13-09-1911', 'sex_act' => true, 'last_papa' => '12-12-1912');
+        $gine1 = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Ginecologico', 'last_menst' => '12-10-2000', 'last_mamo' => '12-12-2012', 'sex_act' => false);
+        $gine2 = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Ginecologico', 'last_menst' => '11-11-2001');
+        $gine3 = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Ginecologico', 'last_menst' => '13-09-2010', 'sex_act' => true, 'last_papa' => '12-12-2013');
         $geri = array('user_id' => 1, 'patient_id' => 1, 'control_type' => 'Geriatrico', 'geriatric_type' => 'Valoracion Funcional', 'notes' => 'Normal');
         DB::table('controls')->insert($vacunacion);
         DB::table('controls')->insert($crecimiento);

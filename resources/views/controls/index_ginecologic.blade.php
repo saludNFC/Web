@@ -28,15 +28,15 @@
                     <tr>
                         <td>{{ $control->id }}</td>
                         <td>{{ $control->control_type }}</td>
-                        <td>{{ $control->last_menst->format('d-m-Y') }}</td>
+                        <td>{{ $control->last_menst }}</td>
                         <td>
                             @if($control->last_mamo != null)
-                                {{ $control->last_mamo->format('d-m-Y') }}
+                                {{ $control->last_mamo }}
                             @endif
                         </td>
                         <td>
                             @if($control->last_papa != null)
-                                {{ $control->last_papa->format('d-m-Y') }}
+                                {{ $control->last_papa }}
                             @endif
                         </td>
                         <td>{!! link_to_route('usuario.show', $control->user->name, [$control->user->id], []) !!}</td>

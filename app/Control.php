@@ -35,6 +35,24 @@ class Control extends Model
         $this->attributes['last_papa'] = Carbon::createFromFormat('d-m-Y', $date);
     }
 
+    // ACCESSORS
+    public function getLastMenstAttribute($date){
+        setlocale(LC_TIME, 'es_BO.utf8');
+        Carbon::setLocale('es');
+        return Carbon::parse($date)->formatLocalized('%d %B %Y');
+    }
+
+    public function getLastMamoAttribute($date){
+        setlocale(LC_TIME, 'es_BO.utf8');
+        Carbon::setLocale('es');
+        return Carbon::parse($date)->formatLocalized('%d %B %Y');
+    }
+
+    public function getLastPapaAttribute($date){
+        setlocale(LC_TIME, 'es_BO.utf8');
+        Carbon::setLocale('es');
+        return Carbon::parse($date)->formatLocalized('%d %B %Y');
+    }
     // Relationships
     public function patient(){
         return $this->belongsTo('App\Patient');

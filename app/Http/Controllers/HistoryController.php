@@ -23,7 +23,8 @@ class HistoryController extends Controller
 	}
 
 	public function show(Patient $patient, History $history){
-		return view('histories.show', compact('patient', 'history'));
+		dd($history);
+		// return view('histories.show', compact('patient', 'history'));
 	}
 
 	public function create(Patient $patient){

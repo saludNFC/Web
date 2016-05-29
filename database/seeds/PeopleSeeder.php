@@ -25,7 +25,7 @@ class PeopleSeeder extends Seeder
                 'grupo_sanguineo' => $faker->randomElement(['A RH +','A RH -', 'B RH +', 'B RH -', 'O RH +', 'O RH -', 'AB RH +', 'AB RH -']),
                 'user_id' => $faker->randomElement([1,2,3,4]),
             ]);
-            $gender == 'male' ? $patient->sexo = 'Masculino' : $patient->sexo = 'Femenino'; 
+            $gender == 'male' ? $patient->sexo = 'Masculino' : $patient->sexo = 'Femenino';
             $patient->historia = $patient->codHistoria($patient);
             $patient->save();
         }

@@ -68,7 +68,9 @@ class ApiControlController extends ApiController
      */
     public function show(Patient $patient, Control $control){
         if($patient->id == $control->patient_id){
-            return $this->controlTransformer->transform($control);
+            return $this->respond([
+                'data' => $this->controlTransformer->transform($control)
+            ]);
         }
         else{
             return respondNotFound('El paciente que busca no tiene el control solicitado');

@@ -68,7 +68,9 @@ class ApiHistoryController extends ApiController
      */
     public function show(Patient $patient, History $history){
         if($patient->id == $history->patient_id){
-            return $this->historyTransformer->transform($history);
+            return $this->respond([
+                'data' => $this->historyTransformer->transform($history)
+            ]);
         }
         else{
             return $this->respondNotFound('El paciente que busca no tiene el antecedente solicitado');

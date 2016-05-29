@@ -20,7 +20,9 @@ class History extends Model
     }
 
     public function getDateIniAttribute($date){
-        return new Carbon($date);
+        setlocale(LC_TIME, 'es_BO.utf8');
+        Carbon::setLocale('es');
+        return Carbon::parse($date)->formatLocalized('%d %B %Y');
     }
 
     // Mass assignment

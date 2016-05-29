@@ -29,7 +29,7 @@ class PatientRequest extends Request
             'emision' => 'required',
             'nombre' => 'required|min:2',
             'apellido' => 'required|min:2',
-            'fecha_nac' => 'required|date',
+            'fecha_nac' => 'required',
             'lugar_nac' => 'required',
             'grupo_sanguineo' => 'required'
         ];

@@ -35,7 +35,7 @@
                         <td>{{ $patient->nombre }}</td>
                         <td>{{ $patient->sexo }}</td>
                         @if($patient->fecha_nac)
-                            <td>{{$patient->fecha_nac->format('d-m-Y')}}</td>
+                            <td>{{$patient->fecha_nac}}</td>
                         @else
                             <td>-</td>
                         @endif

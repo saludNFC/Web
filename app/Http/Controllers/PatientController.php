@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PatientRequest;
 use App\Http\Requests;
 use App\Patient;
+use Carbon;
 use Auth;
 use Gate;
 use App\User;
@@ -24,7 +25,7 @@ class PatientController extends Controller
     }
 
     public function show(Patient $patient){
-        // dd($patient);
+        // dd($patient->fecha_nac);
         return view('patients.show', compact('patient'));
     }
 

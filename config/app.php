@@ -164,7 +164,9 @@ return [
         /**
          * JWT
         */
-       Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+
+        Jenssegers\Date\DateServiceProvider::class
     ],
 
     /*
@@ -215,7 +217,9 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
 
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class
+        'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class,
+
+        'Date'      => Jenssegers\Date\Date::class
     ],
 
 ];
