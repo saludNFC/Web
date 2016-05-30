@@ -14,7 +14,8 @@ class Patient extends Model
 
     // Columns available to be edited by users
     protected $fillable = [
-        'historia', 'ci', 'nombre', 'apellido', 'sexo', 'fecha_nac', 'lugar_nac', 'grupo_sanguineo'
+        'ci', 'emision', 'nombre', 'apellido', 'sexo', 'fecha_nac', 'lugar_nac', 'grado_instruccion',
+        'estado_civil', 'ocupacion', 'grupo_sanguineo',
     ];
 
     // Casting dates to Carbon instances

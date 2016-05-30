@@ -29,15 +29,15 @@
                         </div>
                         <div class="col-sm-3">
                             {!! Form::select('emision',
-                                ['BN' => 'Beni',
-                                'CH' => 'Chuquisaca',
-                                'CB' => 'Cochabamba',
-                                'LP' => 'La Paz',
-                                'OR' => 'Oruro',
-                                'PA' => 'Pando',
-                                'PT' => 'Potosi',
-                                'SC' => 'Santa Cruz',
-                                'TJ' => 'Tarija'], null, ['class' => 'form-control']) !!}
+                                ['BN' => 'BN',
+                                'CH' => 'CH',
+                                'CB' => 'CB',
+                                'LP' => 'LP',
+                                'OR' => 'OR',
+                                'PA' => 'PA',
+                                'PT' => 'PT',
+                                'SC' => 'SC',
+                                'TJ' => 'TJ'], null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>

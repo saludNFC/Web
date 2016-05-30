@@ -22,7 +22,7 @@ class PeopleSeeder extends Seeder
                 'nombre' => $faker->firstName($gender),
                 'apellido' => $faker->lastName . ' ' . $faker->lastName,
                 'fecha_nac' => $faker->date($format = 'd-m-Y', $max = 'now'),
-                'grupo_sanguineo' => $faker->randomElement(['A RH +','A RH -', 'B RH +', 'B RH -', 'O RH +', 'O RH -', 'AB RH +', 'AB RH -']),
+                'grupo_sanguineo' => $faker->randomElement(['A RH+','A RH-', 'B RH+', 'B RH-', 'O RH+', 'O RH-', 'AB RH+', 'AB RH-']),
                 'user_id' => $faker->randomElement([1,2,3,4]),
             ]);
             $gender == 'male' ? $patient->sexo = 'Masculino' : $patient->sexo = 'Femenino';
