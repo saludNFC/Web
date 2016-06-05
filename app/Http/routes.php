@@ -49,13 +49,13 @@ Route::get('/', 'HomeController@index');
 
 // API Routes
 Route::group(['prefix' => 'api'], function(){
-    // Route::post('auth', 'Api\ApiAuthController@authenticate');
-    // Route::group(['middleware' => 'jwt.auth'], function(){
+    Route::post('auth', 'Api\ApiAuthController@authenticate');
+    Route::group(['middleware' => 'jwt.auth'], function(){
         Route::get('users', 'Api\ApiAuthController@index');
         Route::resource('usuario', 'Api\ApiUserController', ['except' => ['create', 'edit']]);
         Route::resource('paciente', 'Api\ApiPatientController', ['except' => ['create', 'edit']]);
         Route::resource('paciente.antecedentes', 'Api\ApiHistoryController', ['except' => ['create', 'edit']]);
         Route::resource('paciente.controles', 'Api\ApiControlController', ['except' => ['create', 'edit']]);
         Route::resource('paciente.consultas', 'Api\ApiConsultationController', ['except' => ['create', 'edit']]);
-    // });
+    });
 });

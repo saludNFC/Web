@@ -137,7 +137,7 @@ class AllTables extends Migration
 
             // medicine
             $table->text('med')->nullable();
-            $table->enum('via', ['Oral', 'Sublingual', 'Parenteral', 'Rectal', 'Topica', 'Percutánea'])->nullable();
+            $table->enum('via', ['Oral', 'Sublingual', 'Parenteral', 'Rectal', 'Topica', 'Percutanea'])->nullable();
             $table->date('date_ini')->nullable();
 
             $table->timestamps();

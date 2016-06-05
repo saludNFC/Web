@@ -45,13 +45,16 @@ class ApiConsultationController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function store(Patient $patient, ConsultationRequest $request){
-        // $user = JWTAuth::parseToken()->authenticate();
-        // if(Gate::denies('create_consultation')){
-        //     return $this->respondForbidden('Usted no tiene permisos para crear consultas medicas');
-        // }
+        $user = JWTAuth::parseToken()->authenticate();
+        if(Gate::denies('create_consultation')){
+            return $this->respondForbidden('Usted no tiene permisos para crear consultas medicas');
+        }
         $consultation = new Consultation($request->all());
-        $consultation->patient_id = $patient_id;
+        $consultation->patient_id = $patient->id;
+        // $consultation->user_id = 1;
+        // $consultation->save();
         $user->consultations()->save($consultation);
+
         return $this->respondCreated('Consulta médica creada correctamente!');
     }
 

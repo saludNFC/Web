@@ -3,6 +3,7 @@
 // SGGM usa un solo seeder :O
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class StaticTablesSeeder extends Seeder
 {
@@ -13,23 +14,45 @@ class StaticTablesSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create('es_ES');
+
         DB::table('histories')->delete();
         $personal = array(
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia a la penicilina'),
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Personal', 'type_personal' => 'Enfermedad', 'description' => 'Hepatitis'),
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Personal', 'type_personal' => 'Cirugia', 'description' => 'Extraccion del apendice'),
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia severa a otras niñas llamadas Valentina'),
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia a betacaroteno'),
+            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Hipersensibilidad a mani, nueces y frutos secos'),
+            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia a la penicilina '),
+            array('user_id' => 1, 'patient_id' => 3, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia a betacaroteno'),
+            array('user_id' => 1, 'patient_id' => 4, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Hipersensibilidad a mani, nueces y frutos secos'),
+            array('user_id' => 1, 'patient_id' => 5, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia respiratoria al polen'),
         );
 
         $familiar = array(
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Familiar', 'grade' => 'Abuelo', 'illness' => 'Problemas cardíacos'),
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Familiar', 'grade' => 'Abuelo materno', 'illness' => 'Problemas cardíacos'),
             array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Familiar', 'grade' => 'Padre', 'illness' => 'Presion arterial'),
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Familiar', 'grade' => 'Madre', 'illness' => 'Diabetes'),
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Familiar', 'grade' => 'Abuela materna', 'illness' => 'Diabetes'),
+            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Familiar', 'grade' => 'Abuelo materno', 'illness' => 'Problemas cardíacos'),
+            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Familiar', 'grade' => 'Padre', 'illness' => 'Presion arterial'),
+            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Familiar', 'grade' => 'Abuela materna', 'illness' => 'Diabetes'),
+            array('user_id' => 1, 'patient_id' => 3, 'history_type' => 'Familiar', 'grade' => 'Abuelo paterno', 'illness' => 'Problemas cardiacos'),
+            array('user_id' => 1, 'patient_id' => 3, 'history_type' => 'Familiar', 'grade' => 'Abuelo paterno', 'illness' => 'Problemas cardiacos'),
         );
 
         $medicine = array(
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Medicamentos', 'med' => 'Etaconil', 'via' => 'Oral', 'date_ini' => '05-05-2016'),
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Medicamentos', 'med' => 'Sentis', 'via' => 'Sublingual', 'date_ini' => '05-10-2016'),
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Medicamentos', 'med' => 'Sales rehidratantes', 'via' => 'Oral', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Medicamentos', 'med' => 'Jarabe antitusivo', 'via' => 'Sublingual', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Medicamentos', 'med' => 'Paracetamol', 'via' => 'Parenteral', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 4, 'history_type' => 'Medicamentos', 'med' => 'Ibuprofeno', 'via' => 'Oral', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Medicamentos', 'med' => 'Paracetamol', 'via' => 'Oral', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Medicamentos', 'med' => 'Paracetamol', 'via' => 'Rectal', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Medicamentos', 'med' => 'Jarabe antitusivo', 'via' => 'Rectal', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 3, 'history_type' => 'Medicamentos', 'med' => 'Etaconil', 'via' => 'Topica', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 3, 'history_type' => 'Medicamentos', 'med' => 'Etaconil', 'via' => 'Topica', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 3, 'history_type' => 'Medicamentos', 'med' => 'Metformina', 'via' => 'Topica', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 4, 'history_type' => 'Medicamentos', 'med' => 'Sentis', 'via' => 'Oral', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => 1, 'patient_id' => 4, 'history_type' => 'Medicamentos', 'med' => 'Sentis', 'via' => 'Oral', 'date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'))
         );
+
         DB::table('histories')->insert($personal);
         DB::table('histories')->insert($familiar);
         DB::table('histories')->insert($medicine);

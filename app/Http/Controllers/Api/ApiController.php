@@ -110,4 +110,8 @@ class ApiController extends Controller
     public function respondForbidden($message = 'No tiene acceso a este recurso'){
         return $this->setStatusCode(403)->respondWithError($message);
     }
+
+    public function respondUnauthorized($message = 'Credenciales invalidas'){
+        return $this->setStatusCode(401)->respondWithError($message);
+    }
 }

@@ -9,7 +9,7 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
 
-class ApiAuthController extends Controller
+class ApiAuthController extends ApiController
 {
     public function index() {
         return User::all();
@@ -21,7 +21,7 @@ class ApiAuthController extends Controller
         try {
             // attempt to verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid credentials'], 401);
+                return $this->respondUnauthorized('Credenciales invalidas');
             }
         } catch (JWTException $e) {
             // something went wrong whilst attempting to encode the token
@@ -29,7 +29,12 @@ class ApiAuthController extends Controller
         }
 
         // all good so return the token
-        return response()->json(compact('token'));
+        return $this->respond([
+            'data' => [
+                'token' => $token
+            ]
+        ]);
+        // response()->json(compact('token'));
     }
 
     public function getAuthenticatedUser() {

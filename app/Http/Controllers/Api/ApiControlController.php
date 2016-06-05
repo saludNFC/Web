@@ -45,17 +45,17 @@ class ApiControlController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function store(Patient $patient, ControlRequest $request){
-        //$user = JWTAuth::parseToken()->authenticate();
-        // if(Gate::denies('create_control')){
-		// 	return $this->respondForbidden('Usted no tiene permisos para editar este control.');
-		// }
+        $user = JWTAuth::parseToken()->authenticate();
+        if(Gate::denies('create_control')){
+			return $this->respondForbidden('Usted no tiene permisos para editar este control.');
+		}
 
         $control = new Control($request->all());
         $control->patient_id = $patient->id;
-        $control->user_id = 1;
-
-        $control->save();
-        //$user->controls()->save($control);
+        // $control->user_id = 1;
+        //
+        // $control->save();
+        $user->controls()->save($control);
 
         return $this->respondCreated('Control creado correctamente!');
     }

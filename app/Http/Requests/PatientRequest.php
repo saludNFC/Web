@@ -11,8 +11,7 @@ class PatientRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize(){
         // Does the authenticated user have permissions to perform this request?
         return true;
     }
@@ -22,8 +21,7 @@ class PatientRequest extends Request
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules(){
         return [
             'ci' => ['required', 'size:7', 'unique:patients,ci', 'regex:/^[0-9]*$/'],
             'emision' => 'required',
