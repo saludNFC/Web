@@ -9,6 +9,7 @@ use App\Patient;
 use App\History;
 use Api\Formatters\HistoryTransformer;
 use JWTAuth;
+use Auth;
 use Gate;
 
 class ApiHistoryController extends ApiController
@@ -23,7 +24,7 @@ class ApiHistoryController extends ApiController
      */
     public function __construct(HistoryTransformer $transformer){
         $this->historyTransformer = $transformer;
-        // $this->middleware('auth.basic');
+        $this->middleware('jwt.auth', ['except' => 'index']);
     }
 
     /**
@@ -32,7 +33,17 @@ class ApiHistoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function index(Patient $patient){
-        $histories = $patient->history()->get();
+        // $token = JWTAuth::getToken();
+        // dd($token);
+
+        if(! JWTAuth::getToken()){
+            // dd("guest");
+            $histories = $patient->history()->where('flag', true)->get();
+        }
+        else{
+            // dd("user");
+            $histories = $patient->history()->get();
+        }
         return $this->respond([
             'data' => $this->historyTransformer->transformCollection($histories->all())
         ]);
@@ -67,7 +78,7 @@ class ApiHistoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function show(Patient $patient, History $history){
-        if($patient->id == $history->patient_id){
+        if ($patient->id == $history->patient_id){
             return $this->respond([
                 'data' => $this->historyTransformer->transform($history)
             ]);

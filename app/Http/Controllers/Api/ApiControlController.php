@@ -23,7 +23,7 @@ class ApiControlController extends ApiController
      */
     public function __construct(ControlTransformer $transformer){
         $this->controlTransformer = $transformer;
-        // $this->middleware('auth.basic');
+        $this->middleware('jwt.auth');
     }
 
     /**

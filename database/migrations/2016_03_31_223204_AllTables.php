@@ -140,6 +140,7 @@ class AllTables extends Migration
             $table->enum('via', ['Oral', 'Sublingual', 'Parenteral', 'Rectal', 'Topica', 'Percutanea'])->nullable();
             $table->date('date_ini')->nullable();
 
+            $table->boolean('flag')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -217,6 +218,8 @@ class AllTables extends Migration
             $table->longtext('diagnosis');
             $table->longtext('treatment');
             $table->longtext('justification');
+
+            $table->boolean('flag')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

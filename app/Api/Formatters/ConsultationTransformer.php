@@ -13,7 +13,8 @@ class ConsultationTransformer extends Transformer{
             'examen_físico' => $consultation['physical_exam'],
             'diagnostico' => $consultation['diagnosis'],
             'tratamiento' => $consultation['treatment'],
-            'justificacion' => $consultation['justification']
+            'justificacion' => $consultation['justification'],
+            'bandera' => $consultation['flag']
         ];
     }
 }

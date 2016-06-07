@@ -9,6 +9,7 @@ use App\Patient;
 use App\Consultation;
 use Api\Formatters\ConsultationTransformer;
 use JWTAuth;
+use DB;
 use Gate;
 
 class ApiConsultationController extends ApiController
@@ -23,7 +24,7 @@ class ApiConsultationController extends ApiController
      */
     public function __construct(ConsultationTransformer $transformer){
         $this->consultationTransformer = $transformer;
-        // $this->middleware('auth.basic');
+        $this->middleware('jwt.auth', ['except' => 'index']);
     }
 
     /**
@@ -32,7 +33,14 @@ class ApiConsultationController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function index(Patient $patient){
-        $consultations = $patient->consultation()->get();
+        if(! JWTAuth::getToken()){
+            // dd("guest");
+            $consultations = $patient->consultation()->where('flag', true)->get();
+            // $consultations = $patient->consultation()->where('flag', true)->get();
+        }
+        else{
+            $consultations = $patient->consultation()->get();
+        }
         return $this->respond([
             'data' => $this->consultationTransformer->transformCollection($consultations->all())
         ]);

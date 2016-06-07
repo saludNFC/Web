@@ -68,6 +68,14 @@ class Handler extends ExceptionHandler
 
         }
 
+        if($e instanceof Tymon\JWTAuth\Exceptions\JWTException){
+            return response()->json([
+                'error' => [
+                    'message' => 'token not parsed.'
+                ]
+            ], 404);
+        }
+
         return parent::render($request, $e);
     }
 }

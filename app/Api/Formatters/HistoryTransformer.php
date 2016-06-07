@@ -9,7 +9,8 @@ class HistoryTransformer extends Transformer{
             'identificador_usuario' => (int) $history['user_id'],
             'identificador_paciente' => (int) $history['patient_id'],
             'identificador_antecedente' => (int) $history['id'],
-            'tipo_antecedente' => $history['history_type']
+            'tipo_antecedente' => $history['history_type'],
+            'bandera' => $history['flag']
         ];
         if($history->history_type == 'Personal'){
             return array_merge($array_a, array(

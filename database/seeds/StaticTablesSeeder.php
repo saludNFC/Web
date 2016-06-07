@@ -18,13 +18,16 @@ class StaticTablesSeeder extends Seeder
 
         DB::table('histories')->delete();
         $personal = array(
-            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia severa a otras niñas llamadas Valentina'),
             array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia a betacaroteno'),
             array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Hipersensibilidad a mani, nueces y frutos secos'),
-            array('user_id' => 1, 'patient_id' => 2, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia a la penicilina '),
             array('user_id' => 1, 'patient_id' => 3, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia a betacaroteno'),
             array('user_id' => 1, 'patient_id' => 4, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Hipersensibilidad a mani, nueces y frutos secos'),
             array('user_id' => 1, 'patient_id' => 5, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia respiratoria al polen'),
+        );
+
+        $flagged = array(
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia severa a otras niñas llamadas Valentina', 'flag' => true),
+            array('user_id' => 1, 'patient_id' => 1, 'history_type' => 'Personal', 'type_personal' => 'Alergia', 'description' => 'Alergia a la penicilina ', 'flag' => true),
         );
 
         $familiar = array(
@@ -54,6 +57,7 @@ class StaticTablesSeeder extends Seeder
         );
 
         DB::table('histories')->insert($personal);
+        DB::table('histories')->insert($flagged);
         DB::table('histories')->insert($familiar);
         DB::table('histories')->insert($medicine);
 
@@ -78,15 +82,6 @@ class StaticTablesSeeder extends Seeder
             array(
                 'user_id' => 1,
                 'patient_id' => 1,
-                'anamnesis' => 'Cillum Lorem aute incididunt mollit ex consectetur magna. Ullamco occaecat ut anim proident incididunt cupidatat ullamco Lorem aute velit non ullamco veniam ex. Adipisicing nisi occaecat voluptate deserunt et eiusmod Lorem cupidatat minim. Ullamco proident laboris qui fugiat esse aliqua eu eu est minim consectetur excepteur aliquip pariatur. Mollit commodo quis aliquip commodo ea cupidatat ipsum duis id ipsum labore nulla laboris sit. Lorem in ad laboris sit pariatur ut irure ullamco laboris enim culpa',
-                'physical_exam' => 'Enim et occaecat duis ut adipisicing do proident.',
-                'diagnosis' => 'Reckless',
-                'treatment' => 'Whatever',
-                'justification' => 'Consectetur adipisicing sunt fugiat pariatur elit ipsum ex magna nisi'),
-
-            array(
-                'user_id' => 1,
-                'patient_id' => 1,
                 'anamnesis' => 'Cillum Lorem aute. Adipisicing nisi occaecat voluptate deserunt et eiusmod Lorem cupidatat minim. Ullamco proident laboris qui fugiat esse aliqua eu eu est minim consectetur excepteur aliquip pariatur. Mollit commodo quis aliquip commodo ea cupidatat ipsum duis id ipsum labore nulla laboris sit. Lorem in ad laboris sit pariatur ut irure ullamco laboris enim culpa',
                 'physical_exam' => 'Ad labore mollit non laborum consequat ut ex pariatur quis adipisicing incididunt reprehenderit id veniam nostrud nisi.',
                 'diagnosis' => 'Water under the bridge',
@@ -102,6 +97,18 @@ class StaticTablesSeeder extends Seeder
                 'treatment' => 'Boring',
                 'justification' => 'Leave me alone'),
         );
+
+        $flagged = array(
+            'user_id' => 1,
+            'patient_id' => 1,
+            'anamnesis' => 'Cillum Lorem aute incididunt mollit ex consectetur magna. Ullamco occaecat ut anim proident incididunt cupidatat ullamco Lorem aute velit non ullamco veniam ex. Adipisicing nisi occaecat voluptate deserunt et eiusmod Lorem cupidatat minim. Ullamco proident laboris qui fugiat esse aliqua eu eu est minim consectetur excepteur aliquip pariatur. Mollit commodo quis aliquip commodo ea cupidatat ipsum duis id ipsum labore nulla laboris sit. Lorem in ad laboris sit pariatur ut irure ullamco laboris enim culpa',
+            'physical_exam' => 'Enim et occaecat duis ut adipisicing do proident.',
+            'diagnosis' => 'Reckless',
+            'treatment' => 'Whatever',
+            'justification' => 'Consectetur adipisicing sunt fugiat pariatur elit ipsum ex magna nisi',
+            'flag' => true);
+
         DB::table('consultations')->insert($consultations);
+        DB::table('consultations')->insert($flagged);
     }
 }

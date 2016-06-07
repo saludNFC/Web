@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Patient;
 use Api\Formatters\PatientTransformer;
 use JWTAuth;
+use Auth;
 use Gate;
 
 class ApiPatientController extends ApiController{
@@ -16,12 +17,11 @@ class ApiPatientController extends ApiController{
      * @var Api\Formatters\PatientTransformer
     */
     protected $patientTransformer;
-
     protected $apiAuthController;
 
     public function __construct(PatientTransformer $transformer){
         $this->patientTransformer = $transformer;
-        // $this->middleware('auth.basic');
+        $this->middleware('jwt.auth', ['except' => 'show']);
     }
 
     /**
