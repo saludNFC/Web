@@ -19,7 +19,7 @@ class Patient extends Model
     ];
 
     // Casting dates to Carbon instances
-    protected $dates = ['fecha_nac', 'deleted_at'];
+    protected $dates = ['fecha_nac', 'created_at', 'updated_at', 'deleted_at'];
 
     // MUTATORS
     // To change fecha_nac attribute format to day_month_year before storing to database
@@ -58,6 +58,10 @@ class Patient extends Model
 
     public function consultation(){
         return $this->hasMany('App\Consultation');
+    }
+
+    public function contact(){
+        return $this->hasMany('App\Contact');
     }
 
     // HELPERS

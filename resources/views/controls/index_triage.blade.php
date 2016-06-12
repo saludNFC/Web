@@ -14,7 +14,7 @@
             <table class="table table-stripped table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Fecha</th>
                         <th>Tipo de control</th>
                         <th>Temperatura</th>
                         <th>Frecuencia cardíaca</th>
@@ -24,9 +24,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($patient->control->where('control_type', 'Triaje') as $control)
+                    @foreach($patient->control()->where('control_type', 'Triaje')->orderBy('created_at', 'desc')->get() as $control)
                     <tr>
-                        <td>{{ $control->id }}</td>
+                        <td>{{ $control->created_at }}</td>
                         <td>{{ $control->control_type }}</td>
                         <td>{{ $control->temperature }}</td>
                         <td>{{ $control->heart_rate }}</td>

@@ -17,7 +17,8 @@ class HistoryController extends Controller
 	}
 
 	public function index(Patient $patient)	{
-		$histories = $patient->history()->get();
+		// $histories = $patient->history()->orderBy('date', 'desc')->get();
+		$histories = $patient->history()->orderBy('created_at', 'desc')->get();
 		return $histories;
 		// return view('histories.index', compact('histories'));
 	}

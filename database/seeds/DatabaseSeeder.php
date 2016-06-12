@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call('ACLSeeder');
         $this->call('PeopleSeeder');
-        $this->call('StaticTablesSeeder');
+        // $this->call('StaticTablesSeeder');
+        $this->call('SeederForHistories');
+        $this->call('SeederForControls');
     }
 }

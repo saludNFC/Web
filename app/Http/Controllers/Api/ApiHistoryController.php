@@ -38,11 +38,11 @@ class ApiHistoryController extends ApiController
 
         if(! JWTAuth::getToken()){
             // dd("guest");
-            $histories = $patient->history()->where('flag', true)->get();
+            $histories = $patient->history()->where('flag', true)->orderBy('created_at', 'desc')->get();
         }
         else{
             // dd("user");
-            $histories = $patient->history()->get();
+            $histories = $patient->history()->orderBy('created_at', 'desc')->get();
         }
         return $this->respond([
             'data' => $this->historyTransformer->transformCollection($histories->all())

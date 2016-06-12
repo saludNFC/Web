@@ -25,7 +25,7 @@
             @can('create_patient')
                 <li><a href="/paciente/create"><i class="fa fa-book"></i> <span>Apertura de Historia Clínica</span></a></li>
             @endcan
-            <li><a href="#"><i class="fa fa-medkit"></i> <span>Consulta Médica</span></a></li>
+            <!-- <li><a href="#"><i class="fa fa-medkit"></i> <span>Consulta Médica</span></a></li> -->
         </ul>
         <!-- /.sidebar-menu -->
     </section>

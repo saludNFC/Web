@@ -9,6 +9,19 @@
     <div role="form" class='form-horizontal'>
         <div class="box-body">
             {!! Form::hidden('history_type', 'Medicamentos') !!}
+
+            <div class="form-group{{ $errors->any() ? ($errors->has('created_at') ? ' has-error' : ' has-success') : '' }}">
+                {!! Form::label('created_at', 'Fecha de registro', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-9">
+                    {!! Form::text('created_at', $history->created_at, ['class'=>'form-control datepicker', 'placeholder' => 'Fecha de registro']) !!}
+                    @if($errors->has('created_at'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('created_at') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group{{ $errors->any() ? ($errors->has('med')? ' has-error' : ' has-success') : '' }}">
                 {!! Form::label('med', 'Nombre del Medicamento', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-9">

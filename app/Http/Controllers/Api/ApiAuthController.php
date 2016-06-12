@@ -14,6 +14,7 @@ class ApiAuthController extends ApiController
     public function index() {
         return User::all();
     }
+
     public function authenticate(Request $request) {
         // grab credentials from the request
         $credentials = $request->only('email', 'password');
@@ -27,6 +28,7 @@ class ApiAuthController extends ApiController
             // something went wrong whilst attempting to encode the token
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
+        // $user = JWTAuth::parseToken()->authenticate();
 
         // all good so return the token
         return $this->respond([
@@ -54,5 +56,14 @@ class ApiAuthController extends ApiController
         }
         // the token is valid and we have found the user via the sub claim
         return response()->json(compact('user'));
+    }
+
+    public function logout(){
+        JWTAuth::invalidate(JWTAuth::getToken());
+        return $this->respond([
+            'data' => [
+                'response' => 'Token destroyed'
+            ]
+        ]);
     }
 }

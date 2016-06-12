@@ -103,6 +103,27 @@ class AllTables extends Migration
             $table->softDeletes();
         });
 
+        // Schema::create('contacts', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     //Foreign key
+        //     $table->integer('user_id')->unsigned();
+        //     $table->foreign('user_id')
+        //         ->references('id')
+        //         ->on('users');
+        //
+        //     $table->integer('patient_id')->unsigned();
+        //     $table->foreign('patient_id')
+        //             ->references('id')
+        //             ->on('patients');
+        //
+        //     $table->string('name');
+        //     $table->string('lastname');
+        //     $table->string('relationship');
+        //     $table->date('phone')->nullable();
+        //     $table->timestamps();
+        //     $table->softDeletes();
+        // });
+
         // Realmente necesito esta tabla!!!??? KEEP IT SIMPLE STUPID!
         // STATIC table
         // History table
@@ -141,7 +162,8 @@ class AllTables extends Migration
             $table->date('date_ini')->nullable();
 
             $table->boolean('flag')->nullable();
-            $table->timestamps();
+            $table->date('created_at');
+            $table->timestamp('updated_at');
             $table->softDeletes();
         });
 
@@ -166,7 +188,6 @@ class AllTables extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-
 
             $table->enum('control_type', ['Vacunacion', 'Crecimiento', 'Triaje', 'Ginecologico', 'Geriatrico']);
 
@@ -195,7 +216,8 @@ class AllTables extends Migration
             $table->enum('geriatric_type', ['Valoracion Medica', 'Valoracion Funcional', 'Valoracion Cognitiva', 'Valoracion Social'])->nullable();
             $table->longtext('notes')->nullable();
 
-            $table->timestamps();
+            $table->date('created_at');
+            $table->timestamp('updated_at');
             $table->softDeletes();
         });
 
@@ -220,7 +242,8 @@ class AllTables extends Migration
             $table->longtext('justification');
 
             $table->boolean('flag')->nullable();
-            $table->timestamps();
+            $table->date('created_at');
+            $table->timestamp('updated_at');
             $table->softDeletes();
         });
     }

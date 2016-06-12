@@ -14,7 +14,7 @@
             <table class="table table-stripped table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Fecha</th>
                         <th>Tipo de control</th>
                         <th>Fecha ultima menstruacion</th>
                         <th>Fecha ultima mamografía</th>
@@ -24,9 +24,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($patient->control->where('control_type', 'Ginecologico') as $control)
+                    @foreach($patient->control()->where('control_type', 'Ginecologico')->orderBy('created_at', 'desc')->get() as $control)
                     <tr>
-                        <td>{{ $control->id }}</td>
+                        <td>{{ $control->created_at }}</td>
                         <td>{{ $control->control_type }}</td>
                         <td>{{ $control->last_menst }}</td>
                         <td>

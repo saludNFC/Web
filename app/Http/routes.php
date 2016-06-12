@@ -50,6 +50,7 @@ Route::get('/', 'HomeController@index');
 // API Routes
 Route::group(['prefix' => 'api'], function(){
     Route::post('auth', 'Api\ApiAuthController@authenticate');
+    Route::get('logout', 'Api\ApiAuthController@logout');
     // Route::group(['middleware' => 'jwt.auth'], function(){
         Route::get('users', 'Api\ApiAuthController@index');
         Route::resource('usuario', 'Api\ApiUserController', ['except' => ['create', 'edit']]);

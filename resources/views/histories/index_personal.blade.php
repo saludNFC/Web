@@ -14,7 +14,7 @@
             <table class="table table-stripped table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Fecha</th>
                         <th>Tipo de antecedente</th>
                         <th></th>
                         <th class="overflow">Descripcion</th>
@@ -23,9 +23,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($patient->history->where('history_type', 'Personal') as $history)
+                    @foreach($patient->history()->where('history_type', 'Personal')->orderBy('created_at', 'desc')->get() as $history)
                     <tr>
-                        <td>{{ $history->id }}</td>
+                        <td>{{ $history->created_at }}</td>
                         <td>{{ $history->history_type }}</td>
                         <td>{{ $history->type_personal }}</td>
                         <td class="overflow">{{ $history->description }}</td>

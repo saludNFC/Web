@@ -41,7 +41,7 @@
 
             @if($patient->isWomanOldEnough())
                 <div class="tab-pane" id="tab_5">
-                    {!! Form::model($control = new App\Control, ['route' => ['paciente.controles.store', $patient->historia]]) !!}
+                    {!! Form::open(['route' => ['paciente.controles.store', $patient->historia]]) !!}
                         @include('controls.partials._ginecologic', ['submit_text' => 'Crear control Ginecologico'])
                     {!! Form::close() !!}
                 </div>
