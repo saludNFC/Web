@@ -9,6 +9,19 @@
     <div class="form-horizontal">
         <div class="box-body">
             {!! Form::hidden('control_type', 'Ginecologico') !!}
+
+            <div class="form-group{{ $errors->any() ? ($errors->has('created_at') ? ' has-error' : ' has-success') : '' }}">
+                {!! Form::label('created_at', 'Fecha de registro', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-9">
+                    {!! Form::text('created_at', $control->created_at, ['class'=>'form-control datepicker', 'placeholder' => 'Fecha de registro']) !!}
+                    @if($errors->has('created_at'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('created_at') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group{{ $errors->any() ? ($errors->has('last_menst')? ' has-error' : ' has-success') : '' }}">
                 {!! Form::label('last_menst', 'Fecha de ultima menstruación', ['class' => 'col-md-3 control-label']) !!}
                 <div class="col-md-9">

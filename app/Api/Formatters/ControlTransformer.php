@@ -9,7 +9,8 @@ class ControlTransformer extends Transformer{
             'identificador_usuario' => (int) $control['user_id'],
             'identificador_paciente' => (int) $control['patient_id'],
             'identificador_control' => (int) $control['id'],
-            'tipo_control' => $control['control_type']
+            'tipo_control' => $control['control_type'],
+            'fecha_creacion' => $control['created_at'],
         ];
         if($control->control_type == 'Vacunacion'){
             return array_merge($array_a, array(
