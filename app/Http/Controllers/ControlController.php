@@ -17,7 +17,7 @@ class ControlController extends Controller
 	}
 
 	public function index(Patient $patient)	{
-		$controls = $patient->control()->get();
+		$controls = $patient->control()->orderBy('created_at', 'desc')->get();
 		return $controls;
 	}
 

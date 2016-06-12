@@ -54,9 +54,9 @@ class ControlRequest extends Request
 
             // Triaje
             'temperature' => 'required_if:control_type,Triaje',
-            'heart_rate' => 'required_if:control_type,Triaje',
-            'sistole' => 'required_if:control_type,Triaje',
-            'diastole' => 'required_if:control_type,Triaje',
+            'heart_rate' => 'required_if:control_type,Triaje,between:60,100',
+            'sistole' => 'required_if:control_type,Triaje,between:105,147',
+            'diastole' => 'required_if:control_type,Triaje,between:73,91',
 
             // Ginecologico
             'last_menst' => 'required_if:control_type,Ginecologico'
