@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\History;
 use Faker\Factory as Faker;
+use App\History;
 
 
 class SeederForHistories extends Seeder

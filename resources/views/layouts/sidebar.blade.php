@@ -3,14 +3,12 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
+        <!-- <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
+                <select id="searchbox" name="q" placeholder="Search..." class="form-control"></select>
             </div>
-        </form>
+        </form> -->
+
         <!-- /.search form -->
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
@@ -26,8 +24,25 @@
                 <li><a href="/paciente/create"><i class="fa fa-book"></i> <span>Apertura de Historia Clínica</span></a></li>
             @endcan
             <!-- <li><a href="#"><i class="fa fa-medkit"></i> <span>Consulta Médica</span></a></li> -->
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-medkit"></i> <span>Consulta Médica</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li>
+                        <form class="sidebar-form" role="search" style="height: 300px">
+                            <div class="form-group" style="width: 240px;">
+                                <select id="searchbox" name="q" placeholder="Buscar paciente..." class="form-control"></select>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </li>
         </ul>
-        <!-- /.sidebar-menu -->
+<!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
 </aside>

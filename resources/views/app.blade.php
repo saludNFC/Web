@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/datepicker3.css">
+    <link rel="stylesheet" href="/vendors/dist/css/selectize.bootstrap3.css">
     <link rel="stylesheet" href="/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/css/skin-green.min.css">
 
@@ -49,6 +50,8 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/app.min.js"></script>
     <script src="/js/bootstrap-datepicker.js"></script>
+    <script src="/vendors/dist/js/standalone/selectize.js"></script>
+    <script src="/js/searcher.js"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -79,6 +82,16 @@
 
         $('.popoverData').popover();
 
+    </script>
+
+    <script>
+    	$(document).ready(function(){
+    	    $('#searchbox').selectize();
+    	});
+    </script>
+
+    <script type="text/javascript">
+        var root = '{{url("/")}}';
     </script>
 </body>
 </html>

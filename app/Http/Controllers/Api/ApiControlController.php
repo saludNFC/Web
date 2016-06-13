@@ -32,7 +32,7 @@ class ApiControlController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function index(Patient $patient){
-        $controls = $patient->control()->get();
+        $controls = $patient->control()->orderBy('created_at', 'desc')->get();
         return $this->respond([
             'data' => $this->controlTransformer->transformCollection($controls->all())
         ]);

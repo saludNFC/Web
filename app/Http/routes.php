@@ -46,6 +46,7 @@ Route::post('password/reset', 'Auth\PasswordController@reset');
 //
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
+Route::get('api/search', 'SearchController@index');
 
 // API Routes
 Route::group(['prefix' => 'api'], function(){

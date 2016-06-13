@@ -59,7 +59,7 @@ class ControlRequest extends Request
             'diastole' => 'required_if:control_type,Triaje,between:73,91',
 
             // Ginecologico
-            'last_menst' => 'required_if:control_type,Ginecologico'
+            'last_menst' => 'required_if:control_type,Ginecologico',
             // 'last_mamo' => 'date',
             // 'last_papa' => 'date',
 

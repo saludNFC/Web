@@ -35,11 +35,10 @@ class ApiConsultationController extends ApiController
     public function index(Patient $patient){
         if(! JWTAuth::getToken()){
             // dd("guest");
-            $consultations = $patient->consultation()->where('flag', true)->get();
-            // $consultations = $patient->consultation()->where('flag', true)->get();
+            $consultations = $patient->consultation()->where('flag', true)->orderBy('created_at', 'desc')->get();
         }
         else{
-            $consultations = $patient->consultation()->get();
+            $consultations = $patient->consultation()->orderBy('created_at', 'desc')->get();
         }
         return $this->respond([
             'data' => $this->consultationTransformer->transformCollection($consultations->all())

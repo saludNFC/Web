@@ -14,7 +14,8 @@ class ConsultationTransformer extends Transformer{
             'diagnostico' => $consultation['diagnosis'],
             'tratamiento' => $consultation['treatment'],
             'justificacion' => $consultation['justification'],
-            'bandera' => $consultation['flag']
+            'bandera' => $consultation['flag'],
+            'fecha_creacion' => $consultation['created_at'],
         ];
     }
 }

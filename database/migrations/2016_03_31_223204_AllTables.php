@@ -3,7 +3,12 @@
 
 // SGGM hace todo en una sola migracion por alguna razon
 // Parece ser mas facil para que cuando se hace migrate:refresh evitar que
-// hayan incongruencias al borrar una tabla que dependa del foreign de otra
+// hayan incongruencias al borrar una tabla que dependa del foreign de otra.
+
+/**
+ * created_at attribute is set to be date instead of timestamp because in all cases I need to fill manually this field
+ * and I need it to be before 1970 :P
+ */
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
