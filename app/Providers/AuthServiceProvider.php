@@ -22,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
         'App\User' => 'App\Policies\UserPolicy',
         'App\Patient' => 'App\Policies\PatientPolicy',
+        'App\Contact' => 'App\Policies\ContactPolicy',
         'App\History' => 'App\Policies\HistoryPolicy',
         'App\Control' => 'App\Policies\ControlPolicy',
         'App\Consultation' => 'App\Policies\ConsultationPolicy',
@@ -42,6 +43,10 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         $gate->define('create_patient', function($user){
+            return $user->hasRole('root') || $user->hasRole('admin');
+        });
+
+        $gate->define('create_contact', function($user){
             return $user->hasRole('root') || $user->hasRole('admin');
         });
 

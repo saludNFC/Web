@@ -22,7 +22,9 @@ class PeopleSeeder extends Seeder
             'nombre' => 'Ana Maria',
             'apellido' => 'Torrez Cárdenas',
             'fecha_nac' => '03-07-1951',
-            'grupo_sanguineo' => 'O RH+',
+            'lugar_nac' => $faker->randomElement(['Beni', 'Chuquisaca', 'Cochabamba', 'La Paz', 'Oruro', 'Pando', 'Potosi',
+                            'Santa Cruz', 'Tarija']),
+            'grupo_sanguineo' => $faker->randomElement(['A RH+','A RH-', 'B RH+', 'B RH-', 'O RH+', 'O RH-', 'AB RH+', 'AB RH-']),
             'sexo' => 'Femenino',
             'user_id' => $faker->randomElement([1,2,3,4]),
         ]);
@@ -93,6 +95,8 @@ class PeopleSeeder extends Seeder
                 'nombre' => $faker->firstName($gender),
                 'apellido' => $faker->lastName . ' ' . $faker->lastName,
                 'fecha_nac' => $faker->date($format = 'd-m-Y', $max = 'now'),
+                'lugar_nac' => $faker->randomElement(['Beni', 'Chuquisaca', 'Cochabamba', 'La Paz', 'Oruro', 'Pando', 'Potosi',
+                                'Santa Cruz', 'Tarija']),
                 'grupo_sanguineo' => $faker->randomElement(['A RH+','A RH-', 'B RH+', 'B RH-', 'O RH+', 'O RH-', 'AB RH+', 'AB RH-']),
                 'user_id' => $faker->randomElement([1,2,3,4]),
             ]);

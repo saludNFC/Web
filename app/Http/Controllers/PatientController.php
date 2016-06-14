@@ -57,7 +57,8 @@ class PatientController extends Controller
         // Get the last patient saved and pass his id to be able to create his histories
         $last = Patient::get()->last();
         session()->flash('message', 'Los datos generales del paciente fueron guardados correctamente.');
-        return redirect()->route('paciente.antecedentes.create', [$last->historia]);
+        // return redirect()->route('paciente.antecedentes.create', [$last->historia]);
+        return redirect()->route('paciente.contacto.create', [$last->historia]);
     }
 
     public function destroy(Patient $patient){

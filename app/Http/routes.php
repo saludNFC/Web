@@ -14,19 +14,20 @@
 // Route model binding, to make it pro!
 // Route::model('route wildcard', 'Model')
 
-// TEMPORARY DISABLED :3
 Route::model('usuario', 'App\User');
 
 Route::bind('paciente', function($hc_cod){
     return \App\Patient::where('historia', $hc_cod)->firstOrFail();
 });
 
+Route::model('contacto', 'App\Contact');
 Route::model('antecedentes', 'App\History');
 Route::model('controles', 'App\Control');
 Route::model('consultas', 'App\Consultation');
 
 Route::resource('paciente', 'PatientController');
 
+Route::resource('paciente.contacto', 'ContactController');
 Route::resource('paciente.antecedentes', 'HistoryController');
 Route::resource('paciente.controles', 'ControlController');
 Route::resource('paciente.consultas', 'ConsultationController');
@@ -57,6 +58,7 @@ Route::group(['prefix' => 'api'], function(){
         Route::resource('usuario', 'Api\ApiUserController', ['except' => ['create', 'edit']]);
         Route::resource('paciente', 'Api\ApiPatientController', ['except' => ['create', 'edit']]);
         Route::resource('paciente.antecedentes', 'Api\ApiHistoryController', ['except' => ['create', 'edit']]);
+        Route::resource('paciente.contactos', 'Api\ApiContactController', ['except' => ['create', 'edit']]);
         Route::resource('paciente.controles', 'Api\ApiControlController', ['except' => ['create', 'edit']]);
         Route::resource('paciente.consultas', 'Api\ApiConsultationController', ['except' => ['create', 'edit']]);
     // });

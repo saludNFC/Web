@@ -61,7 +61,7 @@ class Patient extends Model
     }
 
     public function contact(){
-        return $this->hasMany('App\Contact');
+        return $this->hasOne('App\Contact');
     }
 
     // HELPERS

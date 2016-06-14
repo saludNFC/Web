@@ -38,6 +38,10 @@ class User extends Authenticatable{
         return $this->hasMany('App\Patient');
     }
 
+    public function contacts(){
+        return $this->hasMany('App\Contact');
+    }
+
     public function histories(){
         return $this->hasMany('App\History');
     }

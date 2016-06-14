@@ -108,26 +108,26 @@ class AllTables extends Migration
             $table->softDeletes();
         });
 
-        // Schema::create('contacts', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     //Foreign key
-        //     $table->integer('user_id')->unsigned();
-        //     $table->foreign('user_id')
-        //         ->references('id')
-        //         ->on('users');
-        //
-        //     $table->integer('patient_id')->unsigned();
-        //     $table->foreign('patient_id')
-        //             ->references('id')
-        //             ->on('patients');
-        //
-        //     $table->string('name');
-        //     $table->string('lastname');
-        //     $table->string('relationship');
-        //     $table->date('phone')->nullable();
-        //     $table->timestamps();
-        //     $table->softDeletes();
-        // });
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->increments('id');
+            //Foreign key
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+
+            $table->integer('patient_id')->unsigned();
+            $table->foreign('patient_id')
+                    ->references('id')
+                    ->on('patients');
+
+            $table->string('name');
+            $table->string('lastname');
+            $table->string('relationship');
+            $table->string('phone');
+            $table->timestamps();
+            $table->softDeletes();
+        });
 
         // Realmente necesito esta tabla!!!??? KEEP IT SIMPLE STUPID!
         // STATIC table
@@ -263,6 +263,7 @@ class AllTables extends Migration
         Schema::drop('consultations');
         Schema::drop('controls');
         Schema::drop('histories');
+        Schema::drop('contacts');
         Schema::drop('patients');
         Schema::drop('role_user');
         // Schema::drop('permission_role');
