@@ -2,6 +2,7 @@
     <div class="col-sm-7">
         <div class="box box-solid">
             <div class="box-header with-border">
+                <i class="fa fa-user"></i>
                 <h3 class="box-title">Paciente</h3>
 
                 @can('update_patient', $patient)
@@ -47,6 +48,7 @@
         <div class="col-sm-5">
             <div class="box box-solid">
                 <div class="box-header with-border">
+                    <i class="fa fa-exclamation"></i>
                     <h3 class="box-title">Contacto de emergencia</h3>
                 </div>
                 <div class="box-body">

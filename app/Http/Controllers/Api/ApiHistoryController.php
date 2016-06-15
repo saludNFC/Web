@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Api\Formatters\HistoryTransformer;
 use App\Http\Requests\HistoryRequest;
 use App\Http\Requests;
 use App\Patient;
 use App\History;
-use Api\Formatters\HistoryTransformer;
 use JWTAuth;
 use Auth;
 use Gate;

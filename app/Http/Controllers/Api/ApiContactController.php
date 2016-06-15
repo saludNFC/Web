@@ -34,6 +34,7 @@ class ApiContactController extends ApiController
      */
     public function index(Patient $patient){
         $contact = $patient->contact()->get();
+        // dd($contact);
         return $this->respond([
             'data' => $this->contactTransformer->transformCollection($contact->all())
         ]);

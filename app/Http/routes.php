@@ -58,7 +58,7 @@ Route::group(['prefix' => 'api'], function(){
         Route::resource('usuario', 'Api\ApiUserController', ['except' => ['create', 'edit']]);
         Route::resource('paciente', 'Api\ApiPatientController', ['except' => ['create', 'edit']]);
         Route::resource('paciente.antecedentes', 'Api\ApiHistoryController', ['except' => ['create', 'edit']]);
-        Route::resource('paciente.contactos', 'Api\ApiContactController', ['except' => ['create', 'edit']]);
+        Route::resource('paciente.contacto', 'Api\ApiContactController', ['except' => ['create', 'edit']]);
         Route::resource('paciente.controles', 'Api\ApiControlController', ['except' => ['create', 'edit']]);
         Route::resource('paciente.consultas', 'Api\ApiConsultationController', ['except' => ['create', 'edit']]);
     // });
