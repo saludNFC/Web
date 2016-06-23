@@ -86,7 +86,7 @@ class StaticTablesSeeder extends Seeder
                 'patient_id' => 1,
                 'anamnesis' => 'La paciente tiene malestar en la garganta, tos seca y fuerte que le produce posteriormente sangrado',
                 'physical_exam' => 'La paciente presenta enrojecimiento en la garganta, inflamación en las amigdalas y dificultad al respirar.',
-                'diagnosis' => 'Amigdalitis con complicación por farigitis',
+                'diagnosis' => 'Amigdalitis con complicación por faringitis',
                 'treatment' => 'Jarabe Sentis tres veces al día y Etaconil 50gr una vez al día',
                 'justification' => 'El jarabe redicirá el enrojecimiento de la garganta y ayudará a la desinflamación de las amigdalas'),
 

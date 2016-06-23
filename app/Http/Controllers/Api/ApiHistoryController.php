@@ -24,7 +24,7 @@ class ApiHistoryController extends ApiController
      */
     public function __construct(HistoryTransformer $transformer){
         $this->historyTransformer = $transformer;
-        $this->middleware('jwt.auth', ['except' => 'index']);
+        // $this->middleware('jwt.auth', ['except' => 'index']);
     }
 
     /**
@@ -36,14 +36,14 @@ class ApiHistoryController extends ApiController
         // $token = JWTAuth::getToken();
         // dd($token);
 
-        if(! JWTAuth::getToken()){
-            // dd("guest");
-            $histories = $patient->history()->where('flag', true)->orderBy('created_at', 'desc')->get();
-        }
-        else{
+        // if(! JWTAuth::getToken()){
+        //     // dd("guest");
+        //     $histories = $patient->history()->where('flag', true)->orderBy('created_at', 'desc')->get();
+        // }
+        // else{
             // dd("user");
             $histories = $patient->history()->orderBy('created_at', 'desc')->get();
-        }
+        // }
         return $this->respond([
             'data' => $this->historyTransformer->transformCollection($histories->all())
         ]);

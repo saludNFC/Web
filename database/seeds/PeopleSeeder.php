@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Patient;
+use App\Contact;
 
 class PeopleSeeder extends Seeder
 {
@@ -30,6 +31,16 @@ class PeopleSeeder extends Seeder
         ]);
         $patient->historia = $patient->codHistoria($patient);
         $patient->save();
+
+        $contact = new Contact([
+            'user_id' => $faker->randomElement([1,2,3,4]),
+            'patient_id' => 1,
+            'name' => $faker->firstName('male'),
+            'lastname' => $faker->lastName,
+            'relationship' => 'Esposo',
+            'phone' => '22148273'
+        ]);
+        $contact->save();
 
         // little boy patient
         // $patient = new Patient([

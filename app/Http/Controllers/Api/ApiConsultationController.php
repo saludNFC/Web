@@ -24,7 +24,7 @@ class ApiConsultationController extends ApiController
      */
     public function __construct(ConsultationTransformer $transformer){
         $this->consultationTransformer = $transformer;
-        $this->middleware('jwt.auth', ['except' => 'index']);
+        // $this->middleware('jwt.auth', ['except' => 'index']);
     }
 
     /**
@@ -33,13 +33,13 @@ class ApiConsultationController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function index(Patient $patient){
-        if(! JWTAuth::getToken()){
+        // if(! JWTAuth::getToken()){
             // dd("guest");
-            $consultations = $patient->consultation()->where('flag', true)->orderBy('created_at', 'desc')->get();
-        }
-        else{
+            // $consultations = $patient->consultation()->where('flag', true)->orderBy('created_at', 'desc')->get();
+        // }
+        // else{
             $consultations = $patient->consultation()->orderBy('created_at', 'desc')->get();
-        }
+        // }
         return $this->respond([
             'data' => $this->consultationTransformer->transformCollection($consultations->all())
         ]);

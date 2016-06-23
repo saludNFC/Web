@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         // $this->call('StaticTablesSeeder');
         $this->call('SeederForHistories');
         $this->call('SeederForControls');
+        $this->call('SeederForConsultations');
     }
 }
