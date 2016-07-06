@@ -41,6 +41,7 @@ class ControlRequest extends Request
     public function rules()
     {
         return [
+            'created_at' => 'required',
             'control_type' => 'required',
 
             // Vacunacion

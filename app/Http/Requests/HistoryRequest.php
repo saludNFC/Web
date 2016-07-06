@@ -49,6 +49,7 @@ class HistoryRequest extends Request
     public function rules()
     {
         return [
+            "created_at" => "required",
             'history_type' => 'required',
 
             // Antecedente familiar

@@ -15,7 +15,7 @@ class ApiAuthController extends ApiController
         return User::all();
     }
 
-    public function authenticate(Request $request) {
+    function authenticate(Request $request) {
         // grab credentials from the request
         $credentials = $request->only('email', 'password');
 
@@ -49,7 +49,7 @@ class ApiAuthController extends ApiController
             return response()->json(['token_expired'], $e->getStatusCode());
         }
         catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-            return response()->json(['token_invalid'], $e->getStatusCode());
+            return response()->json(['token_invalid!!!'], $e->getStatusCode());
         }
         catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
             return response()->json(['token_absent'], $e->getStatusCode());
@@ -58,7 +58,10 @@ class ApiAuthController extends ApiController
         return response()->json(compact('user'));
     }
 
-    public function logout(){
+    public function logout(Request $request){
+        // $this->validate($request, [
+        //     'token' => 'required'
+        // ]);
         JWTAuth::invalidate(JWTAuth::getToken());
         return $this->respond([
             'data' => [

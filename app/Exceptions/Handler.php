@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof ModelNotFoundException){
             return response()->json([
                 'error' => [
-                    'message' => 'Recurso no encontrado.'
+                    'message' => 'Recurso no encontrado!!.'
                 ]
             ], 404);
         }
@@ -58,7 +58,7 @@ class Handler extends ExceptionHandler
             if(str_contains($request->url(), '/api')){
                 return response()->json([
                     'error' => [
-                        'message' => 'Recurso no encontrado.'
+                        'message' => 'Recurso no encontrado!!!.'
                     ]
                 ], 404);
             }
@@ -66,6 +66,14 @@ class Handler extends ExceptionHandler
                 response(view('errors/404'), 404);
             }
 
+        }
+
+        if($e instanceof Tymon\JWTAuth\Exceptions\TokenBlacklistedException){
+            return response()->json([
+                'error' => [
+                    'message' => 'token blacklisted'
+                ]
+            ], $e.getStatusCode());
         }
 
         if($e instanceof Tymon\JWTAuth\Exceptions\JWTException){

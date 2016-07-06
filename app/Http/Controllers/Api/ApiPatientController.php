@@ -21,7 +21,7 @@ class ApiPatientController extends ApiController{
 
     public function __construct(PatientTransformer $transformer){
         $this->patientTransformer = $transformer;
-        // $this->middleware('jwt.auth', ['except' => 'show']);
+        $this->middleware('jwt.auth', ['except' => 'show']);
     }
 
     /**

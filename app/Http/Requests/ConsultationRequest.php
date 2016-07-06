@@ -24,6 +24,7 @@ class ConsultationRequest extends Request
     public function rules()
     {
         return [
+            'created_at' => 'required',
             'anamnesis' => 'required|min:10',
             'physical_exam' => 'required|min:10',
             'diagnosis' => 'required|min:10'

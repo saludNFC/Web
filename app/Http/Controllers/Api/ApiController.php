@@ -51,7 +51,7 @@ class ApiController extends Controller
     public function respondWithError($message){
         return $this->respond([
             'error' => [
-                'message' => $message,
+                'error_message' => $message,
                 'status_code' => $this->getStatusCode()
             ]
         ]);
@@ -65,7 +65,7 @@ class ApiController extends Controller
     public function respondWithSuccess($message){
         return $this->respond([
             'success' => [
-                'message' => $message,
+                'success_message' => $message,
                 'status_code' => $this->getStatusCode()
             ]
         ]);
@@ -76,7 +76,7 @@ class ApiController extends Controller
      * @param  string $message Error message
      * @return mixed
      */
-    public function respondNotFound($message = 'Recurso no encontrado'){
+    public function respondNotFound($message = 'Recurso no encontrado!'){
         return $this->setStatusCode(404)->respondWithError($message);
     }
 

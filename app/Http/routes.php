@@ -52,6 +52,7 @@ Route::get('api/search', 'SearchController@index');
 // API Routes
 Route::group(['prefix' => 'api'], function(){
     Route::post('auth', 'Api\ApiAuthController@authenticate');
+    Route::get('auth', 'Api\ApiAuthController@getAuthenticatedUser');
     Route::get('logout', 'Api\ApiAuthController@logout');
     // Route::group(['middleware' => 'jwt.auth'], function(){
         Route::get('users', 'Api\ApiAuthController@index');
