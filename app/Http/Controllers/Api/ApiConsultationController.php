@@ -33,7 +33,7 @@ class ApiConsultationController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function index(Patient $patient){
-        if(! JWTAuth::getToken()){
+        if(! JWTAuth::getToken() || JWTAuth::isBlackListed(JWTAuth::getPayload(JWTAuth::getToken()))){
             // dd("guest");
             $consultations = $patient->consultation()->where('flag', true)->orderBy('created_at', 'desc')->get();
         }

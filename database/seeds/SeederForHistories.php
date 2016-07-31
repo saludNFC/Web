@@ -45,6 +45,35 @@ class SeederForHistories extends Seeder
             array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 1,'history_type' => 'Medicamentos','med' => 'Antigripal LCH','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
             array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 1,'history_type' => 'Medicamentos','med' => 'Hidrocortisona','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
             array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 1,'history_type' => 'Medicamentos','med' => 'Etaconil','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+
+
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Familiar','grade' => 'Abuelo materno','illness' => 'Problemas cardíacos','created_at' => '04-07-1951'),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Familiar','grade' => 'Abuela materna','illness' => 'Colesterol alto','created_at' => '04-07-1951'),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Familiar','grade' => 'Abuelo paterno','illness' => 'Hipertension arterial','created_at' => '04-07-1951'),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Familiar','grade' => 'Padre','illness' => 'Hipertension arterial','created_at' => '04-07-1951'),
+
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Personal','type_personal' => 'Alergia','description' => 'Reacción adversa a maníes, almendras y frutos secos','created_at' => '06-01-1956', 'flag' => true),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Personal','type_personal' => 'Alergia','description' => 'Alergia respiratoria al polen con hipersensibilidad en ojos y garganta','created_at' => '05-10-1960'),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Personal','type_personal' => 'Alergia','description' => 'Alergia a la penicilina','created_at' => '05-10-1963', 'flag' => true),
+
+            /**
+             * TODO fill medicines list!
+             */
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Sales rehidratantes','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Jarabe antitusivo','via' => 'Sublingual','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Metformina','via' => 'Topica','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Paracetamol','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Ibuprofeno','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Sales rehidratantes','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Sentis','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Paracetamol','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Ibuprofeno','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Diane','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Diane','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Resfriol','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Antigripal LCH','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Hidrocortisona','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
+            array('user_id' => $faker->randomElement([3, 4]),'patient_id' => 2,'history_type' => 'Medicamentos','med' => 'Etaconil','via' => 'Oral','date_ini' => $faker->date($format = 'd-m-Y', $max = 'now'),'created_at' => $faker->date($format = 'd-m-Y', $max = 'now')),
         );
 
         foreach ($histories as $array) {

@@ -42,61 +42,30 @@ class PeopleSeeder extends Seeder
         ]);
         $contact->save();
 
-        // little boy patient
-        // $patient = new Patient([
-        //     'ci' => $faker->regexify('\d{7}'),
-        //     'emision' => $faker->randomElement(['BN', 'CH', 'CB', 'LP', 'OR', 'PA', 'PT', 'SC', 'TJ']),
-        //     'nombre' => 'Luis Fernando',
-        //     'apellido' => 'Vera Cardenas',
-        //     'fecha_nac' => '10-06-2005',
-        //     'grupo_sanguineo' => 'A RH+',
-        //     'sexo' => 'Masculino',
-        //     'user_id' => $faker->randomElement([1,2,3,4]),
-        // ]);
-        // $patient->historia = $patient->codHistoria($patient);
-        // $patient->save();
+        $patient = new Patient([
+            'ci' => $faker->regexify('\d{7}'),
+            'emision' => $faker->randomElement(['BN', 'CH', 'CB', 'LP', 'OR', 'PA', 'PT', 'SC', 'TJ']),
+            'nombre' => 'Jorge',
+            'apellido' => 'Ramirez Gomez',
+            'fecha_nac' => '03-07-1951',
+            'lugar_nac' => $faker->randomElement(['Beni', 'Chuquisaca', 'Cochabamba', 'La Paz', 'Oruro', 'Pando', 'Potosi',
+                            'Santa Cruz', 'Tarija']),
+            'grupo_sanguineo' => $faker->randomElement(['A RH+','A RH-', 'B RH+', 'B RH-', 'O RH+', 'O RH-', 'AB RH+', 'AB RH-']),
+            'sexo' => 'Masculino',
+            'user_id' => $faker->randomElement([1,2,3,4]),
+        ]);
+        $patient->historia = $patient->codHistoria($patient);
+        $patient->save();
 
-        // Young lady
-        // $patient = new Patient([
-        //     'ci' => $faker->regexify('\d{7}'),
-        //     'emision' => $faker->randomElement(['BN', 'CH', 'CB', 'LP', 'OR', 'PA', 'PT', 'SC', 'TJ']),
-        //     'nombre' => 'Gabriela Nicole',
-        //     'apellido' => 'Medinaceli Cardenas',
-        //     'fecha_nac' => '01-06-2000',
-        //     'grupo_sanguineo' => 'B RH+',
-        //     'sexo' => 'Femenino',
-        //     'user_id' => $faker->randomElement([1,2,3,4]),
-        // ]);
-        // $patient->historia = $patient->codHistoria($patient);
-        // $patient->save();
-
-        // Old lady
-        // $patient = new Patient([
-        //     'ci' => $faker->regexify('\d{7}'),
-        //     'emision' => $faker->randomElement(['BN', 'CH', 'CB', 'LP', 'OR', 'PA', 'PT', 'SC', 'TJ']),
-        //     'nombre' => 'Teresa',
-        //     'apellido' => 'Lopez Perez',
-        //     'fecha_nac' => '05-11-1956',
-        //     'grupo_sanguineo' => 'B RH+',
-        //     'sexo' => 'Femenino',
-        //     'user_id' => $faker->randomElement([1,2,3,4]),
-        // ]);
-        // $patient->historia = $patient->codHistoria($patient);
-        // $patient->save();
-
-        // Old man
-        // $patient = new Patient([
-        //     'ci' => $faker->regexify('\d{7}'),
-        //     'emision' => $faker->randomElement(['BN', 'CH', 'CB', 'LP', 'OR', 'PA', 'PT', 'SC', 'TJ']),
-        //     'nombre' => 'Edgar',
-        //     'apellido' => 'Mariaca Argandoña',
-        //     'fecha_nac' => '01-12-1950',
-        //     'grupo_sanguineo' => 'A RH+',
-        //     'sexo' => 'Masculino',
-        //     'user_id' => $faker->randomElement([1,2,3,4]),
-        // ]);
-        // $patient->historia = $patient->codHistoria($patient);
-        // $patient->save();
+        $contact = new Contact([
+            'user_id' => $faker->randomElement([1,2,3,4]),
+            'patient_id' => 2,
+            'name' => $faker->firstName('male'),
+            'lastname' => $faker->lastName,
+            'relationship' => 'Hijo',
+            'phone' => '2128008'
+        ]);
+        $contact->save();
 
         foreach (range(1, 50) as $index) {
             $gender = $faker->randomElement(['male', 'female']);

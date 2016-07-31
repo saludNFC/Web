@@ -6,8 +6,21 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Consultation extends Model
+use Venturecraft\Revisionable\Revisionable;
+
+class Consultation extends Revisionable
 {
+    protected $revisionEnabled = true;
+    protected $historyLimit = 500;
+
+    protected $dontKeepRevisionOf = array(
+        'created_at', 'patient_id'
+    );
+    public static function boot()
+    {
+        parent::boot();
+    }
+
     // Implementing soft deletion
     use SoftDeletes;
 

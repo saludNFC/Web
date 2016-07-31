@@ -12,6 +12,16 @@
         <p>Fecha de creacion de la consulta medica: {{ $consultation->created_at }}</p>
         <p>Fecha de ultima modificacion de la consulta medica: {{ $consultation->updated_at }}</p>
         <p>Profesional responsable: {{ $consultation->user->name }}</p>
+
+        @if (count($consultation->revisionHistory) > 0)
+            <h3>HISTORIAL DE MODIFICACIONES</h3>
+            <br>
+            @foreach($consultation->revisionHistory as $history )
+                <li>{{ $history->userResponsible()->name }} cambió {{ $history->fieldName() }} de <u>"{{ $history->oldValue() }}"</u> a <b>"{{ $history->newValue() }}"</b></li>
+            @endforeach
+            <br>
+            <br>
+        @endif
     </div>
 
     @can('update_consultation', $consultation)

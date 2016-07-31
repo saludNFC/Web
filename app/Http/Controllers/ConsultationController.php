@@ -17,7 +17,7 @@ class ConsultationController extends Controller
 	}
 
 	public function index(Patient $patient)	{
-		$consultations = $patient->consultation()->get();
+		$consultations = $patient->consultation()->orderBy('created_at', 'desc')->get();
 		return $consultations;
 	}
 

@@ -23,11 +23,12 @@
                         <th class="overflow">Tratamiento</th>
                         <th class="overflow">Justificacion</th>
                         <th>Encargado</th>
+                        <th>Historial</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($patient->consultation as $consult)
+                    @foreach($patient->consultation()->orderBy('created_at', 'desc')->get() as $consult)
                     <tr>
                         <td class="overflow">{{ $consult->id }}</td>
                         <td class="overflow">{{ $consult->anamnesis }}</td>
@@ -36,6 +37,11 @@
                         <td class="overflow">{{ $consult->treatment }}</td>
                         <td class="overflow">{{ $consult->justification }}</td>
                         <td>{!! link_to_route('usuario.show', $consult->user->name, [$consult->user->id], []) !!}</td>
+                        <td>
+                            @if(count($consult->revisionHistory) > 0)
+                                Consulta médica editada {{count($consult->revisionHistory) - 1 }} veces
+                            @endif
+                        </td>
                         <td>
                             <div class="btn-group">
                                 {!! Html::decode(link_to_route('paciente.consultas.show', '<i class="fa fa-eye"></i>', [$patient->historia, $consult->id], ['class' => 'btn btn-default', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Ver Detalles'])) !!}

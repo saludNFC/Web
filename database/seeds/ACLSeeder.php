@@ -14,10 +14,10 @@ class ACLSeeder extends Seeder
         // USERS
         DB::table('users')->delete();
         $user = array(
-            array('name' => 'Root User', 'email' => 'root@somewhere.com', 'password' => bcrypt('123456')), //1
-            array('name' => 'Admin User', 'email' => 'admin@somewhere.com', 'password' => bcrypt('123456')), //2
-            array('name' => 'Doctor User', 'email' => 'doctor@somewhere.com', 'password' => bcrypt('123456')), //3
-            array('name' => 'Nurse User', 'email' => 'nurse@somewhere.com', 'password' => bcrypt('123456')) //4
+            array('name' => 'Edgar Torrez', 'email' => 'root@somewhere.com', 'password' => bcrypt('123456')), //1
+            array('name' => 'Maria Paredes', 'email' => 'admin@somewhere.com', 'password' => bcrypt('123456')), //2
+            array('name' => 'Daniel Bascope', 'email' => 'doctor@somewhere.com', 'password' => bcrypt('123456')), //3
+            array('name' => 'Ana Arce', 'email' => 'nurse@somewhere.com', 'password' => bcrypt('123456')) //4
         );
         DB::table('users')->insert($user);
 
